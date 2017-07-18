@@ -58,8 +58,10 @@ ActiveRecord::Schema.define(version: 20170718183618) do
   create_table "messages", force: :cascade do |t|
     t.string   "content"
     t.integer  "chow_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
     t.index ["chow_id"], name: "index_messages_on_chow_id", using: :btree
   end
 
