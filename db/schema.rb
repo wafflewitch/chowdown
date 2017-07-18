@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718152756) do
+ActiveRecord::Schema.define(version: 20170718162726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "badges", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "count"
+    t.string   "category"
+    t.integer  "level"
+    t.integer  "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_badges_on_users_id", using: :btree
+  end
+
+  create_table "chows", force: :cascade do |t|
+    t.date     "date"
+    t.string   "status"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_1_id"
+    t.integer  "user_2_id"
+  end
+
+  create_table "diet_prefs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "icon"
+    t.integer  "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_diet_prefs_on_users_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -44,4 +74,6 @@ ActiveRecord::Schema.define(version: 20170718152756) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "badges", "users", column: "users_id"
+  add_foreign_key "diet_prefs", "users", column: "users_id"
 end

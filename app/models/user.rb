@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :chows, :class_name => "Chow", :foreign_key => "user_1_id"
+  has_many :secondary_chows, :class_name => "Chow", :foreign_key => "user_2_id"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -24,4 +26,5 @@ class User < ApplicationRecord
 
     return user
   end
+
 end
