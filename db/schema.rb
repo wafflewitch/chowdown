@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718180335) do
+ActiveRecord::Schema.define(version: 20170718183618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(version: 20170718180335) do
     t.date     "date"
     t.string   "status"
     t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "user_1_id"
     t.integer  "user_2_id"
+    t.integer  "availability_1_id"
+    t.integer  "availability_2_id"
   end
 
   create_table "diet_prefs", force: :cascade do |t|
@@ -51,6 +53,14 @@ ActiveRecord::Schema.define(version: 20170718180335) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["users_id"], name: "index_diet_prefs_on_users_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "chow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chow_id"], name: "index_messages_on_chow_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,4 +95,5 @@ ActiveRecord::Schema.define(version: 20170718180335) do
   add_foreign_key "availabilities", "users"
   add_foreign_key "badges", "users", column: "users_id"
   add_foreign_key "diet_prefs", "users", column: "users_id"
+  add_foreign_key "messages", "chows"
 end
