@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dates: 2017-07-18
+  user: one
+
+two:
+  dates: 2017-07-18
+  user: two
