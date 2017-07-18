@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :chows, :class_name => "Chow", :foreign_key => "user_1_id"
   has_many :secondary_chows, :class_name => "Chow", :foreign_key => "user_2_id"
+  has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
+  has_many :secondary_messages, :class_name => "Message", :foreign_key => "recipient_id"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
