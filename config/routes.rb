@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :users do
+    resources :chows, only: [:index, :show]
+  end
+
+
+
+
   get 'chows/show'
 
   devise_for :users,
