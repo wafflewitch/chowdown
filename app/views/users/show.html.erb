@@ -1,12 +1,25 @@
 
 <div class="container">
   <div class="profile-page">
+
+  <%= if user == current_user %>
     <div class="user-photo">
       <img src="https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg" alt="">
     </div>
-    <h4><%= current_user.name %></h4>
+    <h4><%= user.name %>, <%= user.age %></h4>
+     <div class="diet-preferences">
+       <h4>Diet Preferences</h4>
+     </div>
+      <!-- icons go here3 -->
+
+    <div class="button-chowdowns">
+
+    </div>
+
+    <div class="button-match-settings">
 
 
+    </div>
 
   </div>
 </div>
