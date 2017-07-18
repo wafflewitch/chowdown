@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
   resources :users do
-    resources :chows, only: [:index, :show]
+    resources :chows, only: [ :index, :new, :create, :show ] do
+      resources :messages, only: [ :index, :new, :create ]
+      resources :availabilities, only: [ :new, :create, :show, :edit, :update ]
+    end
+    resources :badges, only: [ :new, :create, :index ]
+    resources :preferences, only: [ :new, :create, :edit, :update, :index ]
   end
-
-
-
 
   get 'chows/show'
 
