@@ -8,7 +8,7 @@ class BadgesController < ApplicationController
 
   def create
     @badge = Badge.new(badge_params)
-    @badge = @user
+    @badge.user = @user
     if @badge.save!
       redirect_to user_path(@user)
     else
