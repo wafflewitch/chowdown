@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  root to: 'pages#home'
+
   resources :users do
     resources :chows, only: [ :index, :new, :create, :show ] do
       resources :messages, only: [ :index, :new, :create ]
@@ -11,11 +15,11 @@ Rails.application.routes.draw do
 
   get 'chows/show'
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  #root to: "devise/sessions#new"
 
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  #devise_scope :user do
+
+  #end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
