@@ -28,6 +28,7 @@ class ChowsController < ApplicationController
   end
 
   def index
+    @chows = Chow.where(user_1_id: @user.id)
   end
 
   def edit
