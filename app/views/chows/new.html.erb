@@ -1,0 +1,6 @@
+<h1>Choose your Chowdown partner</h1>
+
+<%= simple_form_for [@user, @chow] do |f| %>
+  <%= f.input :user_2_id, as: :integer, :label => 'Whats the userID of your buddy?' %>
+  <%= f.button :submit %>
+<% end %>

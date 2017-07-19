@@ -9,10 +9,14 @@
           <% image_url = user.facebook_picture_url || 'http://placehold.it/200x200' %>
           <%= image_tag image_url %>
           <h2><%= user.first_name %></h2>
-          <p><%= hello world %></p>
+          <p>hello world</p>
         </div>
           <%= link_to "", user_path(user) %>
       </div>
   </div>
     <% end %>
 </div>
+
+
+<!--(Temporary)- button to create a new chowdown -->
+ <%= link_to "new Chowdown", new_user_chow_path(current_user) %>
