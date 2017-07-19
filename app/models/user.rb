@@ -4,9 +4,9 @@ class User < ApplicationRecord
   has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :secondary_messages, :class_name => "Message", :foreign_key => "recipient_id"
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable :validatable,
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :omniauthable
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
