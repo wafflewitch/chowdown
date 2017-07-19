@@ -1,0 +1,19 @@
+<!-- Chat box -->
+
+<%= @messages.each do |message| %>
+  <ul>
+    <%= if message.sender_id == current_user.id %>
+      <li><p><%= message.content, class: "text-right btn-sent" %></p></li>
+    <%= else %>
+      <li><p><%= message.content, class: "text-left btn-received" %></p></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<!-- Reply form -->
+s
+<%= form_for [@chow, @message] do |f| %>
+        <%= f.text_area :content %>
+        <%= f.hidden_field :parent_id %>
+        <%= f.submit "Reply" %>
+<% end %>
