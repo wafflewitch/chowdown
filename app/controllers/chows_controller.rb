@@ -1,6 +1,6 @@
 class ChowsController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_chow, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_chow, only: [ :show, :edit, :update, :destroy, :status_accepted, :status_rejected, :status_finished ]
   before_action :set_user, only: [ :new, :create, :index ]
 
   def new
@@ -20,7 +20,6 @@ class ChowsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show #user 1 und user 2
@@ -28,10 +27,45 @@ class ChowsController < ApplicationController
     @chow.user1 = current_user
   end
 
-end
+  def index
+  end
 
+  def edit
+  end
 
-def chow_params
+  def update
+  end
+
+  def destroy
+    @chow.destroy
+    redirect_to user_path(@chow.user)
+  end
+
+  def status_accepted
+    @chow.status = "accepted"
+    @chow.save!
+    ChowMailer.chowdown_accept(self).deliver_now
+  end
+
+  def status_rejected
+    @chow.status = "rejected"
+    destroy
+  end
+
+  def status_detailed
+    @chow.status = "detailed"
+    @chow.save!
+    ChowMailer.chowdown_details(self).deliver_now
+  end
+
+  def status_finished
+    @chow.status = "finished"
+    @chow.save!
+  end
+
+  private
+
+  def chow_params
     params.require(:chow).permit(:user_2_id)
   end
 
@@ -42,3 +76,4 @@ def chow_params
   def set_user
     @user = User.find(current_user[:id])
   end
+end

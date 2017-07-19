@@ -18,6 +18,8 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 
+gem 'letter_opener', group: :development
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
