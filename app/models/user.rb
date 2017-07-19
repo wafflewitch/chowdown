@@ -6,9 +6,9 @@ class User < ApplicationRecord
   has_many :badges
   has_many :preferences
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable :validatable,
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :omniauthable
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
