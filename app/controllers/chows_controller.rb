@@ -5,21 +5,27 @@ class ChowsController < ApplicationController
 
   def new
     @chow = Chow.new
+    @user = current_user
+    @chow.user1 = current_user
   end
 
   def create #user 1 user 2
     @chow = Chow.new(chow_params)
-    @chow.user_1_id = current_user
-    @chow.user_2_id = User(params[:user_2_id])
-    @chow.save!
+    @user = current_user
+    @chow.user1 = current_user
+    @chow.user2 = User.find(chow_params[:user_2_id])
+    users_same = @chow.user1 == @chow.user2
+    if @chow.save! && !users_same
+      redirect_to user_chow_path(@user, @chow)
+    else
+      render :new
+    end
 
   end
 
   def show #user 1 und user 2
     @chow = Chow.find(set_chow)
-    @chow.user_1_id = current_user
-    @chow.user_2_id = User(params[:user_2_id])
-    @booking.tool = @tool
+    @chow.user1 = current_user
   end
 
 end
