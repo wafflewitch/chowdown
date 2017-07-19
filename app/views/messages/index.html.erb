@@ -2,33 +2,18 @@
 
 <h3>Messages</h3>
 
-<%= @messages.each do |message| %>
-  <ul>
-    <%= if message.sender_id == current_user.id %>
-      <li><p><%= message.content, class: "text-right btn-sent" %></p></li>
-    <%= else %>
-      <li><p><%= message.content, class: "text-left btn-received" %></p></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= sync partial: 'message_row', collection: @messages %>
-<%= sync_new partial: 'message_row', resource: Message.new %>
+<%= sync_new partial: 'message_row', resource: @chow.messages.new %>
 
 <hr>
 
-
-
 <!-- Reply form -->
 
-<%= form_for @new_message, remote: true do |f| %>
-    <%= f.text_field :body %>
+<%= form_for [@chow, @new_message], :url => url_for(controller: 'messages', action: 'create'), remote: true do |f| %>
+    <%= f.text_field :content %>
+
+    <%= f.submit "Reply" %>
 <% end %>
 
-<%= form_for [@chow, @message] do |f| %>
-        <%= f.text_area :content %>
-        <%= f.hidden_field :parent_id %>
-        <%= f.submit "Reply" %>
-<% end %>
 
 

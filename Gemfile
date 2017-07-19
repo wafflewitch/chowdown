@@ -18,9 +18,12 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 
+gem 'coffee-rails'
 gem 'faye'
 gem 'thin', require: false
 gem 'sync'
+gem "responders"
+
 
 group :development, :test do
   gem 'better_errors'
