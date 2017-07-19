@@ -1,0 +1,11 @@
+<div class="container text-center">
+  <h1>My Chowdowns</h1>
+</div>
+<div class="container text-center">
+  <ul>
+    <% @chows.each do |chow| %>
+    <% @partner = User.find(chow.user_2_id) %>
+    <li><h2>chowdown with <%= @partner.first_name %></h2> - <%= chow.status %></li>
+    <% end %>
+  </ul>
+</div>
