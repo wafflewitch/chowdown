@@ -1,7 +1,7 @@
 class ChowsController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   before_action :set_chow, only: [ :show, :edit, :update, :destroy, :status_rejected, :status_accepted, :status_finished, :status_finished ]
-  before_action :set_user, only: [ :new, :create, :index ]
+  before_action :set_user, only: [ :new, :create, :index, :status_rejected, :status_accepted ]
 
   def new
     @chow = Chow.new
@@ -31,7 +31,7 @@ class ChowsController < ApplicationController
   def index
     @chows_user1 = Chow.where(user_1_id: @user.id)
     @chows_user2 = Chow.where(user_2_id: @user.id)
-    if params[:status] == "pending" #if we define the valid statuses we could do all in one...
+    if params[:query] == "pending"
       @chows = by_status_pending
     else
       @chows = @chows_user1 + @chows_user2
@@ -40,12 +40,14 @@ class ChowsController < ApplicationController
   end
 
   def by_status_pending
-    if params[:status]
-      Chow.where(status: params[:status]) && @chows_user2
-    else
-      @chows = Chow.all
-    end
-
+      #Chow.where(status: params[:query]) && Chow.where(user_2_id: @user.id)
+      @chows = Chow.where(:user_2_id == @user.id)
+      @pending = []
+      @chows.each do |chow|
+        if chow.status == "pending"
+          @pending << chow
+        end
+      end
   end
 
   def edit
