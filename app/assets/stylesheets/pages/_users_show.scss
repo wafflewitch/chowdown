@@ -1,0 +1,49 @@
+.profile-page {
+  position: relative;
+}
+
+
+.my-meals {
+  background-color: white;
+  position: relative;
+  height: 90px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.diet-icon {
+  width: 35px;
+  right: 5px;
+}
+
+.food-pref-icons {
+  padding-top: 5px;
+}
+
+
+.wrapper-meals{
+  margin-top: 40px;
+  h4 {
+      color: gray;
+      margin: 0px;
+      margin-left: 5px;
+    }
+  }
+
+.add-meal {
+  position: absolute;
+  right: 0px;
+  height: 59px;
+  padding: 9px;
+  border-radius: 0px;
+  font-size: 30px;
+}
+
+.bio-profile {
+  // background-color: white;
+  width: 100%;
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+}

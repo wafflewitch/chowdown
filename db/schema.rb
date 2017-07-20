@@ -10,49 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718183618) do
+ActiveRecord::Schema.define(version: 20170720162843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "availabilities", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date     "dates"
-    t.index ["user_id"], name: "index_availabilities_on_user_id", using: :btree
-  end
 
   create_table "badges", force: :cascade do |t|
     t.string   "name"
     t.integer  "count"
     t.string   "category"
     t.integer  "level"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_badges_on_users_id", using: :btree
+    t.index ["user_id"], name: "index_badges_on_user_id", using: :btree
+  end
+
+  create_table "calendars", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "dates",      default: [],              array: true
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["user_id"], name: "index_calendars_on_user_id", using: :btree
   end
 
   create_table "chows", force: :cascade do |t|
     t.date     "date"
     t.string   "status"
     t.string   "location"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_1_id"
     t.integer  "user_2_id"
-    t.integer  "availability_1_id"
-    t.integer  "availability_2_id"
-  end
-
-  create_table "diet_prefs", force: :cascade do |t|
-    t.string   "name"
-    t.string   "icon"
-    t.integer  "users_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_diet_prefs_on_users_id", using: :btree
+    t.integer  "calendar_1_id"
+    t.integer  "calendar_2_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -63,6 +54,15 @@ ActiveRecord::Schema.define(version: 20170718183618) do
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.index ["chow_id"], name: "index_messages_on_chow_id", using: :btree
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.string   "name"
+    t.string   "icon"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_preferences_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,12 +90,13 @@ ActiveRecord::Schema.define(version: 20170718183618) do
     t.text     "bio"
     t.string   "job"
     t.string   "gender"
+    t.integer  "age_range"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "availabilities", "users"
-  add_foreign_key "badges", "users", column: "users_id"
-  add_foreign_key "diet_prefs", "users", column: "users_id"
+  add_foreign_key "badges", "users"
+  add_foreign_key "calendars", "users"
   add_foreign_key "messages", "chows"
+  add_foreign_key "preferences", "users"
 end
