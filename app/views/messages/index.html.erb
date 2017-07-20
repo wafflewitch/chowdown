@@ -1,5 +1,4 @@
 <!-- Chat box -->
-
 <h3>Messages</h3>
 <div id="messages-list" >
   <% @messages.each do |message| %>
@@ -11,14 +10,11 @@
 <hr>
 
 <!-- Reply form -->
-
-<%= form_for [@chow, @message], :url => url_for(controller: 'messages', action: 'create'), remote: true do |f| %>
+<%= form_for @message, :url => url_for(controller: 'messages', action: 'create'), remote: true do |f| %>
     <%= f.text_field :content %>
 
     <%= f.submit "Reply" %>
 <% end %>
-
-
 
 <%= content_for(:after_js) do %>
   <script>

@@ -8,10 +8,6 @@ class MessagesController < ApplicationController
     # show all messages
     @messages = @chow.messages.all
     @message = current_user.messages.build
-    #sender
-    # @sender = User.find(current_user.id)
-    # #recipient
-    # @recipient = User.find(@chow)
   end
 
   def refresh_messages
@@ -32,7 +28,6 @@ class MessagesController < ApplicationController
         format.js
       end
     end
-    # respond_with(@message)
   end
 
   private
