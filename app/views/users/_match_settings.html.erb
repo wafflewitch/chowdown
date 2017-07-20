@@ -1,0 +1,66 @@
+
+  <div class="container">
+    <div class="simple-form">
+      <div class="match-preference-box1">
+        <h4>I want to cook with</h4>
+        <div class="flex-wrapper">
+          <button class="gender-button gender-button-noborder">Men</button>
+          <button class="gender-button gender-button-noborder">Women</button>
+          <button class="gender-button gender-button-noborder">All</button>
+        </div>
+      </div>
+
+      <div class="match-preference-box2">
+        <h4>Open to dating <input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" class="button-toggle"></h4>
+      </div>
+
+      <div class="match-preference-box3">
+        <div class="flex-wrapper-between">
+          <h4>Age range</h4>
+          <p id="age1Val">18-55</p>
+        </div>
+        <div class="age-selection">
+        </div>
+        <div class="flex-wrapper">
+          <div class="slider-age">
+            <input id="age1" data-slider-min="18" data-slider-max="55" data-slider-step="1" data-slider-value="[18, 55]" data-slider-selection="after" data-slider-tooltip="hide">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="match-preference-box4">
+        <div class="flex-wrapper-between">
+          <h4>Maximum distance</h4>
+          <p id="distance1Val" class="nkm">15</p><p class="km">km</p>
+        </div>
+        <div class="flex-wrapper">
+           <input id="distance1" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="15" data-slider-selection="before" data-slider-tooltip="hide">
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+    $(document).ready( function() {
+        $('#age1').slider();
+        $("#age1").on("slide", function(slideEvt) {
+          $("#age1Val").text(slideEvt.value);
+        });
+        $('#distance1').slider();
+        $("#distance1").on("slide", function(slideEvt) {
+          $("#distance1Val").text(slideEvt.value);
+
+        $(".gender-button").hide();
+
+        $('.gender-button').click(function() {
+          (".gender-button").show();
+        });
+        });
+      });
+
+  <% end %>
+<% end %>

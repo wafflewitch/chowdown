@@ -1,0 +1,29 @@
+
+
+
+<%= simple_form_for @user,
+  :url => user_path(@user.id),
+  :html => {class: "form-horizontal"}, method: :put,
+  :defaults => { :label_html => { :class => "col-lg-3 control-label" },
+  :input_html => { :class => "form-control form-edit"} } do |f| %>
+    <div class="about-form">
+      <div class="input-box input-box-about">
+        <%= f.input :bio  %>
+      </div>
+    </div>
+
+
+    <div class="current-work">
+      <div class="input-box input-box-work">
+
+      </div>
+    </div>
+
+
+    <div class="gender-select">
+      <div class="input-box input-box-gender">
+
+      </div>
+    </div>
+
+<% end %>
