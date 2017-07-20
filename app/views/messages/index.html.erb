@@ -10,9 +10,9 @@
 <hr>
 
 <!-- Reply form -->
-<%= form_for @message, :url => url_for(controller: 'messages', action: 'create'), remote: true do |f| %>
+<%= simple_form_for @message, :url => url_for(controller: 'messages', action: 'create'), remote: true do |f| %>
     <%= f.text_field :content %>
-
+    <%= f.hidden_field :sender_id, value: "current_user.id" %>
     <%= f.submit "Reply" %>
 <% end %>
 

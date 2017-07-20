@@ -1,3 +1,15 @@
-<div id="message_<%= message.id%>">
-    <%=  message.content %>
+<div class="container chatbox">
+  <div id="message_<%= message.id %>">
+    <% if current_user.id == message.sender_id %>
+      <div class="text-right chat-sent">
+        <p><%= User.find(message.sender_id).first_name %></p>
+        <p><%=  message.content %></p>
+      </div>
+    <% else %>
+      <div class="chat-received">
+      <p><%= User.find(message.sender_id).first_name %></p>
+        <p><%=  message.content %></p>
+      </div>
+    <% end %>
+  </div>
 </div>

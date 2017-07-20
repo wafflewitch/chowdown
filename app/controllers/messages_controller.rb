@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   respond_to :html, :js
 
-  before_action :set_chow, only:[:index]
+  before_action :set_chow, only:[:index, :create]
   before_action :authenticate_user!
 
   def index
@@ -20,8 +20,13 @@ class MessagesController < ApplicationController
 
   def create
     @message = current_user.messages.build(message_params)
-    @message.chow_id = 1
-    @message.recipient_id = 3
+    @message.chow_id = @chow.id
+
+    if current_user.id == @chow.user_1_id
+      @message.recipient_id = @chow.user_2_id
+    else
+      @message.recipient_id = @chow.user_1_id
+    end
 
     respond_to do |format|
       if @message.save
