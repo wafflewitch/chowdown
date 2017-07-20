@@ -10,6 +10,14 @@ class CalendarsController < ApplicationController
   def create
     @calendar = Calendar.new(calendar_params)
     @calendar.user = @user
+    @calendar.chow = @chow
+    dates = params[:calendar][:dates].split("; ")
+    dates.each do |date|
+      Date.parse(date)
+    end
+    @calendar[:dates] = dates
+    @calendar.save!
+    redirect_to user_chow_path(@user, @chow)
   end
 
   def edit
@@ -34,11 +42,11 @@ class CalendarsController < ApplicationController
   private
 
   def set_user
-    @user = User.find(current_user[:id])
+    @user = User.find(params[:user_id])
   end
 
   def set_chow
-    @chow = Chow.find(user_id: current_user[:id])
+    @chow = Chow.find(params[:chow_id])
   end
 
   def set_calendar
@@ -46,6 +54,6 @@ class CalendarsController < ApplicationController
   end
 
   def calendar_params
-    params.require(:calendar).permit(:user_id, :dates)
+    params.require(:calendar).permit(:user_id, :chow_id)
   end
 end

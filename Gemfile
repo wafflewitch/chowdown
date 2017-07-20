@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'flatpickr_rails'
 
 gem 'letter_opener', group: :development
 

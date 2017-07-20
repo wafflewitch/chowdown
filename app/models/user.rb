@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :secondary_messages, :class_name => "Message", :foreign_key => "recipient_id"
   has_many :badges
   has_many :preferences
+  has_many :calendars
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :validatable,
   devise :database_authenticatable, :registerable,
