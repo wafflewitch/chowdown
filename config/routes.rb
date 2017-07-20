@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users do
-    resources :chows, only: [ :index, :new, :create, :show, :destroy ] do
+    resources :chows, only: [ :index, :new, :create, :show, :destroy, :status_rejected, :status_accepted] do
       resources :messages, only: [ :index, :new, :create ]
       resources :calendars, only: [ :new, :create, :show, :edit, :update ]
     end

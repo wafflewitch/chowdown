@@ -9,6 +9,8 @@
     <% @partner = User.find(chow.user_2_id) %>
     <li><h3>chowdown with <%= @partner.first_name %> - <%= chow.status %></h3></li>
     <%= link_to "Set Date", new_user_chow_calendar_path(chow.user1, chow) %> | <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+    <%= button_to "Yes", action: "status_accepted" %>
+    <%= button_to "No", action: "status_rejected" %>
     <% end %>
   </ul>
 </div>
