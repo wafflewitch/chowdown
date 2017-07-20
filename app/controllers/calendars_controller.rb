@@ -15,8 +15,14 @@ class CalendarsController < ApplicationController
     dates.each do |date|
       Date.parse(date)
     end
-    @calendar[:dates] = dates
+    @calendar.dates = dates
     @calendar.save!
+    if(@chow.user1 == current_user)
+      @chow.calendar_1_id = @calendar.id
+    else
+      @chow.calendar_2_id = @calendar.id
+    end
+    @chow.save!
     redirect_to user_chow_path(@user, @chow)
   end
 
@@ -54,6 +60,6 @@ class CalendarsController < ApplicationController
   end
 
   def calendar_params
-    params.require(:calendar).permit(:user_id, :chow_id)
+    params.require(:calendar).permit(:user_id, :chow_id, :dates)
   end
 end
