@@ -54,10 +54,12 @@
         $("#distance1").on("slide", function(slideEvt) {
           $("#distance1Val").text(slideEvt.value);
 
-        $(".gender-button").hide();
 
-        $('.gender-button').click(function() {
-          (".gender-button").show();
+
+          $('.gender-button').click(function() {
+            $('.gender-button').css({
+              'border': '2px #83C8E2 solid'
+            });
         });
         });
       });
