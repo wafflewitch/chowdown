@@ -243,8 +243,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sync (0.4.0)
-      em-http-request
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -291,12 +289,10 @@ DEPENDENCIES
   puma
   rails (= 5.0.4)
   redis
-  responders
   sass-rails
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
-  sync
   thin
   uglifier
 

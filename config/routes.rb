@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :messages, only: [ :index, :new, :create ]
   end
 
+  get 'chows/:id/messages/refresh_messages', to: 'messages#refresh_messages'
   get 'chows/show'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

@@ -1,0 +1,4 @@
+  var msg_selector = $("#message_<%= @message.id %>");
+  $(msg_selector).remove();
+  var msg = '<%= j render 'message_row', message: @message %>';
+  $('#messages-list').append(msg);

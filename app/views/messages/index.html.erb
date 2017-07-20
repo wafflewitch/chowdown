@@ -1,15 +1,18 @@
 <!-- Chat box -->
 
 <h3>Messages</h3>
-
-<%= sync partial: 'message_row', collection: @messages %>
-<%= sync_new partial: 'message_row', resource: @chow.messages.new %>
+<div id="messages-list" >
+  <% @messages.each do |message| %>
+    <%= render 'message_row', message: message %>
+    <br>
+  <% end %>
+</div>
 
 <hr>
 
 <!-- Reply form -->
 
-<%= form_for [@chow, @new_message], :url => url_for(controller: 'messages', action: 'create'), remote: true do |f| %>
+<%= form_for [@chow, @message], :url => url_for(controller: 'messages', action: 'create'), remote: true do |f| %>
     <%= f.text_field :content %>
 
     <%= f.submit "Reply" %>
@@ -17,3 +20,16 @@
 
 
 
+<%= content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      setInterval(refreshMessages, 3000);
+    });
+
+    function refreshMessages() {
+      $.ajax({
+        url: "messages/refresh_messages"
+      });
+    }
+  </script>
+<% end %>

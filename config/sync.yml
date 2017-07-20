@@ -2,7 +2,7 @@
 development:
   server: "http://localhost:9292/faye"
   adapter_javascript_url: "http://localhost:9292/faye/faye.js"
-  auth_token: DEVELOPMENT_SECRET_TOKEN
+  auth_token: authtokenwjeowowjeje
   adapter: "Faye"
   async: true
 
@@ -30,5 +30,5 @@ production:
   server: "http://example.com/faye"
   adapter_javascript_url: "http://localhost:9292/faye/faye.js"
   adapter: "Faye"
-  auth_token: "d63cad35b432f9b99a8e1293d530b6069c59bcc0a5c2f15f6b9a788735e0dfc2"
+  auth_token: "1f5583a2f4048a3e03f64d1005b578be4a7646a9841bc0e065d52d11580b4080"
   async: true
