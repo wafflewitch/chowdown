@@ -1,3 +1,3 @@
-class DietPref < ApplicationRecord
+class Preference < ApplicationRecord
   belongs_to :user, dependent: :destroy
 end
