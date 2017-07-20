@@ -1,5 +1,12 @@
-<h1>Chows#show</h1>
-<p>Find me in app/views/chows/show.html.erb</p>
-
-<h2> <%= @chow.user1.first_name %> have a Chowdown with <%= @chow.user2.first_name %> </h2>
+<div class="container text-center"><h1>details</h1>
+<h2><%= @chow.user1.first_name %> and <%= @chow.user2.first_name %> </h2>
+<br>
+<h2><%= @chow.user1.first_name %>'s calendar:</h2>
+<ul>
+    <% calendar1 = Calendar.find(@chow.calendar_1_id) %>
+    <% calendar1.dates.each do |date| %>
+    <li><%= date %></li>
+    <% end %>
+</ul>
+</div>
 
