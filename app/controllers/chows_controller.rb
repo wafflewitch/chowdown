@@ -1,6 +1,6 @@
 class ChowsController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_chow, only: [ :show, :edit, :update, :destroy, :status_accepted, :status_rejected, :status_finished ]
+  before_action :set_chow, only: [ :show, :edit, :update, :destroy, :status_rejected, :status_accepted, :status_finished, :status_finished ]
   before_action :set_user, only: [ :new, :create, :index ]
 
   def new
@@ -27,18 +27,38 @@ class ChowsController < ApplicationController
     @chow.user1 = current_user
   end
 
+
   def index
+    @chows_user1 = Chow.where(user_1_id: @user.id)
+    @chows_user2 = Chow.where(user_2_id: @user.id)
+    if params[:status] == "pending" #if we define the valid statuses we could do all in one...
+      @chows = by_status
+    else
+      @chows = @chows_user1 + @chows_user2
+    end
+
+  end
+
+  def by_status_pending
+    if params[:status]
+      Chow.where(status: params[:status]) && @chows_user2
+    else
+      @chows = Chow.all
+    end
+
   end
 
   def edit
   end
 
   def update
+    @chow.update(chow_params)
+    redirect_to chow_path(@chow)
   end
 
   def destroy
     @chow.destroy
-    redirect_to user_path(@chow.user)
+    redirect_to user_chows_path(@chow.user1)
   end
 
   def status_accepted
@@ -66,7 +86,7 @@ class ChowsController < ApplicationController
   private
 
   def chow_params
-    params.require(:chow).permit(:user_2_id)
+    params.require(:chow).permit(:user_1_id, :user_2_id)
   end
 
   def set_chow

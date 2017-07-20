@@ -7,14 +7,13 @@
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="card">
           <% image_url = user.facebook_picture_url || 'http://placehold.it/200x200' %>
-          <%= image_tag image_url %>
+          <%= link_to image_tag(image_url), user_path(user) %>
           <h2><%= user.first_name %></h2>
           <p>hello world</p>
         </div>
-          <%= link_to "", user_path(user) %>
       </div>
-  </div>
     <% end %>
+  </div>
 </div>
 
 
