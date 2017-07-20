@@ -27,10 +27,25 @@ class ChowsController < ApplicationController
     @chow.user1 = current_user
   end
 
+
   def index
     @chows_user1 = Chow.where(user_1_id: @user.id)
     @chows_user2 = Chow.where(user_2_id: @user.id)
-    @chows = @chows_user1 + @chows_user2
+    if params[:status] == "pending" #if we define the valid statuses we could do all in one...
+      @chows = by_status
+    else
+      @chows = @chows_user1 + @chows_user2
+    end
+
+  end
+
+  def by_status_pending
+    if params[:status]
+      Chow.where(status: params[:status]) && @chows_user2
+    else
+      @chows = Chow.all
+    end
+
   end
 
   def edit
