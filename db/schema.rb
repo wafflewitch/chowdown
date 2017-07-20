@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 20170720162843) do
     t.text     "bio"
     t.string   "job"
     t.string   "gender"
-    t.integer  "age_range"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
