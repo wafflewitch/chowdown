@@ -3,11 +3,12 @@
 <div class="profile-page">
 
     <div class="user-photo">
-      <img src="https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg" alt="" class="profile-pic-page text-center">
-
+      <% avatar_url = @user.facebook_picture_url || @user.photo %>
+        <%= image_tag avatar_url, class: "profile-pic-page text-cente" %>
+      </div>
 
       <div class="name-container">
-        <h4>Emily, 23</h4>
+        <h4><%=  @user.first_name %>, 23 </h4>
         <div class="food-pref-icons">
           <img src="<%= asset_path('veggie.png') %>" alt="" class="diet-icon">
           <img src="<%= asset_path('gluten_free.png') %>" alt="" class="diet-icon">
@@ -16,7 +17,7 @@
    </div>
 
    <div class="bio-profile text-center">
-     <h4>"I like cooking with new people because..."</h4>
+     <h4>"<%=  @user.bio %>"4</h4>
    </div>
 
 
