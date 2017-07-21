@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  root to: 'pages#home'
+  root to: 'users#index'
 
   resources :users do
     resources :chows, only: [ :index, :new, :create, :show, :destroy, :update] do
