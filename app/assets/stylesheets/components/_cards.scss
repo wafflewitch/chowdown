@@ -34,6 +34,14 @@
   margin-top: -212px;
 }
 
+.flex-list {
+  display: flex;
+  flex-direction: column;
+  .card {
+    margin: 0 0 10px 0;
+  }
+}
+
 // .food-pref-icon {
 //   background-color: white;
 //   border-radius: 50%;

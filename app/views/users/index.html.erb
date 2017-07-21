@@ -1,9 +1,9 @@
 
 <div class="container">
-  <div class="row">
-    <div class="card">
-      <% @all_users_but_current.each do |user| %>
-        <div class="card-details col-xs-12 col-sm-6 col-md-6 col-lg-6">
+  <div class="flex-list">
+      <% @users.each do |user| %>
+      <div class="card">
+        <div class="card-details">
             <div class="card-profile-pic">
                 <% image_url = user.facebook_picture_url || 'http://placehold.it/200x200' %>
                 <%= link_to image_tag(image_url), user_path(user), class: "avatar-large" %>
@@ -18,13 +18,7 @@
                 <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png" alt="" class="foodpref-icons">
             </div>
             <h2><%= user.first_name %>, 23</h2>
-          <div class="tags">
-            <div class="tag-food-type">
-              <div class="tag-design text-center">
-                <%= render 'shared/food_tags' %>
-              </div>
-            </div>
-          </div>
+            <%= render 'shared/food_tags' %>
           <div class="bio">
             <h5>bio</h5>
           </div>
@@ -36,8 +30,9 @@
             <%# end %>
           </div>
         </div>
+             </div>
       <% end %>
-     </div>
+
   </div>
 </div>
 
