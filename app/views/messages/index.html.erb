@@ -3,17 +3,17 @@
 <div class="container" id="messages-list" >
   <% @messages.each do |message| %>
       <%= render 'message_row', message: message %>
-      <br>
+
   <% end %>
 </div>
 <hr>
-
 
 <!-- Reply form -->
 <%= simple_form_for @message, :url => url_for(controller: 'messages', action: 'create'), html: { class: "chat-form fixed bottom"}, remote: true do |f| %>
     <%= f.text_field :content, id: "chat-field" %>
     <%= f.hidden_field :sender_id, value: "current_user.id" %>
     <%= f.hidden_field :chow_id, value: params[:chow_id] %>
+    <%= f.hidden_field :recipient_id, value: @recipient.id %>
     <%= f.submit "Send", class: "btn" %>
 <% end %>
 

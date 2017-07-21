@@ -9,8 +9,13 @@ class MessagesController < ApplicationController
     @messages = @chow.messages.all
     @messages = @messages.sort_by(&:created_at)
     @messages = @messages.last(10)
-    @messages.each do |message|
-      @recipient = User.find(message.recipient_id)
+
+    if current_user.id == @chow.user_1_id
+      recipient_id = @chow.user_2_id
+      @recipient = User.find(recipient_id)
+    else
+      recipient_id = @chow.user_1_id
+      @recipient = User.find(recipient_id)
     end
 
     @message = current_user.messages.build
@@ -28,12 +33,6 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.build(message_params)
 
-    if current_user.id == @chow.user_1_id
-      @message.recipient_id = @chow.user_2_id
-    else
-      @message.recipient_id = @chow.user_1_id
-    end
-
     respond_to do |format|
       if @message.save
         format.js
@@ -50,7 +49,7 @@ class MessagesController < ApplicationController
 
 
   def message_params
-    params.require(:message).permit(:content, :sender_id, :chow_id)
+    params.require(:message).permit(:content, :sender_id, :recipient_id, :chow_id)
   end
 
 end
