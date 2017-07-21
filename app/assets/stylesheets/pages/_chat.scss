@@ -24,7 +24,15 @@
   }
 }
 #messages-list {
-
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+}
+.message-row {
+  padding: .8em 0;
+  &:last-child {
+    padding-bottom: 2rem;
+  }
 }
 .chat-name {
   background-color: white;

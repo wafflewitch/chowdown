@@ -1,5 +1,4 @@
-<br>
-<div id="message_<%= message.id %>">
+<div class="message-row" id="message_<%= message.id %>">
   <% if current_user.id == message.sender_id %>
     <div class="chat sent">
       <%# User.find(message.sender_id).first_name %>
@@ -11,6 +10,5 @@
     </div>
   <% end %>
 </div>
-<hr>
 
 
