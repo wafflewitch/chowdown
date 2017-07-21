@@ -1,2 +1,19 @@
-<h1>Calendars#new</h1>
-<p>Find me in app/views/calendars/new.html.erb</p>
+<h1>Pick 3 Dates</h1>
+<div class="container text-center">
+  <%= simple_form_for [@user, @chow, @calendar] do |f| %>
+    <%= f.text_field :dates, as: :array, class: "pickthreedates" %>
+    <%= f.submit "Confirm Dates", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(function(){
+      $(".pickthreedates").flatpickr({
+        mode: "multiple",
+        parseDate: true,
+      });
+    });
+  <% end %>
+<% end %>

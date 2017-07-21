@@ -1,0 +1,135 @@
+.match-preference-box1 {
+  position: absolute;
+  top: 69px;
+  left: 23px;
+  width: 95%;
+  height: 86px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  margin-top: -2px;
+  margin-left: -13px;
+  h4 {
+    margin-left: 10px;
+    font-weight: 700;
+    color: #950952;
+  }
+}
+
+.flex-wrapper {
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-wrapper-between {
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nkm {
+  position: absolute;
+  margin: 11px 0px 11px;
+  right: 45px;
+}
+
+.km {
+  position: absolute;
+  margin: 11px 0px 11px;
+  right: 10px;
+}
+
+#age1Val {
+  position: absolute;
+  margin: 11px 0px 11px;
+  right: 10px;
+}
+
+
+.match-preference-box2 {
+  position: absolute;
+  top: 163px;
+  left: 23px;
+  width: 95%;
+  height: 60px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  margin-top: -2px;
+  margin-left: -13px;
+  h4{
+    margin-left: 10px;
+    font-weight: 700;
+    color: #950952;
+  }
+}
+
+.toggle {
+  position: absolute;
+  padding-left: 40px;
+  padding-right: 40px;
+  right: -110px;
+}
+
+
+.match-preference-box3 {
+  position: absolute;
+  top: 237px;
+  left: 23px;
+  width: 95%;
+  height: 90px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  margin-top: -2px;
+  margin-left: -13px;
+  h4{
+    margin-left: 10px;
+    font-weight: 700;
+    color: #950952;
+  }
+}
+.slider.slider-horizontal {
+    width: 298px;
+}
+
+.slider-handle {
+  background: #7C2D56;
+}
+
+.slider-selection {
+  background: #B94380;
+}
+
+.toggle-on {
+  background-color: #B94380;
+}
+
+.btn-primary:active:hover {
+  background: #7C2D56;
+  border-color: white;
+}
+
+.btn-primary {
+    border-color: white;
+}
+
+
+.match-preference-box4 {
+  position: absolute;
+  top: 337px;
+  left: 23px;
+  width: 95%;
+  height: 90px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  margin-top: -2px;
+  margin-left: -13px;
+  h4{
+    margin-left: 10px;
+    font-weight: 700;
+    color: #950952;
+  }
+}

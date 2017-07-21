@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_user, only: [ :set_up_profile, :show, :edit, :update, :destroy ]
 
   def new
   end
@@ -16,13 +16,14 @@ class UsersController < ApplicationController
 
   def show
 
-    #@preferences = Preference.where(user_id: params[:id])
-    #@badges = Badge.where(user_id: params[:id])
+    # @preferences = Preference.where(user_id: params[:id])
+    # @badges = Badge.where(user_id: params[:id])
 
   end
 
   def index
     @users = User.all
+    @all_users_but_current = User.all.where.not("id != ?", current_user.id)
   end
 
   def edit
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to user_path
+    redirect_to user_path(@user)
   end
 
   def destroy
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :pref_meat, :pref_fish, :pref_wheat, :birthday, :gender)
   end
 
   def set_user
