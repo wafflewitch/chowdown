@@ -16,7 +16,7 @@ class ChowsController < ApplicationController
     @chow.user2 = User.find(chow_params[:user_2_id])
     users_same = @chow.user1 == @chow.user2
     if @chow.save! && !users_same
-      redirect_to user_chow_path(@user, @chow)
+      redirect_to new_user_chow_calendar_path(@user, @chow)
     else
       render :new
     end
