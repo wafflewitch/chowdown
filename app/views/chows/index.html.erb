@@ -5,6 +5,7 @@
 </div>
 <div class="container text-center">
   <ul>
+
     <% @chows.each do |chow| %>
     <% @partner = User.find(chow.user_2_id) %>
     <li><h3>chowdown with <%= @partner.first_name %> - <%= chow.status %> - <%= chow.id %> </h3></li>
@@ -14,3 +15,6 @@
     <% end %>
   </ul>
 </div>
+
+
+
