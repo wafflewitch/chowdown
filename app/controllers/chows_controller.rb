@@ -40,14 +40,14 @@ class ChowsController < ApplicationController
   end
 
   def by_status_pending
-      #Chow.where(status: params[:query]) && Chow.where(user_2_id: @user.id)
-      @chows = Chow.where(:user_2_id == @user.id)
-      @pending = []
-      @chows.each do |chow|
-        if chow.status == "pending"
-          @pending << chow
-        end
-      end
+      Chow.where(status: params[:query]) && @chows_user2
+      # @chows = Chow.where(:user_2_id == @user.id)
+      # @pending = []
+      # @chows.each do |chow|
+      #   if chow.status == "pending"
+      #     @pending << chow
+      #   end
+      # end
   end
 
   def edit
