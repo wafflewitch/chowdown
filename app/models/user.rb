@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
   after_create :set_up_profile
 
   GENDER = ["Agender", "Androgyne", "Androgynous",
@@ -62,11 +62,7 @@ class User < ApplicationRecord
 
   private
 
-  def send_welcome_email
-      UserMailer.welcome(self).deliver_now
-  end
-
-  def set_up_profile
-    redirect_to edit_user_path(@user)
-  end
+  # def send_welcome_email
+  #     UserMailer.welcome(self).deliver_now
+  # end
 end
