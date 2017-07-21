@@ -8,8 +8,8 @@
 .chat {
   border-radius: 10px;
   padding: 5px 15px;
-  min-width: 50px;
-  max-width: 200px;
+  min-width: 5px;
+  max-width: 150px;
   display: inline-block;
   &.sent {
     float: right;
@@ -29,7 +29,7 @@
   flex-direction: column;
 }
 .message-row {
-  padding: .8em 0;
+  padding: .4em 0;
   &:last-child {
     padding-bottom: 2rem;
   }
@@ -45,7 +45,9 @@
     top: 0;
   }
 }
-
+.chat-recipient {
+  margin-top: 10px;
+}
 .chat-form {
   display: flex;
   align-items: center;
@@ -57,6 +59,8 @@
   background-color: gray;
 }
 #chat-field {
-  width: 250px;
+  width: 275px;
   height: 35px;
+  border-radius: 10px;
+  border: none;
 }
