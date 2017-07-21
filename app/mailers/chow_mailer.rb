@@ -6,7 +6,7 @@ class ChowMailer < ApplicationMailer
   #   en.chow_mailer.chowdown_request.subject
   #
   def chowdown_request(chow)
-    @recipient = User.find(chow.user_2_id)
+    @recipient = chow.user2
     # TODO: send email to RECEIVING user!
     @greeting = "Hi, #{@recipient.first_name}!"
 
@@ -19,7 +19,7 @@ class ChowMailer < ApplicationMailer
   #   en.chow_mailer.chowdown_accepted.subject
   #
   def chowdown_accepted(chow)
-    @greeting = "Hi, #{chow.user_1_id}!"
+    @greeting = "Hi, #{chow.user1.first_name}!"
 
     mail(to: "s@s.com", subject: "Your chowdown request was accepted!")
   end
@@ -29,8 +29,8 @@ class ChowMailer < ApplicationMailer
   #
   #   en.chow_mailer.chowdown_details.subject
   #
-  def chowdown_details
-    @greeting = "Hi, #{@user.first_name}!"
+  def chowdown_details(chow)
+    @greeting = "Hi, #{chow.user2.first_name}!"
 
     mail(to: @user.email, subject: "It's chowdown time!")
   end

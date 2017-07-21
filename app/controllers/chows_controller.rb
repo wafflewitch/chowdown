@@ -31,11 +31,13 @@ class ChowsController < ApplicationController
   def index
     @chows_user1 = Chow.where(user_1_id: @user.id)
     @chows_user2 = Chow.where(user_2_id: @user.id)
-    if params[:query] == "pending"
-      @chows = by_status_pending
-    else
-      @chows = @chows_user1 + @chows_user2
-    end
+    @chows = @chows_user1 + @chows_user2
+
+      if params[:query] == "pending"
+       @chows = by_status_pending
+      else
+       @chows = @chows_user1 + @chows_user2
+      end
 
   end
 
@@ -52,7 +54,7 @@ class ChowsController < ApplicationController
     elsif params[:status] == "rejected"
       status_rejected
     end
-    redirect_to chow_path(@chow)
+    redirect_to user_chow_path(@chow)
   end
 
   def destroy
@@ -63,11 +65,12 @@ class ChowsController < ApplicationController
   def status_accepted
     @chow.status = "accepted"
     @chow.save!
+    @chow.send_status_accepted
   end
 
   def status_rejected
     @chow.status = "rejected"
-    destroy
+    @chow.save!
   end
 
   def status_detailed
