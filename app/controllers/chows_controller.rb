@@ -41,20 +41,17 @@ class ChowsController < ApplicationController
 
   def by_status_pending
       Chow.where(status: params[:query]) && @chows_user2
-      # @chows = Chow.where(:user_2_id == @user.id)
-      # @pending = []
-      # @chows.each do |chow|
-      #   if chow.status == "pending"
-      #     @pending << chow
-      #   end
-      # end
   end
 
   def edit
   end
 
   def update
-    @chow.update(chow_params)
+    if params[:status] == "accepted"
+      status_accepted
+    elsif params[:status] == "rejected"
+      status_rejected
+    end
     redirect_to chow_path(@chow)
   end
 
@@ -66,7 +63,6 @@ class ChowsController < ApplicationController
   def status_accepted
     @chow.status = "accepted"
     @chow.save!
-    ChowMailer.chowdown_accept(self).deliver_now
   end
 
   def status_rejected
@@ -77,7 +73,6 @@ class ChowsController < ApplicationController
   def status_detailed
     @chow.status = "detailed"
     @chow.save!
-    ChowMailer.chowdown_details(self).deliver_now
   end
 
   def status_finished
@@ -88,7 +83,7 @@ class ChowsController < ApplicationController
   private
 
   def chow_params
-    params.require(:chow).permit(:user_1_id, :user_2_id)
+    params.require(:chow).permit(:user_1_id, :user_2_id, :status)
   end
 
   def set_chow

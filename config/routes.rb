@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users do
-    resources :chows, only: [ :index, :new, :create, :show, :destroy] do
+    resources :chows, only: [ :index, :new, :create, :show, :destroy, :update] do
       resources :messages, only: [ :index, :new, :create ]
       resources :calendars, only: [ :new, :create, :show, :edit, :update ]
     end
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   end
 
   get 'chows/show'
-  post 'users/:user_id/chows/:id', to: 'chows#status_accepted', as: "status_accepted"
-  post 'users/:user_id/chows/:id', to: 'chows#status_rejected', as: "status_rejected"
+  # post 'users/:user_id/chows/:id', to: 'chows#status_accepted', as: "status_accepted"
+  # post 'users/:user_id/chows/:id', to: 'chows#status_rejected', as: "status_rejected"
 
 
   #devise_scope :user do

@@ -18,10 +18,10 @@ class ChowMailer < ApplicationMailer
   #
   #   en.chow_mailer.chowdown_accepted.subject
   #
-  def chowdown_accepted
-    @greeting = "Hi, #{@user.first_name}!"
+  def chowdown_accepted(chow)
+    @greeting = "Hi, #{chow.user_1_id}!"
 
-    mail(to: @user.email, subject: "Your chowdown request was accepted!")
+    mail(to: "s@s.com", subject: "Your chowdown request was accepted!")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
