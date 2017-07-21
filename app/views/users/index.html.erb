@@ -1,21 +1,45 @@
-<div class="container text-center">
-  <h1>Users</h1>
-</div>
-<div class="container text-center">
+
+<div class="container">
   <div class="row">
-    <% @users.each do |user| %>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="card">
-          <% image_url = user.facebook_picture_url || 'http://placehold.it/200x200' %>
-          <%= link_to image_tag(image_url), user_path(user) %>
-          <h2><%= user.first_name %></h2>
-          <p>hello world</p>
+    <div class="card">
+      <% @all_users_but_current.each do |user| %>
+        <div class="card-details col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card-profile-pic">
+                <% image_url = user.facebook_picture_url || 'http://placehold.it/200x200' %>
+                <%= link_to image_tag(image_url), user_path(user), class: "avatar-large" %>
+            </div>
+            <div class="food-pref">
+              <div class="food-pref-icon">
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_yes.png" alt="" class="foodpref-icons">
+              </div>
+              <br>
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_no.png" alt="" class="foodpref-icons">
+              <br>
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png" alt="" class="foodpref-icons">
+            </div>
+            <h2><%= user.first_name %>, 23</h2>
+          <div class="tags">
+            <div class="tag-food-type">
+              <div class="tag-design text-center">
+                <%= render 'shared/food_tags' %>
+              </div>
+            </div>
+          </div>
+          <div class="bio">
+            <h5>bio</h5>
+          </div>
+
+          <div class="chowdown-buttons">
+              <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500650659/chow_no.png" alt="" class="foodpref-icons">
+            <%#= link_to "", new_user_chow_path(current_user) do %>
+              <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500650659/chow_yes.png" alt="" class="foodpref-icons">
+            <%# end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+     </div>
   </div>
 </div>
 
 
-<!--(Temporary)- button to create a new chowdown -->
- <%= link_to "new Chowdown", new_user_chow_path(current_user) %>
+

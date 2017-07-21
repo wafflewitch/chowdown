@@ -5,6 +5,12 @@
 .avatar-large {
   width: 50px;
   border-radius: 50%;
+  img {
+    width: 224px;
+    border-radius: 50%;
+    margin-left: -12px;
+    margin-top: 2px;
+  }
 }
 .avatar-bordered {
   width: 30px;
