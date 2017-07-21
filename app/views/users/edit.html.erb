@@ -1,1 +1,22 @@
+<br>
+<div class="text-center">
+<%= simple_form_for @user do |f| %>
+  <%= f.label "Set your birthdate" %><br>
+  <%= f.text_field :birthday, as: :date, class: "birthday", required: true %><br><br>
+  <%= f.input :gender, collection: User::GENDER, required: true %><br>
+  <%= f.input :pref_meat, label: "Do you eat meat?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_no.png", required: true %>
+  <%= f.input :pref_fish, label: "Do you eat fish?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_no.png", required: true %>
+  <%= f.input :pref_wheat, label: "Do you eat gluten?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_no.png", required: true %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
+</div>
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(function(){
+      $(".birthday").flatpickr({
+        parseDate: true,
+      });
+    });
+  <% end %>
+<% end %>
