@@ -1,19 +1,19 @@
 <!-- Chat box -->
 <h3>Messages</h3>
-<div id="messages-list" >
+<div class="container" id="messages-list" >
   <% @messages.each do |message| %>
-    <%= render 'message_row', message: message %>
-    <br>
+      <%= render 'message_row', message: message %>
   <% end %>
 </div>
-
 <hr>
 
+
 <!-- Reply form -->
-<%= simple_form_for @message, :url => url_for(controller: 'messages', action: 'create'), remote: true do |f| %>
-    <%= f.text_field :content %>
+<%= simple_form_for @message, :url => url_for(controller: 'messages', action: 'create'), html: { id: "chat-form"}, remote: true do |f| %>
+    <%= f.text_field :content, id: "chat-field" %>
     <%= f.hidden_field :sender_id, value: "current_user.id" %>
-    <%= f.submit "Reply" %>
+    <%= f.hidden_field :chow_id, value: params[:chow_id] %>
+    <%= f.submit "Send", class: "btn" %>
 <% end %>
 
 <%= content_for(:after_js) do %>

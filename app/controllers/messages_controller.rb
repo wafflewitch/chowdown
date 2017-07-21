@@ -7,12 +7,15 @@ class MessagesController < ApplicationController
   def index
     # show all messages
     @messages = @chow.messages.all
+    @messages = @messages.sort_by(&:created_at)
+    @messages = @messages.last(10)
     @message = current_user.messages.build
   end
 
   def refresh_messages
     @chow = Chow.find(params[:id])
     @messages = @chow.messages.where("created_at > ?", 3.second.ago)
+
     respond_to do |format|
       format.js
     end
@@ -20,7 +23,6 @@ class MessagesController < ApplicationController
 
   def create
     @message = current_user.messages.build(message_params)
-    @message.chow_id = @chow.id
 
     if current_user.id == @chow.user_1_id
       @message.recipient_id = @chow.user_2_id
@@ -33,6 +35,7 @@ class MessagesController < ApplicationController
         format.js
       end
     end
+
   end
 
   private
@@ -43,7 +46,7 @@ class MessagesController < ApplicationController
 
 
   def message_params
-    params.require(:message).permit(:content, :sender_id, :recipient_id, :chow_id)
+    params.require(:message).permit(:content, :sender_id, :chow_id)
   end
 
 end

@@ -2,3 +2,4 @@
   $(msg_selector).remove();
   var msg = '<%= j render 'message_row', message: @message %>';
   $('#messages-list').append(msg);
+  $('#chat-field').val('');
