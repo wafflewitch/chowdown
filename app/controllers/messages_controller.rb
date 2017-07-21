@@ -9,6 +9,10 @@ class MessagesController < ApplicationController
     @messages = @chow.messages.all
     @messages = @messages.sort_by(&:created_at)
     @messages = @messages.last(10)
+    @messages.each do |message|
+      @recipient = User.find(message.recipient_id)
+    end
+
     @message = current_user.messages.build
   end
 

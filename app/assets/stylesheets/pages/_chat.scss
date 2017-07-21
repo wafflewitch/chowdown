@@ -26,11 +26,26 @@
   }
 }
 
-#chat-form {
+.chat-name {
+  background-color: white;
+}
+
+.fixed {
   position: fixed;
-  height: 100px;
+  width: 100%;
+  .top {
+    top: 0;
+  }
+}
+
+.chat-form {
+  position: fixed;
+  height: 50px;
   bottom: 0;
   width: 100%;
+  background-color: gray;
+  padding-top: 7px;
+  padding-left: 28px;
 }
 #chat-field {
   width: 250px;
