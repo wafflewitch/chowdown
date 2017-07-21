@@ -1,7 +1,7 @@
 class ChowsController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   before_action :set_chow, only: [ :show, :edit, :update, :destroy, :status_rejected, :status_accepted, :status_finished, :status_finished ]
-  before_action :set_user, only: [ :new, :create, :index ]
+  before_action :set_user, only: [ :new, :create, :index, :status_rejected, :status_accepted ]
 
   def new
     @chow = Chow.new
@@ -31,8 +31,8 @@ class ChowsController < ApplicationController
   def index
     @chows_user1 = Chow.where(user_1_id: @user.id)
     @chows_user2 = Chow.where(user_2_id: @user.id)
-    if params[:status] == "pending" #if we define the valid statuses we could do all in one...
-      @chows = by_status
+    if params[:query] == "pending"
+      @chows = by_status_pending
     else
       @chows = @chows_user1 + @chows_user2
     end
@@ -40,19 +40,18 @@ class ChowsController < ApplicationController
   end
 
   def by_status_pending
-    if params[:status]
-      Chow.where(status: params[:status]) && @chows_user2
-    else
-      @chows = Chow.all
-    end
-
+      Chow.where(status: params[:query]) && @chows_user2
   end
 
   def edit
   end
 
   def update
-    @chow.update(chow_params)
+    if params[:status] == "accepted"
+      status_accepted
+    elsif params[:status] == "rejected"
+      status_rejected
+    end
     redirect_to chow_path(@chow)
   end
 
@@ -64,7 +63,6 @@ class ChowsController < ApplicationController
   def status_accepted
     @chow.status = "accepted"
     @chow.save!
-    ChowMailer.chowdown_accept(self).deliver_now
   end
 
   def status_rejected
@@ -75,7 +73,6 @@ class ChowsController < ApplicationController
   def status_detailed
     @chow.status = "detailed"
     @chow.save!
-    ChowMailer.chowdown_details(self).deliver_now
   end
 
   def status_finished
@@ -86,7 +83,7 @@ class ChowsController < ApplicationController
   private
 
   def chow_params
-    params.require(:chow).permit(:user_1_id, :user_2_id)
+    params.require(:chow).permit(:user_1_id, :user_2_id, :status)
   end
 
   def set_chow
