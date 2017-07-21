@@ -1,2 +1,6 @@
-
+<div class="text-center">
+  <%= link_to "Search Users", users_path, class: "btn btn-primary" %><br><br>
+  <%= link_to "My Profile", user_path(current_user), class: "btn btn-primary" %><br><br>
+  <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+</div>
 
