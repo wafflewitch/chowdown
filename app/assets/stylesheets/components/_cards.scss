@@ -1,0 +1,43 @@
+.card {
+  position: relative;
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  height: 579px;
+  width: 348px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+.card-details {
+  h2 {
+    margin-left: 55px;
+    margin-top: 10px;
+    font-size: 25px;
+  }
+}
+
+
+.foodpref-icons {
+  width: 53px;
+}
+
+
+.food-pref {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 30px;
+  margin-left: 252px;
+  margin-top: -212px;
+}
+
+// .food-pref-icon {
+//   background-color: white;
+//   border-radius: 50%;
+//   width: 60px;
+//   height: 60px;
+//   box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+// }
