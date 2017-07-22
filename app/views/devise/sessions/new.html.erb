@@ -17,24 +17,27 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 
-
-<div class="signup-page text-center">
-  <h1><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606926/chowdown_logo2.png" alt="icon of kitchen utensils">&nbsp;chowdown</h1>
-  <br>
-  <div class="row">
-    <div class="col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_person.svg" alt="icon of person">
-    <p>make new friends</p></div>
-    <div class="col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_rocket.svg" alt="icon of rocket">
-    <p>try new flavors</p></div>
+<div class="container landing-container">
+  <div class="row text-center landing-logo">
+    <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500691063/logo_symbol1_pink.png" alt="icon of kitchen utensils" class="landing-logo">
+    <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500690276/logo_title1.png" alt="chowdown title" class="landing-logo">
   </div>
-  <div class="row">
-    <div class="col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_money.svg" alt="icon of money">
+
+  <div class="row container text-center" id="landing-icons">
+    <div class="col-lg-3 col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_person.svg" alt="icon of person">
+    <p>make new friends</p></div>
+
+    <div class="col-lg-3 col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_rocket.svg" alt="icon of rocket">
+    <p>try new flavors</p></div>
+
+    <div class="col-lg-3 col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_money.svg" alt="icon of money">
     <p>save money</p></div>
-    <div class="col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_star.svg" alt="icon of star">
+
+    <div class="col-lg-3 col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_star.svg" alt="icon of star">
     <p>level up</p></div>
   </div>
-</div>
-<br>
-<div class="facebook-btn text-center">
-    <%= render "devise/shared/links" %>
+
+  <div class="row text-center facebook-btn">
+      <%= render "devise/shared/links" %>
+  </div>
 </div>
