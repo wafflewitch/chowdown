@@ -10,8 +10,9 @@ Rails.application.routes.draw do
       resources :calendars, only: [ :new, :create, :show, :edit, :update ]
     end
     resources :badges, only: [ :new, :create, :index ]
-    resources :preferences, only: [ :new, :create, :edit, :update, :index ]
   end
+
+  resources :decisions
 
   get '/users/:id/chows/:id/messages/refresh_messages', to: 'messages#refresh_messages'
   get 'chows/show'
