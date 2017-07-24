@@ -66,3 +66,10 @@
 
   <% end %>
 <% end %>
+
+<% content_for(:center_nav) do %>
+  <h3>Chowdown settings</h3>
+<% end %>
+<% content_for(:right_nav) do %>
+  <%= link_to "Done", user_path(current_user.id), action: :patch, controller: :users %>
+<% end %>

@@ -1,13 +1,10 @@
 <!-- Chat box -->
-<div class="chat-recipient text-center fixed top"><%= image_tag @recipient.facebook_picture_url, class: "avatar" %><h5><%= @recipient.first_name %></h5>
-</div>
 <div class="container" id="messages-list" >
   <% @messages.each do |message| %>
       <%= render 'message_row', message: message %>
-
   <% end %>
 </div>
-<hr>
+
 
 <!-- Reply form -->
 <%= simple_form_for @message, :url => url_for(controller: 'messages', action: 'create'), html: { class: "chat-form fixed bottom"}, remote: true do |f| %>
@@ -30,4 +27,14 @@
       });
     }
   </script>
+<% end %>
+
+<% content_for(:left_nav) do %>
+  <h4><%= link_to "", user_chows_path(current_user.id), class: "fa fa-chevron-left" %></h4>
+<% end %>
+<% content_for(:center_nav) do %>
+  <%= image_tag @recipient.facebook_picture_url, class: "avatar" %><p><%= @recipient.first_name %></p>
+<% end %>
+<% content_for(:right_nav) do %>
+  <%= link_to "", new_user_chow_calendar_path(@chow.id), class: "fa fa-calendar" %>
 <% end %>
