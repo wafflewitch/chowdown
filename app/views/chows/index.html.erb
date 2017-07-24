@@ -5,17 +5,39 @@
  <%= link_to "My Chowdown history", user_chows_path(@user, :query => "finished") , {class: "btn btn-primary"} %>
 </div>
 
-<div class="container">
-  <div class="flex-list">
-    <% @chows.each do |chow| %>
-      <div class="card">
-        <% @partner = User.find(chow.user_2_id) %>
-        <h3>chowdown with <%= @partner.first_name %></h3>
-        <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
-      </div>
-    <% end %>
+
+
+<% if !@active_chows.nil? %>
+  <div class="container">
+    <div class="flex-list">
+      <% @active_chows.each do |chow| %>
+        <div class="card">
+          <% @partner = User.find(chow.user_2_id) %>
+          <h3><%= @partner.first_name %></h3>
+          <%= image_tag @partner.facebook_picture_url, class: "avatar" %>
+          <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %>
+          <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+
+
+<% elsif %>
+  <div class="container">
+    <div class="flex-list">
+      <% @finished_chows.each do |chow| %>
+        <div class="card">
+          <% @partner = User.find(chow.user_2_id) %>
+          <h3><%= @partner.first_name %></h3>
+          <%= image_tag @partner.facebook_picture_url, class: "avatar" %>
+          <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>
 
 
 
