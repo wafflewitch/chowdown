@@ -4,6 +4,14 @@ class Chow < ApplicationRecord
   has_one :calendar1, :class_name => "Calendar", :foreign_key =>"calendar_1_id"
   has_one :calendar2, :class_name => "Calendar", :foreign_key =>"calendar_2_id"
   has_many :messages
+
+  def get_user(id)
+    if self.user_1_id == id
+      return self.user2
+    else
+      return self.user1
+    end
+  end
   # after_create :send_request_email
   # after_update :send_status_accepted
   # after_update :send_status_rejected
