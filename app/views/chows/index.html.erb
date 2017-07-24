@@ -5,12 +5,16 @@
 </div>
 <div class="container text-center">
   <ul>
-    <% @chows.each do |chow| %>
-    <% @partner = User.find(chow.user_2_id) %>
-    <li><h3>chowdown with <%= @partner.first_name %> - <%= chow.status %> - <%= chow.id %> </h3></li>
+
+<% @chows.each do |chow| %>
+  <% @partner = User.find(chow.user_2_id) %>
+  <li><h3>chowdown with <%= @partner.first_name %> - <%= chow.status %> - <%= chow.id %> </h3></li>
     <%= link_to "Set Date", new_user_chow_calendar_path(chow.user1, chow) %> | <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
     <%= link_to 'Yes', user_chow_path(current_user, chow.id, status: "accepted"), :method => :put  %>
     <%= link_to 'No', user_chow_path(current_user, chow.id, status: "rejected"), :method => :put  %>
     <% end %>
   </ul>
 </div>
+
+
+
