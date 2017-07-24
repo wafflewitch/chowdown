@@ -40,3 +40,9 @@
   });
   <% end %>
 <% end %>
+
+<% content_for(:left_nav) do %>
+  <p>Welcome, <%= @user.first_name%>!</p>
+  <p>You're almost ready to start cooking</p>
+
+<% end %>

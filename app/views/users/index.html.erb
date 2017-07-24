@@ -17,25 +17,46 @@
               <br>
                 <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png" alt="" class="foodpref-icons">
             </div>
+
             <h2><%= user.first_name %>, 23</h2>
-            <%= render 'shared/food_tags' %>
-          <div class="bio">
-            <h5>About Me:</h5>
+
+
+            <div class="bio">
+            <h5>Bio</h5>
             <p><%= user.bio %></p>
           </div>
 
+          <div class="pref-cook-pref">
+            <h5>I want to cook</h5>
+            <%= render 'shared/food_tags' %>
+          </div>
+
           <div class="chowdown-buttons">
-              <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500650659/chow_no.png" alt="" class="foodpref-icons">
-            <%= link_to new_user_chow_path(current_user) do %>
-              <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500650659/chow_yes.png" alt="" class="foodpref-icons">
+
+          <%= link_to decisions_path(user_2_id: user, like: false), method: :post do %>
+            <div class="dislike-button glyphicon glyphicon-remove">
+            </div>
+          <% end %>
+
+            <div class="like-button">
+            <%= link_to decisions_path(user_2_id: user, like: true), method: :post do %>
+              <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500925213/chow_cutlery.png" alt="" class="foodpref-icons">
             <% end %>
+
+            </div>
           </div>
         </div>
-             </div>
+      </div>
       <% end %>
-
   </div>
 </div>
 
-
-
+<% content_for(:left_nav) do %>
+  <%= link_to "", user_path(current_user.id), class: "fa fa-user" %>
+<% end %>
+<% content_for(:center_nav) do %>
+  <%= image_tag "http://res.cloudinary.com/wafflewitch/image/upload/v1500686632/logo_navbar1.png", alt: "title logo", class: "navbar-logo"%>
+<% end %>
+<% content_for(:right_nav) do %>
+  <%= link_to "", user_chows_path(current_user.id), class: "fa fa-users" %>
+<% end %>
