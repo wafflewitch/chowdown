@@ -32,7 +32,7 @@ class ChowsController < ApplicationController
     user1 = Chow.where(user_1_id: @user.id)
     user2 = Chow.where(user_2_id: @user.id)
     # @chows = @chows_user1 + @chows_user2
-    binding.pry
+
     if params[:query] == "pending"
       @chows = Chow.where(status: params[:query]) && user2
     elsif params[:query] == "active"
@@ -40,7 +40,7 @@ class ChowsController < ApplicationController
     elsif params[:query] == "finished"
       @chows = Chow.where(status: params[:query]) && user1
     else
-      @chows = @chows_user1 + @chows_user2
+      @chows = user1 + user2
     end
 
   end
