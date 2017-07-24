@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721160707) do
+ActiveRecord::Schema.define(version: 20170724185748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 20170721160707) do
     t.integer  "calendar_2_id"
   end
 
+  create_table "decisions", force: :cascade do |t|
+    t.integer  "user_1_id"
+    t.integer  "user_2_id"
+    t.boolean  "like"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_1_id"], name: "index_decisions_on_user_1_id", using: :btree
+    t.index ["user_2_id"], name: "index_decisions_on_user_2_id", using: :btree
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string   "content"
     t.integer  "chow_id"
@@ -55,15 +65,6 @@ ActiveRecord::Schema.define(version: 20170721160707) do
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.index ["chow_id"], name: "index_messages_on_chow_id", using: :btree
-  end
-
-  create_table "preferences", force: :cascade do |t|
-    t.string   "name"
-    t.string   "icon"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_preferences_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170721160707) do
 
   add_foreign_key "badges", "users"
   add_foreign_key "calendars", "users"
+  add_foreign_key "decisions", "users", column: "user_1_id"
+  add_foreign_key "decisions", "users", column: "user_2_id"
   add_foreign_key "messages", "chows"
-  add_foreign_key "preferences", "users"
 end
