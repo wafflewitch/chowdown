@@ -32,8 +32,10 @@ class ChowsController < ApplicationController
     user1 = Chow.where(user_1_id: @user.id)
     user2 = Chow.where(user_2_id: @user.id)
 
-    if params[:query] == "active"
-      @active_chows = Chow.where(status: params[:query],user_2_id: @user.id).or(Chow.where(status: params[:query], user_1_id: @user.id))
+    if params[:query] == "active" || params[:query] == "finalized"
+      @active = true
+      @finalized_chows = Chow.where(status: "finalized" ,user_2_id: @user.id).or(Chow.where(status: "finalized", user_1_id: @user.id))
+      @active_chows = Chow.where(status: "active" ,user_2_id: @user.id).or(Chow.where(status: "active", user_1_id: @user.id))
     elsif params[:query] == "finished"
       @finished_chows = Chow.where(status: params[:query],user_1_id: @user.id).or(Chow.where(status: params[:query], user_2_id: @user.id))
     else
