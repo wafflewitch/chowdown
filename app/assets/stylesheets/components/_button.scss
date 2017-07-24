@@ -91,11 +91,11 @@
 .chowdown-buttons {
   display: flex;
   align-items: center;
-  width: 50%;
-  justify-content: space-around;
+  width: 66%;
   left: 0px;
   right: 0px;
-  margin: 0 auto;
+  bottom: 0px;
+  position: absolute;
 }
 
 // Chat button
@@ -107,11 +107,23 @@
     }
   }
 
+.like-button {
+  background-color: #90f49d;
+  padding: 10px 59px 10px 62px;
+  color: white;
+  border-radius: 0px 0px 4px 0px;
+}
 
+.dislike-button {
+  background-color: #ed7171;
+  padding: 10px 59px 10px 61px;
+  border-radius: 0px 0px 0px 4px;
+}
 
-
-
-
+.glyphicon-remove {
+  font-size: 54px;
+  color: #F7F7F7;
+}
 
 
 
