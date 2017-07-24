@@ -9,7 +9,7 @@ class ChowsController < ApplicationController
     @chow.user1 = current_user
   end
 
-  def create #user 1 user 2
+  def create
     @chow = Chow.new(chow_params)
     @user = current_user
     @chow.user1 = current_user
@@ -22,7 +22,7 @@ class ChowsController < ApplicationController
     end
   end
 
-  def show #user 1 und user 2
+  def show
     @chow = Chow.find(set_chow)
     @chow.user1 = current_user
   end
@@ -31,31 +31,18 @@ class ChowsController < ApplicationController
   def index
     user1 = Chow.where(user_1_id: @user.id)
     user2 = Chow.where(user_2_id: @user.id)
-    # @chows = @chows_user1 + @chows_user2
 
     if params[:query] == "pending"
-      @chows = Chow.where(status: params[:query]) && user2
+      @chows = Chow.where(status: params[:query],user_2_id: @user.id)
     elsif params[:query] == "active"
-      @chows = Chow.where(status: params[:query]) && (user1 || user2 )
+      @chows = Chow.where(status: params[:query],user_2_id: @user.id).or(Chow.where(status: params[:query], user_1_id: @user.id))
     elsif params[:query] == "finished"
-      @chows = Chow.where(status: params[:query]) && user1
+      @chows = Chow.where(status: params[:query],user_1_id: @user.id).or(Chow.where(status: params[:query], user_2_id: @user.id))
     else
       @chows = user1 + user2
     end
 
   end
-
-  # def by_status_pending
-  #   @requested = Chow.where(status: params[:query]) && @chows_user2
-  # end
-
-  # def by_status_active
-  #   @active = Chow.where(status: params[:query]) && (@chows_user1 || @chows_user2 )
-  # end
-
-  # def by_status_finished
-  #   @history = Chow.where(status: params[:query]) && (@chows_user1 || @chows_user2 )
-  # end
 
   def edit
   end
