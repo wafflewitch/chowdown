@@ -6,7 +6,13 @@
   <%= f.input :gender, collection: User::GENDER, required: true %><br>
   <%= f.input :pref_meat, label: "Do you eat meat?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_no.png", required: true %>
   <%= f.input :pref_fish, label: "Do you eat fish?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_no.png", required: true %>
-  <%= f.input :pref_wheat, label: "Do you eat gluten?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_no.png", required: true %>
+  <%= f.input :pref_wheat, label: "Do you eat gluten?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_no.png", required: true %><br>
+  <%= f.label "What kind of food are you interested in cooking?" %><br>
+  <%= f.text_field :tag1, class: "tag_autocomplete" %><br>
+  <%= f.text_field :tag2, class: "tag_autocomplete" %><br>
+  <%= f.text_field :tag3, class: "tag_autocomplete" %><br>
+  <%= f.text_field :tag4, class: "tag_autocomplete" %><br>
+  <%= f.text_field :tag5, class: "tag_autocomplete" %><br>
   <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>
 </div>
@@ -19,4 +25,24 @@
       });
     });
   <% end %>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(function(){
+      $('.tag_autocomplete').autocomplete({
+  source: ["american", "british", "cajun", "caribbean", "chinese",
+    "filipino", "french", "german", "greek", "indian", "italian",
+    "japanese", "jewish", "korean", "mediterranean", "mexican",
+    "moroccan", "russian", "spanish", "thai", "turkish",
+    "venezuelan", "vietnamese"]
+    });
+  });
+  <% end %>
+<% end %>
+
+<% content_for(:left_nav) do %>
+  <p>Welcome, <%= @user.first_name%>!</p>
+  <p>You're almost ready to start cooking</p>
+
 <% end %>

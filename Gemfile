@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'bootstrap-slider-rails'
 gem 'flatpickr_rails'
+gem 'simple_form_autocomplete'
 
 gem 'letter_opener', group: :development
 

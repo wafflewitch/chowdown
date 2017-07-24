@@ -1,42 +1,53 @@
 <div class="profile-page">
 
-    <div class="user-photo">
-      <% avatar_url = @user.facebook_picture_url || @user.photo %>
-        <%= image_tag avatar_url, class: "profile-pic-page text-cente" %>
-      </div>
+    <div class="card">
+        <div class="card-details">
+            <div class="card-profile-pic">
+                <% image_url = @user.facebook_picture_url || 'http://placehold.it/200x200' %>
+                <%= link_to image_tag(image_url), user_path(@user), class: "avatar-large" %>
+            </div>
+            <div class="food-pref">
+              <div class="food-pref-icon">
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_yes.png" alt="" class="foodpref-icons">
+              </div>
+              <br>
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_no.png" alt="" class="foodpref-icons">
+              <br>
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png" alt="" class="foodpref-icons">
+            </div>
 
-      <div class="name-container">
-        <h4><%=  @user.first_name %>, 23 </h4>
-        <div class="food-pref-icons">
-          <img src="<%= asset_path('veggie.png') %>" alt="" class="diet-icon">
-          <img src="<%= asset_path('gluten_free.png') %>" alt="" class="diet-icon">
-        </div>
-      </div>
-   </div>
-
-   <div class="bio-profile text-center">
-     <h4>"<%=  @user.bio %>I love cooking with new people because it's very telling. Also, kinda hot"</h4>
-   </div>
+            <h2><%= @user.first_name %>, 23</h2>
 
 
-  <div class="wrapper-meals">
-    <h4>I'm interested in cooking</h4>
-    <div class="my-meals">
-      <%= render 'shared/food_tags' %>
-      <!-- <div class="btn btn-success add-meal">+</div> -->
+            <div class="bio">
+            <h5>Bio</h5>
+            <p><%= @user.bio %></p>
+          </div>
+
+          <div class="pref-cook-pref">
+            <h5>I want to cook</h5>
+            <%= render 'shared/food_tags' %>
+          </div>
+
+
+        <%= link_to "Chowdowns", user_chows_path(@user, :query => "pending") %>
+
+      <!--
+        <div class="btn btn-primary button-chowdowns text-center">
+          <h4>chowdowns</h4>
+        </div> -->
+
+        <%= link_to "Match Settings", edit_user_registration_path(current_user), {class:"btn button-match-settings"} %>
     </div>
   </div>
-
-
-  <%= link_to "My Chowdowns", user_chows_path(@user, :query => "active") %>
-
-<!--
-  <div class="btn btn-primary button-chowdowns text-center">
-    <h4>chowdowns</h4>
-  </div> -->
-
-  <%= link_to "Match Settings", edit_user_registration_path(current_user), {class:"btn button-match-settings"} %>
+</div>
 
 
 </div>
 
+<% content_for(:center_nav) do %>
+  <h3>Edit profile</h3>
+<% end %>
+<% content_for(:right_nav) do %>
+  <%= link_to image_tag("http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png", alt: "symbol logo", class: "navbar-logo-icon"), users_path %>
+<% end %>
