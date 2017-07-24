@@ -35,7 +35,7 @@ class User < ApplicationRecord
     "Transmasculine",
     "Two-Spirit"]
 
-  CUISINES = ["american", "british", "cajun", "caribbean", "chinese",
+  TAGS = ["american", "british", "cajun", "caribbean", "chinese",
     "filipino", "french", "german", "greek", "indian", "italian",
     "japanese", "jewish", "korean", "mediterranean", "mexican",
     "moroccan", "russian", "spanish", "thai", "turkish",
