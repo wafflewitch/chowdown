@@ -8,22 +8,29 @@ class CalendarsController < ApplicationController
   end
 
   def create
-    @calendar = Calendar.new(calendar_params)
+    @calendar = Calendar.new
     @calendar.user = @user
     @calendar.chow = @chow
-    dates = params[:calendar][:dates].split("; ")
-    dates.each do |date|
-      Date.parse(date)
-    end
+    dates = params["date_one"].split('  ')
     @calendar.dates = dates
     @calendar.save!
-    if(@chow.user1 == current_user)
+    if @chow.user1 == current_user
       @chow.calendar_1_id = @calendar.id
+      @calendar_partner = Calendar.find(@chow.calendar_id_2)
     else
       @chow.calendar_2_id = @calendar.id
+      @calendar_partner = Calendar.find(@chow.calendar_id_1)
+    end
+    @calendar.dates.each do |date|
+      if date == @calendar_partner[0]
+        @chow.date = date
+      elsif date == @calendar_partner[1]
+        @chow.date = date
+      elsif date == @calendar_partner[2]
+        @chow.date = date
+      end
     end
     @chow.save!
-    redirect_to user_chow_path(@user, @chow)
   end
 
   def edit
