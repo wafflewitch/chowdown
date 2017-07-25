@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :check_age
   before_action :set_user, only: [ :show, :edit, :update, :destroy ]
+  helper_method :pref_meat_icon, :pref_fish_icon, :pref_wheat_icon
 
   def new
   end
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @preferences = Preference.where(user_id: params[:id])
+
     # @badges = Badge.where(user_id: params[:id])
 
   end

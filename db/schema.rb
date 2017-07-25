@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725152157) do
+ActiveRecord::Schema.define(version: 20170725211601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,18 +68,18 @@ ActiveRecord::Schema.define(version: 20170725152157) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
@@ -92,9 +92,7 @@ ActiveRecord::Schema.define(version: 20170725152157) do
     t.text     "bio"
     t.string   "job"
     t.string   "gender"
-    t.string   "pref_meat"
-    t.string   "pref_fish"
-    t.string   "pref_wheat"
+    t.integer  "age_range"
     t.string   "tag1"
     t.string   "tag2"
     t.string   "tag3"
@@ -108,6 +106,9 @@ ActiveRecord::Schema.define(version: 20170725152157) do
     t.integer  "max_age"
     t.boolean  "dating"
     t.string   "gender_pref"
+    t.boolean  "pref_meat",              default: true
+    t.boolean  "pref_fish",              default: true
+    t.boolean  "pref_wheat",             default: true
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
