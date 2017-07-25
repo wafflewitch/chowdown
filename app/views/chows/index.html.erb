@@ -15,10 +15,10 @@
               <li><div class="card-links">
                 <%= link_to new_user_chow_calendar_path(chow.user1, chow) do %>
                   <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                <% end %>
+                <% end %>&nbsp;
                 <%= link_to user_chow_messages_path(chow.user1, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
-                <% end %>
+                <% end %>&nbsp;
                  <%= link_to user_chow_path(chow.user1, chow), method: :delete do %>
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                 <% end %>
@@ -37,10 +37,10 @@
               <li><div class="card-links">
                 <%= link_to new_user_chow_calendar_path(chow.user1, chow) do %>
                   <i class="fa fa-calendar-" aria-hidden="true"></i>
-                <% end %>
+                <% end %>&nbsp;
                 <%= link_to user_chow_messages_path(chow.user1, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
-                <% end %>
+                <% end %>&nbsp;
                 <%= link_to user_chow_path(chow.user1, chow), method: :delete do %>
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                 <% end %>
@@ -66,10 +66,10 @@
             <li><div class="card-links">
               <%= link_to user_chow_messages_path(chow.user1, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
-              <% end %>
+              <% end %>&nbsp;
               <%= link_to user_chow_path(chow.user1, chow), method: :delete do %>
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
-              <% end %>
+              <% end %>&nbsp;
             </div></li>
           </ul>
         </div>
