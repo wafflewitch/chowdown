@@ -30,8 +30,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if params["max_distance"]
+      min_age = params["age_range"].split(',')[0].to_i
+      max_age = params["age_range"].split(',')[1].to_i
+      gender_pref = params["gender_pref"]
+      max_distance = params["max_distance"].to_i
+      if params["dating_pref"] == "false"
+        dating = false
+      else
+        dating = true
+      end
+      @user.update(min_age: min_age, max_age: max_age, dating: dating,
+        gender_pref: gender_pref, max_distance: max_distance )
+    else
+      @user.update(user_params)
+      redirect_to user_path(@user)
+    end
   end
 
   def destroy

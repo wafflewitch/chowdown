@@ -158,7 +158,22 @@
   color: #F7F7F7;
 }
 
-
+// Chowdown settings page
+.gender-button {
+  border: 1px rgb(230,230,230) solid;
+  width: 90px;
+  height: 42px;
+  p {
+    margin: 0;
+  }
+  &.selected {
+    border: 2px #83C8E2 solid;
+    margin: 0;
+    p {
+      margin: 0;
+    }
+  }
+}
 
 .edit-icon-size {
   width: 45px;
@@ -168,45 +183,4 @@
 .edit-icon-size1 {
   width: 15px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
