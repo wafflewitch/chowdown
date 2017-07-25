@@ -1,13 +1,25 @@
 class DecisionsController < ApplicationController
+  before_action :set_user1, only: [ :create ]
 
   def create
-    @decision = current_user.decisions.build(:user_2_id => params[:user2])
+    @decision = Decision.new(user_2_id: params[:user_2_id], like: params[:like])
+    @decision.user1 = @user1
     if @decision.save
-      flash[:notice] = "chowdown request sent."
+      if @decision.like == true
+        flash[:notice] = "Saved! We'll let you know if #{@decision.user2.first_name} matches with you."
+      else
+        flash[:notice] = "OK, you won't be matched with #{@decision.user2.first_name} for now."
+      end
       redirect_to users_path
     else
-      flash[:notice] = "unable to send chowdown request."
+      flash[:notice] = "Sorry, something went wrong. Please try again later."
       redirect_to users_path
     end
+  end
+
+  private
+
+  def set_user1
+    @user1 = User.find(current_user.id)
   end
 end

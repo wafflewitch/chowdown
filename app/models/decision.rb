@@ -1,6 +1,6 @@
 class Decision < ApplicationRecord
-  belongs_to :user1, class_name: "User"
-  belongs_to :user2, class_name: "User"
+  belongs_to :user1, :class_name => "User", :foreign_key => "user_1_id"
+  belongs_to :user2, :class_name => "User", :foreign_key => "user_2_id"
 
   validate :cannot_choose_myself
   after_save :check_match
