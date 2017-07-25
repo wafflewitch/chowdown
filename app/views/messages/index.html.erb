@@ -36,5 +36,5 @@
   <%= image_tag @recipient.facebook_picture_url, class: "avatar" %><p><%= @recipient.first_name %></p>
 <% end %>
 <% content_for(:right_nav) do %>
-  <%= link_to "", new_user_chow_calendar_path(@chow.id), class: "fa fa-calendar" %>
+  <%= link_to "", new_user_chow_calendar_path(current_user.id), class: "fa fa-calendar" %>
 <% end %>
