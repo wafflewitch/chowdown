@@ -21,6 +21,7 @@ gem 'uglifier'
 gem 'bootstrap-slider-rails'
 gem 'flatpickr_rails'
 gem 'simple_form_autocomplete'
+gem 'wicked'
 
 gem 'letter_opener', group: :development
 
