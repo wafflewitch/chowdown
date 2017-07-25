@@ -3,10 +3,10 @@
     <div class="simple-form">
       <div class="match-preference-box1">
         <h4>I want to cook with</h4>
-        <div class="flex-wrapper">
-          <button class="gender-button gender-button-noborder">Men</button>
-          <button class="gender-button gender-button-noborder">Women</button>
-          <button class="gender-button gender-button-noborder">All</button>
+        <div class="flex-wrapper gender-buttons">
+          <button class="gender-button gender-button-noborder"><p>Men</p></button>
+          <button class="gender-button gender-button-noborder"><p>Women</p></button>
+          <button class="gender-button gender-button-noborder"><p>All</p></button>
         </div>
       </div>
 
@@ -17,16 +17,15 @@
       <div class="match-preference-box3">
         <div class="flex-wrapper-between">
           <h4>Age range</h4>
-          <p id="age1Val">18-55</p>
+          <p id="age1Val">18, 55</p>
         </div>
         <div class="age-selection">
         </div>
         <div class="flex-wrapper">
           <div class="slider-age">
-            <input id="age1" data-slider-min="18" data-slider-max="55" data-slider-step="1" data-slider-value="[18, 55]" data-slider-selection="after" data-slider-tooltip="hide">
+              <input id="age1" data-slider-min="18" data-slider-max="55" data-slider-step="1" data-slider-value="[18, 55]" data-slider-selection="after" data-slider-tooltip="hide">
           </div>
         </div>
-
       </div>
 
       <div class="match-preference-box4">
@@ -43,33 +42,47 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-
+  <script>
     $(document).ready( function() {
-        $('#age1').slider();
-        $("#age1").on("slide", function(slideEvt) {
-          $("#age1Val").text(slideEvt.value);
-        });
-        $('#distance1').slider();
-        $("#distance1").on("slide", function(slideEvt) {
-          $("#distance1Val").text(slideEvt.value);
 
-
-
-          $('.gender-button').click(function() {
-            $('.gender-button').css({
-              'border': '2px #83C8E2 solid'
-            });
-        });
+      $('#done').on("click", function(e) {
+        var ageRange = $('#age1Val').text();
+        var genderPref = $('.selected').text();
+        var maxDistance = $('#distance1Val').text();
+        var datingPref = $('.button-toggle').is(':checked');
+        $.ajax({
+          method: "PUT",
+          url: "/users/" + "<%= current_user.id %>",
+          data: {
+            age_range: ageRange,
+            gender_pref: genderPref,
+            max_distance: maxDistance,
+            dating_pref: datingPref
+          }
         });
       });
 
-  <% end %>
+      $('#age1').slider();
+      $("#age1").on("slide", function(slideEvt) {
+        $("#age1Val").text(slideEvt.value);
+      });
+
+      $('#distance1').slider();
+      $("#distance1").on("slide", function(slideEvt) {
+        $("#distance1Val").text(slideEvt.value);
+      });
+
+      $('.gender-button').on("click", function(e) {
+        $(this).addClass('selected').siblings().removeClass('selected');
+      });
+    });
+  </script>
 <% end %>
+
 
 <% content_for(:center_nav) do %>
   <h3>Chowdown settings</h3>
 <% end %>
 <% content_for(:right_nav) do %>
-  <%= link_to "Done", user_path(current_user.id), action: :patch, controller: :users %>
+  <%= link_to "Done", user_path(@user), id: "done" %>
 <% end %>
