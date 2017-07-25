@@ -1,7 +1,11 @@
 
 <div class="container">
   <div class="flex-list">
+    <% if @user %>
       <%= render "user_card", user: @user %>
+      <% else  %>
+      <%= render "no_user", user: @user %>
+    <% end %>
   </div>
 </div>
 
