@@ -101,13 +101,13 @@ ActiveRecord::Schema.define(version: 20170725152157) do
     t.string   "tag4"
     t.string   "tag5"
     t.text     "address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "max_distance"
     t.integer  "min_age"
     t.integer  "max_age"
     t.boolean  "dating"
     t.string   "gender_pref"
-    t.float    "latitude"
-    t.float    "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
