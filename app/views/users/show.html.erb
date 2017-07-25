@@ -8,15 +8,15 @@
             </div>
             <div class="food-pref">
               <div class="food-pref-icon">
-                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_yes.png" alt="" class="foodpref-icons">
+                <%= image_tag @user.pref_meat, class: "foodpref-icons"%>
               </div>
               <br>
-                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_no.png" alt="" class="foodpref-icons">
+                <%= image_tag @user.pref_fish, class: "foodpref-icons"%>
               <br>
-                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png" alt="" class="foodpref-icons">
+                <%= image_tag @user.pref_wheat, class: "foodpref-icons"%>
             </div>
 
-            <h2><%= @user.first_name %>, 23</h2>
+            <h2><%= @user.first_name %>, 23 <%#= @user.age %></h2>
 
 
             <div class="bio">
@@ -30,16 +30,20 @@
           </div>
 
 
-        <%= link_to "Chowdowns", user_chows_path(@user, :query => "pending") %>
-
-      <!--
-        <div class="btn btn-primary button-chowdowns text-center">
-          <h4>chowdowns</h4>
-        </div> -->
-
-        <%= link_to "Match Settings", edit_user_registration_path(current_user), {class:"btn button-match-settings"} %>
+      <div class="prof-page-buttons">
+        <%= link_to "My chowdowns", user_chows_path(@user, :query => "pending"), {class:"btn button-chowdowns"} %>
 
 
+
+        <%= link_to edit_user_registration_path(current_user), {class:"btn button-edit-profile"} do %>
+          <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/edit_icon.png" alt="" class="edit-icon-size">
+        <% end %>
+
+        <%= link_to edit_user_registration_path(current_user), {class:"btn button-match-settings"} do %>
+          <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/arrows_icon.png" alt="" class="edit-icon-size">
+          <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/gear_icon.png" alt="" class="edit-icon-size1">
+        <% end %>
+      </div>
 
     </div>
   </div>
