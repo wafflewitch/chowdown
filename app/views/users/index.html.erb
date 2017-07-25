@@ -1,9 +1,7 @@
 
 <div class="container">
   <div class="flex-list">
-      <% @users.each do |user| %>
-      <%= render "user_card", user: user %>
-      <% end %>
+      <%= render "user_card", user: @user %>
   </div>
 </div>
 
@@ -16,3 +14,7 @@
 <% content_for(:right_nav) do %>
   <%= link_to "", user_chows_path(current_user.id), class: "fa fa-users" %>
 <% end %>
+
+<% content_for(:after_js) do %>
+<% end %>
+<!--  swiping logic here -->
