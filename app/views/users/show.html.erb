@@ -54,7 +54,7 @@
 </div>
 
 <% content_for(:center_nav) do %>
-  <h3>Edit profile</h3>
+  <%= link_to "", user_path(current_user.id), class: "fa fa-user" %>
 <% end %>
 <% content_for(:right_nav) do %>
   <%= link_to image_tag("http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png", alt: "symbol logo", class: "navbar-logo-icon"), users_path %>
