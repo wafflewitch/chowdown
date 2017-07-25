@@ -1,0 +1,45 @@
+<div class="card">
+        <div class="card-details">
+            <div class="card-profile-pic">
+                <% image_url = user.facebook_picture_url || 'http://placehold.it/200x200' %>
+                <%= link_to image_tag(image_url), user_path(user), class: "avatar-large" %>
+            </div>
+            <div class="food-pref">
+              <div class="food-pref-icon">
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_yes.png" alt="" class="foodpref-icons">
+              </div>
+              <br>
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_no.png" alt="" class="foodpref-icons">
+              <br>
+                <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png" alt="" class="foodpref-icons">
+            </div>
+
+            <h2><%= user.first_name %>, 23</h2>
+
+
+            <div class="bio">
+            <h5>Bio</h5>
+            <p><%= user.bio %></p>
+          </div>
+
+          <div class="pref-cook-pref">
+            <h5>I want to cook</h5>
+            <%= render 'shared/food_tags' %>
+          </div>
+
+          <div class="chowdown-buttons">
+
+          <%= link_to decisions_path(user_2_id: user, like: false), method: :post do %>
+            <div class="dislike-button glyphicon glyphicon-remove">
+            </div>
+          <% end %>
+
+            <div class="like-button">
+            <%= link_to decisions_path(user_2_id: user, like: true), method: :post do %>
+              <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500925213/chow_cutlery.png" alt="" class="foodpref-icons">
+            <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
