@@ -54,11 +54,10 @@
 
 .button-chowdowns {
   position: absolute;
-  bottom: 55px;
+  bottom: 45px;
   left: 0px;
-  background-color: #8eeeff;
+  background-color: #627C85;
   color: white;
-  /* border-radius: 0 0 0 4px; */
   font-size: 29px;
   padding-left: 72px;
   padding-right: 73px;
@@ -66,20 +65,21 @@
   font-weight: 700;
   color: #F7F7F7;
   padding-top: 4px;
+  opacity: 0.8;
 }
 
 .button-match-settings {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  background-color: #8eeeff;
+  background-color: #b2b2b2;
   border-radius: 0 0 4px 0;
   font-size: 9px;
   padding-left: 20px;
   padding-right: 20px;
-  height: 53px;
+  height: 43px;
   font-weight: 700;
-  padding: 5px 50px 0px 60px;
+  padding: 5px 70px 0px 70px;
   h6 {
     margin: 0px;
     color: #F7F7F7;
@@ -92,14 +92,14 @@
   position: absolute;
   bottom: 0px;
   left: 0px;
-  background-color: #8eeeff;
+  background-color: #b2b2b2;
   border-radius: 0 0 0 4px;
   font-size: 9px;
   padding-left: 20px;
   padding-right: 20px;
-  height: 53px;
+  height: 43px;
   font-weight: 700;
-  padding: 5px 58px 0px 67px;
+  padding: 5px 62px 0px 73px;
   h6 {
     margin: 0px;
     color: #F7F7F7;
@@ -161,12 +161,12 @@
 
 
 .edit-icon-size {
-  width: 45px;
+  width: 35px;
 }
 
 
 .edit-icon-size1 {
-  width: 15px;
+  width: 32px;
 }
 
 
