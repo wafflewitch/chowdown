@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
     # @preferences = Preference.where(user_id: params[:id])
     # @badges = Badge.where(user_id: params[:id])
 

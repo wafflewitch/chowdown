@@ -53,30 +53,63 @@
 
 
 .button-chowdowns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
-  height: 50px;
-  width: 100%;
-  bottom: 83px;
-  h4 {
-    font-size: 30px;
-  }
+  bottom: 55px;
+  left: 0px;
+  background-color: #8eeeff;
+  color: white;
+  /* border-radius: 0 0 0 4px; */
+  font-size: 29px;
+  padding-left: 72px;
+  padding-right: 73px;
+  height: 52px;
+  font-weight: 700;
+  color: #F7F7F7;
+  padding-top: 4px;
 }
 
 .button-match-settings {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
-  bottom: 29px;
-  margin: 0px 125px 8px 148px;
-  border-radius: 150px;
-  padding: 0px 12px 0px 12px;
-  h4 {
-    font-size: 10px;
+  bottom: 0px;
+  right: 0px;
+  background-color: #8eeeff;
+  border-radius: 0 0 4px 0;
+  font-size: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 53px;
+  font-weight: 700;
+  padding: 5px 50px 0px 60px;
+  h6 {
+    margin: 0px;
+    color: #F7F7F7;
+    margin-bottom: 5px;
   }
+}
+
+
+.button-edit-profile {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-color: #8eeeff;
+  border-radius: 0 0 0 4px;
+  font-size: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 53px;
+  font-weight: 700;
+  padding: 5px 58px 0px 67px;
+  h6 {
+    margin: 0px;
+    color: #F7F7F7;
+    margin-bottom: 5px;
+  }
+}
+
+
+.icon-match-settings {
+  width: 30px;
 }
 
 .gender-button {
@@ -125,9 +158,7 @@
   color: #F7F7F7;
 }
 
-// Chowdown settings
-
-
+// Chowdown settings page
 .gender-button {
   border: 1px rgb(230,230,230) solid;
   width: 90px;
@@ -144,4 +175,12 @@
   }
 }
 
+.edit-icon-size {
+  width: 45px;
+}
+
+
+.edit-icon-size1 {
+  width: 15px;
+}
 

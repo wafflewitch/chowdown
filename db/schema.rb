@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 20170725152157) do
     t.integer  "max_age"
     t.boolean  "dating"
     t.string   "gender_pref"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
