@@ -1,0 +1,8 @@
+<div class="text-center">
+<%= "Step #{@current_step} of #{@total_steps}" %>
+<%= simple_form_for @user, url: wizard_path do |f| %>
+  <%= f.label "Set your age" %><br>
+  <%= f.text_field :age, required: true %>
+  <%= f.submit "Continue", class: "btn btn-primary" %>
+<% end %>
+</div>

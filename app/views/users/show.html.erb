@@ -26,7 +26,7 @@
 
           <div class="pref-cook-pref">
             <h5>I want to cook</h5>
-            <%= render 'shared/food_tags' %>
+            <%= render 'shared/food_tags_profile' %>
           </div>
 
 
@@ -41,7 +41,6 @@
         <% end %>
 
         <%= link_to edit_user_registration_path(current_user), {class:"btn button-match-settings"} do %>
-          <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/arrows_icon.png" alt="" class="edit-icon-size">
           <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/gear_icon.png" alt="" class="edit-icon-size1">
         <% end %>
       </div>
@@ -54,7 +53,7 @@
 </div>
 
 <% content_for(:center_nav) do %>
-  <h3>Edit profile</h3>
+  <%= link_to "", user_path(current_user.id), class: "fa fa-user" %>
 <% end %>
 <% content_for(:right_nav) do %>
   <%= link_to image_tag("http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png", alt: "symbol logo", class: "navbar-logo-icon"), users_path %>

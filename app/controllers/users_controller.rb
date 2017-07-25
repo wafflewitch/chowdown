@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_age
   before_action :set_user, only: [ :show, :edit, :update, :destroy ]
 
   def new
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user)
+      redirect_to after_signup_path
     else
       redirect_to root
     end
@@ -29,8 +30,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if params["max_distance"]
+      min_age = params["age_range"].split(',')[0].to_i
+      max_age = params["age_range"].split(',')[1].to_i
+      gender_pref = params["gender_pref"]
+      max_distance = params["max_distance"].to_i
+      if params["dating_pref"] == "false"
+        dating = false
+      else
+        dating = true
+      end
+      @user.update(min_age: min_age, max_age: max_age, dating: dating,
+        gender_pref: gender_pref, max_distance: max_distance )
+    else
+      @user.update(user_params)
+      redirect_to user_path(@user)
+    end
   end
 
   def destroy
@@ -46,5 +61,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def check_age
+    redirect_to after_signup_path(:add_age) if current_user[:age].nil?
   end
 end
