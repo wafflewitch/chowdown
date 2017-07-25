@@ -1,0 +1,12 @@
+<div class="text-center">
+<%= "Step #{@current_step} of #{@total_steps}" %>
+<%= simple_form_for @user, url: wizard_path do |f| %>
+<%= f.label "What kind of food are you interested in cooking?" %><br>
+<%= f.text_field :tag1, class: "tag_autocomplete" %><br>
+<%= f.text_field :tag2, class: "tag_autocomplete" %><br>
+<%= f.text_field :tag3, class: "tag_autocomplete" %><br>
+<%= f.text_field :tag4, class: "tag_autocomplete" %><br>
+<%= f.text_field :tag5, class: "tag_autocomplete" %>
+<%= f.submit "Continue", class: "btn btn-primary" %>
+<% end %>
+</div>

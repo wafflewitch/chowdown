@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :decisions
+  resources :after_signup
 
   get '/users/:id/chows/:id/messages/refresh_messages', to: 'messages#refresh_messages'
   get 'chows/show'
