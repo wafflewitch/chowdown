@@ -1,24 +1,15 @@
 <div class="navbar-chowdown">
 
-  <div class="nav-button-left navbar-left">
+    <div class="nav-button-left navbar-left">
+      <%= yield(:left_nav) %>
+    </div>
 
-  <a href="#" onclick="history.back();"><i class="glyphicon glyphicon-arrow-left"></i></a>
+    <div class="navbar-center text-center">
+      <%= yield(:center_nav) %>
+    </div>
 
-  </div>
-  <div class="navbar-center text-center">
-    <%= link_to root_path do %>
-      <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png" alt="symbol logo" class="navbar-logo">
-      <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500686632/logo_navbar1.png" alt="title logo" class="navbar-logo">
-    <% end %>
-  </div>
-
-  <div class="nav-button-right navbar-right">
-  <% if user_signed_in? %>
-    <p><%= link_to destroy_user_session_path, method: :delete do %>
-        <i class="glyphicon glyphicon-log-out"></i>
-
-    <% end %></p>
-   <% end %>
-  </div>
+    <div class="nav-button-right navbar-right">
+      <%= yield(:right_nav) %>
+    </div>
 </div>
 

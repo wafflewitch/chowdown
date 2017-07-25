@@ -5,18 +5,48 @@
  <%= link_to "My Chowdown history", user_chows_path(@user, :query => "finished") , {class: "btn btn-primary"} %>
 </div>
 
-<div class="container">
-  <div class="flex-list">
-    <% @chows.each do |chow| %>
-      <div class="card">
-        <% @partner = User.find(chow.user_2_id) %>
-        <h3>chowdown with <%= @partner.first_name %></h3>
-        <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
-      </div>
-    <% end %>
+<% if @active == true %>
+  <div class="container">
+    <div class="flex-list">
+      <% @finalized_chows.each do |chow| %>
+          <div class="card card-chowi card-finalized">
+            <% @partner = User.find(chow.user_2_id) %>
+            <h3><%= @partner.first_name %><%= image_tag @partner.facebook_picture_url, class: "avatar" %></h3>
+            <%= link_to "Set Date", new_user_chow_calendar_path(chow.user1, chow) %> | <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+          </div>
+        <% end %>
+        <% @active_chows.each do |chow| %>
+          <div class="card card-chowi">
+            <% @partner = User.find(chow.user_2_id) %>
+            <h3><%= @partner.first_name %><%= image_tag @partner.facebook_picture_url, class: "avatar" %></h3>
+            <%= link_to "Set Date", new_user_chow_calendar_path(chow.user1, chow) %> | <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+          </div>
+        <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 
+<% if !@finished_chows.nil? %>
+  <div class="container">
+    <div class="flex-list">
+      <% @finished_chows.each do |chow| %>
+        <div class="card card-chowi">
+          <% @partner = User.find(chow.user_2_id) %>
+          <h3><%= @partner.first_name %><%= image_tag @partner.facebook_picture_url, class: "avatar" %></h3>
+          <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+<% content_for(:left_nav) do %>
+  <%= link_to image_tag("http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png", alt: "symbol logo", class: "navbar-logo-icon"), users_path %>
+<% end %>
+<% content_for(:center_nav) do %>
+  <h3>My chowdowns</h3>
+<% end %>
 
 
