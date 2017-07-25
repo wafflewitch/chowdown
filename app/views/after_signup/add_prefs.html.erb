@@ -1,0 +1,9 @@
+<div class="text-center">
+<%= "Step #{@current_step} of #{@total_steps}" %>
+<%= simple_form_for @user, url: wizard_path do |f| %>
+<%= f.input :pref_meat, label: "Do you eat meat?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_no.png", required: true %>
+<%= f.input :pref_fish, label: "Do you eat fish?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_no.png", required: true %>
+<%= f.input :pref_wheat, label: "Do you eat gluten?", as: :boolean, checked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png", unchecked_value: "http://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_no.png", required: true %>
+<%= f.submit "Continue", class: "btn btn-primary" %>
+<% end %>
+</div>
