@@ -18,6 +18,9 @@ class User < ApplicationRecord
   # after_create :send_welcome_email
   # after_create :set_up_profile
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   GENDER = ["Agender", "Androgyne", "Androgynous",
     "Bigender",
     "Cisgender Female", "Cisgender Male",
