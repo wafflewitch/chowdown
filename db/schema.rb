@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(version: 20170725152157) do
     t.text     "bio"
     t.string   "job"
     t.string   "gender"
-    t.integer  "age_range"
     t.string   "pref_meat"
     t.string   "pref_fish"
     t.string   "pref_wheat"
