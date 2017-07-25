@@ -3,7 +3,7 @@
 //= require flatpickr
 //= require bootstrap-sprockets
 //= require bootstrap-slider
-//= require simple_form_autocomplete
+
 //= require_tree .
 
 
