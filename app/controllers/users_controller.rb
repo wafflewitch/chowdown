@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
     # @badges = Badge.where(user_id: params[:id])
 
   end

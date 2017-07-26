@@ -1,7 +1,9 @@
 <div class="buttons">
  <%= link_to "Upcoming", user_chows_path(@user, :query => "active") , {class: "btn-chowi #{('active' if @btn == 'finalized')}" } %>
  <%= link_to "History", user_chows_path(@user, :query => "finished") , {class: "btn-chowi #{('active' if @btn == 'finished')}"} %>
+
 </div>
+
 
 <% if @active == true %>
   <div class="container">
@@ -46,7 +48,9 @@
                 <% end %>&nbsp;
                 <%= link_to user_chow_messages_path(@user, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
-
+                <% end %>&nbsp;
+                <%= link_to user_chow_recipes_path(@user, chow) do %>
+                  <i class="fa fa-cutlery" aria-hidden="true"></i>
                 <% end %>
               </div></li>
             </ul>
@@ -75,7 +79,7 @@
               <%= link_to user_chow_messages_path(@user, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
           <% end %>
-              
+
             </div></li>
           </ul>
         </div>

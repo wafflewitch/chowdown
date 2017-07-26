@@ -1,0 +1,28 @@
+.container-recipe {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card-recipe {
+  height: 125px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin: 10px;
+  width: 125px;
+}
+.recipe-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.recipe-title h2 {
+  font-size: 24px;
+}
+.recipe-title p {
+  font-size: 14px;
+  opacity: 0.7;
+  font-weight: lighter;
+}
