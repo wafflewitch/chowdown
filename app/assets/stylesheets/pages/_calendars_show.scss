@@ -8,9 +8,15 @@
   }
   p {
     color: gray;
-
+    margin: 0 23px;
   }
   a p {
     color: $brand-color;
+    margin-right: 24px;
+    margin-top: 10px;
+    &:hover {
+      text-decoration: underline;
+      color: $brand-color;
+    }
   }
 }
