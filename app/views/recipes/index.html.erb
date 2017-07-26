@@ -1,0 +1,6 @@
+<h1> hallo</h1>
+<% @recipe.each do | recipe |%>
+  <h3>The recipes form <%= recipe.user_id %>
+  <%= image_tag recipe.photo, class: "avatar-large" %>
+  <%= recipe.title %>
+<% end %>
