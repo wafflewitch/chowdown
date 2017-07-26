@@ -1,8 +1,6 @@
-<div class="container text-center">
-<br>
-  <h1>My Chowdowns</h1>
- <%= link_to "My upcoming Chowdowns", user_chows_path(@user, :query => "active") , {class: "btn btn-primary"} %>
- <%= link_to "My Chowdown history", user_chows_path(@user, :query => "finished") , {class: "btn btn-primary"} %>
+<div class="buttons">
+ <%= link_to "Upcoming", user_chows_path(@user, :query => "active") , {class: "btn-chowi #{('active' if @btn == 'finalized')}" } %>
+ <%= link_to "History", user_chows_path(@user, :query => "finished") , {class: "btn-chowi #{('active' if @btn == 'finished')}"} %>
 </div>
 
 <% if @active == true %>
@@ -10,16 +8,49 @@
     <div class="flex-list">
       <% @finalized_chows.each do |chow| %>
           <div class="card card-chowi card-finalized">
-            <% @partner = User.find(chow.user_2_id) %>
-            <h3><%= @partner.first_name %><%= image_tag @partner.facebook_picture_url, class: "avatar" %></h3>
-            <%= link_to "Set Date", new_user_chow_calendar_path(chow.user1, chow) %> | <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+            <% if @user == User.find(chow.user_1_id) %>
+              <% @partner = User.find(chow.user_2_id) %>
+            <% else %>
+              <% @partner = User.find(chow.user_1_id) %>
+            <% end %>
+            <ul class="list-inline">
+              <li><%= image_tag @partner.facebook_picture_url, class: "avatar-large avatar-chowi" %></li>
+              <li><h3><%= @partner.first_name %></h3><li>
+              <li><div class="card-links">
+                <%= link_to new_user_chow_calendar_path(@user, chow) do %>
+                  <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                <% end %>&nbsp;
+                <%= link_to user_chow_messages_path(@user, chow) do %>
+                  <i class="fa fa-comment-o" aria-hidden="true"></i>
+                <% end %>
+
+              </div></li>
+            </ul>
+            <h4><%= chow.date %></h4>
           </div>
         <% end %>
+
         <% @active_chows.each do |chow| %>
-          <div class="card card-chowi">
-            <% @partner = User.find(chow.user_2_id) %>
-            <h3><%= @partner.first_name %><%= image_tag @partner.facebook_picture_url, class: "avatar" %></h3>
-            <%= link_to "Set Date", new_user_chow_calendar_path(chow.user1, chow) %> | <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+          <div class="card card-chowi card-active">
+            <% if @user == User.find(chow.user_1_id) %>
+              <% @partner = User.find(chow.user_2_id) %>
+            <% else %>
+              <% @partner = User.find(chow.user_1_id) %>
+            <% end %>
+            <ul class="list-inline">
+              <li><%= image_tag @partner.facebook_picture_url, class: "avatar-large avatar-chowi" %></li>
+              <li><h3><%= @partner.first_name %></h3></li>
+              <li><div class="card-links">
+                <%= link_to new_user_chow_calendar_path(@user, chow) do %>
+                  <i class="fa fa-calendar-" aria-hidden="true"></i>
+                <% end %>&nbsp;
+                <%= link_to user_chow_messages_path(@user, chow) do %>
+                  <i class="fa fa-comment-o" aria-hidden="true"></i>
+
+                <% end %>
+              </div></li>
+            </ul>
+            <h4>Please set a date</h4>
           </div>
         <% end %>
     </div>
@@ -31,10 +62,22 @@
   <div class="container">
     <div class="flex-list">
       <% @finished_chows.each do |chow| %>
-        <div class="card card-chowi">
-          <% @partner = User.find(chow.user_2_id) %>
-          <h3><%= @partner.first_name %><%= image_tag @partner.facebook_picture_url, class: "avatar" %></h3>
-          <%= link_to "See Chatbox", user_chow_messages_path(chow.user1, chow) %> | <%= link_to "Delete Chowdown", user_chow_path(chow.user1, chow), method: :delete %>
+        <div class="card card-chowi card-finished">
+            <% if @user == User.find(chow.user_1_id) %>
+              <% @partner = User.find(chow.user_2_id) %>
+            <% else %>
+              <% @partner = User.find(chow.user_1_id) %>
+            <% end %>
+          <ul class="list-inline">
+            <li><%= image_tag @partner.facebook_picture_url, class: "avatar-large avatar-chowi" %></li>
+            <li><h3><%= @partner.first_name %></h3></li>
+            <li><div class="card-links">
+              <%= link_to user_chow_messages_path(@user, chow) do %>
+                  <i class="fa fa-comment-o" aria-hidden="true"></i>
+          <% end %>
+              
+            </div></li>
+          </ul>
         </div>
       <% end %>
     </div>
@@ -49,4 +92,12 @@
   <h3>My chowdowns</h3>
 <% end %>
 
+<% content_for :after_js do %>
+  <script>
 
+      $(".btn-chowi").click(function() {
+        $(".test").toggleClass('active');
+      });
+
+  </script>
+<% end %>

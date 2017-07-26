@@ -5,8 +5,12 @@ class AfterSignupController < ApplicationController
 
   def show
     @user = current_user
-    @current_step = current_step_index + 1
     @total_steps = steps.count
+    unless step == "wicked_finish"
+      @current_step = current_step_index + 1
+    else
+      @current_step = @total_steps
+    end
     render_wizard
   end
 

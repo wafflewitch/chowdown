@@ -1,7 +1,10 @@
 /* Main class */
 .navbar-chowdown {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: $brand-color;
+  // background: $brand-color;
+  background: $navbar-purple;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, $brand-color, $navbar-purple);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, $brand-color, $navbar-purple); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   transition: all 0.3s ease;
   display: flex;
   height: 55px;

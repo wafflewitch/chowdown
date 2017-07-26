@@ -8,15 +8,15 @@
             </div>
             <div class="food-pref">
               <div class="food-pref-icon">
-                <%= image_tag @user.pref_meat, class: "foodpref-icons"%>
+                <%= image_tag pref_meat_icon, class: "foodpref-icons"%>
               </div>
               <br>
-                <%= image_tag @user.pref_fish, class: "foodpref-icons"%>
+                <%= image_tag pref_fish_icon, class: "foodpref-icons"%>
               <br>
-                <%= image_tag @user.pref_wheat, class: "foodpref-icons"%>
+                <%= image_tag pref_wheat_icon, class: "foodpref-icons"%>
             </div>
 
-            <h2><%= @user.first_name %>, 23 <%#= @user.age %></h2>
+            <h2><%= @user.first_name %>, <%= @user.age %></h2>
 
 
             <div class="bio">
@@ -41,7 +41,6 @@
         <% end %>
 
         <%= link_to edit_user_registration_path(current_user), {class:"btn button-match-settings"} do %>
-          <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/arrows_icon.png" alt="" class="edit-icon-size">
           <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/gear_icon.png" alt="" class="edit-icon-size1">
         <% end %>
       </div>

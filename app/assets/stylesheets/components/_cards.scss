@@ -11,7 +11,7 @@
 
 .card-details {
   h2 {
-    top: -50px;
+    top: -56px;
     font-size: 25px;
     background-color: white;
     display: inline-block;
@@ -20,16 +20,6 @@
     border-radius: 0px 4px 0px 0px;
   }
 }
-
-.card-finalized {
-  background-color: green;
-}
-
-.card-chowi{
-  height: 120px;
-}
-
-
 
 .foodpref-icons {
   width: 53px;
@@ -56,7 +46,7 @@
 }
 
 .pref-cook-pref {
-  margin-top: 48px;
+  margin-top: 10px;
 }
 
 
@@ -65,4 +55,7 @@
   margin-top: -50px;
   color: gray;
 }
+  p {
+    margin-left: 10px;
+  }
 }
