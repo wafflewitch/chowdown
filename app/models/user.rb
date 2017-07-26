@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :decisions, :class_name => "Decision", :foreign_key => "user_1_id"
   has_many :secondary_decisions, :class_name => "Decision", :foreign_key => "user_2_id"
   has_many :matches, :class_name => "User", through: :decisions
+  has_many :recipes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :validatable,
   devise :database_authenticatable, :registerable,

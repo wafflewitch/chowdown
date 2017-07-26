@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users do
+    resources :recipes, only: [ :show, :index]
     resources :chows, only: [ :index, :new, :create, :show, :destroy, :update] do
       resources :messages, only: [ :index, :new, :create ]
       resources :calendars, only: [ :new, :create, :show, :edit, :update ]
