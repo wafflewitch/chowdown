@@ -1,20 +1,20 @@
-<div class="container text-center">
-  <div class="row">
-    <a type="text" value="" class="date-button tomorrow1 btn" ></a>
-    <a type="text" value="" class="date-button tomorrow2 btn" ></a>
+<div class="wrapper-calendar">
+  <div class="container text-center">
+  <p>Pick up to 3 dates and we'll send them to your partner to confirm your chowdown</p>
+    <div class="row">
+      <a type="text" value="" class="date-button tomorrow1 btn" ></a>
+      <a type="text" value="" class="date-button tomorrow2 btn" ></a>
+    </div>
+    <div class="row">
+      <a type="text" value="" class="date-button tomorrow3 btn" ></a>
+       <a type="text" value="" class="date-button tomorrow4 btn" ></a>
+    </div>
+    <div class="row">
+      <a type="text" value="" class="date-button tomorrow5 btn" ></a>
+      <a type="text" value="" class="date-button tomorrow6 btn" ></a>
+    </div>
+
   </div>
-  <div class="row">
-    <a type="text" value="" class="date-button tomorrow3 btn" ></a>
-     <a type="text" value="" class="date-button tomorrow4 btn" ></a>
-  </div>
-  <div class="row">
-    <a type="text" value="" class="date-button tomorrow5 btn" ></a>
-    <a type="text" value="" class="date-button tomorrow6 btn" ></a>
-  </div>
-  <%# simple_form_for [@user, @chow, @calendar] do |f| %>
-    <%# f.text_field :dates, as: :array, class: "pickthreedates" %>
-    <%# f.submit "Confirm Dates", class: "btn btn-primary" %>
-  <%# end %>
 </div>
 
 
@@ -61,14 +61,6 @@
           });
         });
       });
-
-
-      // $(function(){
-      //   $(".pickthreedates").flatpickr({
-      //     mode: "multiple",
-      //     parseDate: true,
-      //   });
-      // });
   </script>
 <% end %>
 
@@ -76,7 +68,7 @@
   <h4><%= link_to "", user_chow_messages_path(@user.id), class: "fa fa-chevron-left" %></h4>
 <% end %>
 <% content_for(:center_nav) do %>
-  <h3>Pick 3 dates</h3>
+  <h3>Calendar</h3>
 <% end %>
 <% content_for(:right_nav) do %>
   <%= link_to "Submit", user_chow_messages_path(current_user.id), id: "submit" %>

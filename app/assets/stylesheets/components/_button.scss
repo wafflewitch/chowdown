@@ -179,13 +179,19 @@
   width: 45px;
 }
 .date-button {
-  border: 1px rgb(230,230,230) solid;
-  width: 90px;
-  height: 42px;
-
+  border: 1px rgb(210,210,210) solid;
+  width: 140px;
+  height: 59px;
+  padding-top: 18px;
+  color: black;
+  border-radius: 5px;
+  background-color: rgb(240,240,240);
+  margin: 10px;
   &.selected {
-    border: 2px #83C8E2 solid;
-    margin: 0;
+    border: 2px $green solid;
+    color: $green;
+    background-color: white;
+    margin-top: 10px;
     p {
       margin: 0;
     }

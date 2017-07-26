@@ -38,7 +38,9 @@
 <% content_for(:right_nav) do %>
   <%# if @chow.date %>
     <%# link_to "", new_user_chow_calendar_path(current_user.id), class: "fa fa-calendar" %>
-  <%# else %>
-    <%= link_to "", new_user_chow_calendar_path(current_user.id), class: "fa fa-calendar orange" %>
-  <%# end %>
+  <%# elsif @chow.calendar_1_id %>
+    <%= link_to "", user_chow_calendar_path(@chow.calendar_1_id), class: "fa fa-calendar" %>
+  <%# elsif %>
+    <%# link_to "", new_user_chow_calendar_path(current_user.id), class: "fa fa-calendar orange" %>
+  <%#end %>
 <% end %>
