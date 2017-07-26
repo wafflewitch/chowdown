@@ -22,6 +22,7 @@ gem 'bootstrap-slider-rails'
 gem 'flatpickr_rails'
 gem 'simple_form_autocomplete'
 gem 'wicked'
+gem 'postmark-rails'
 
 gem 'letter_opener', group: :development
 

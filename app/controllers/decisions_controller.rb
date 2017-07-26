@@ -11,9 +11,17 @@ class DecisionsController < ApplicationController
         flash[:notice] = "OK, you won't be matched with #{@decision.user2.first_name} for now."
       end
       redirect_to users_path
+      # respond_to do |format|
+      #   format.html render users_path
+      #   format.js
+      # end
     else
       flash[:notice] = "Sorry, something went wrong. Please try again later."
       redirect_to users_path
+      # respond_to do |format|
+      #   format.html render users_path
+      #   format.js
+      # end
     end
   end
 

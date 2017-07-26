@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :check_age
   before_action :set_user, only: [ :show, :edit, :update, :destroy ]
+  helper_method :pref_meat_icon, :pref_fish_icon, :pref_wheat_icon
 
   def new
   end
@@ -16,13 +17,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @preferences = Preference.where(user_id: params[:id])
+
     # @badges = Badge.where(user_id: params[:id])
 
   end
 
   def index
-    @users = User.all
+    @users = get_unviewed(current_user)
+    @user = @users.shuffle.first
     # @all_users_but_current = User.all.where.not("id != ?", current_user.id)
   end
 
@@ -52,6 +54,20 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to root
   end
+
+  def get_unviewed(user)
+    decided_ids = []
+    decided_ids << user.id
+
+    user.decisions.each do |decision|
+      decided_ids << decision.user1.id unless decision.user1 == user
+      decided_ids << decision.user2.id unless decision.user2 == user
+    end
+
+    users = User.all.reject { |u| decided_ids.include?(u.id)}
+    return users
+  end
+
 
   private
 
