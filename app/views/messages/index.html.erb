@@ -36,11 +36,11 @@
   <%= image_tag @recipient.facebook_picture_url, class: "avatar" %><p><%= @recipient.first_name %></p>
 <% end %>
 <% content_for(:right_nav) do %>
-  <%# if @chow.date %>
-    <%# link_to "", new_user_chow_calendar_path(current_user.id), class: "fa fa-calendar" %>
-  <%# elsif @chow.calendar_1_id %>
-    <%= link_to "", user_chow_calendar_path(@chow.calendar_1_id), class: "fa fa-calendar" %>
-  <%# elsif %>
-    <%# link_to "", new_user_chow_calendar_path(current_user.id), class: "fa fa-calendar orange" %>
-  <%#end %>
+  <% if @chow.date %>
+    <i class="fa fa-calendar green" %></i>
+  <% elsif @chow.calendar_1_id %>
+    <%= link_to "", user_chow_calendar_path(@recipient.id, @chow.id, @chow.calendar_1_id), class: "fa fa-calendar orange" %>
+  <% else %>
+    <%= link_to "", new_user_chow_calendar_path(current_user.id), class: "fa fa-calendar" %>
+  <% end %>
 <% end %>

@@ -14,24 +14,7 @@ class CalendarsController < ApplicationController
     dates = params["date_one"].split('  ')
     @calendar.dates = dates
     @calendar.save!
-    if @chow.calendar_1_id
-      @chow.calendar_2_id = @calendar.id
-      @partner_dates = Calendar.find(@chow.calendar_id_1)
-    else
-      @chow.calendar_1_id = @calendar.id
-    end
-
-    if @partner_dates
-      @calendar.dates.each do |date|
-        if date == @partner_dates[0]
-          @chow.date = date
-        elsif date == @partner_dates[1]
-          @chow.date = date
-        elsif date == @partner_dates[2]
-          @chow.date = date
-        end
-      end
-    end
+    set_match_cal
     @chow.save!
   end
 
@@ -70,5 +53,22 @@ class CalendarsController < ApplicationController
 
   def calendar_params
     params.require(:calendar).permit(:user_id, :chow_id, :dates)
+  end
+
+  def set_match_cal
+    if @chow.calendar_1_id
+      @chow.calendar_2_id = @calendar.id
+      @match_cal = Calendar.find(@chow.calendar_1_id)
+    else
+      @chow.calendar_1_id = @calendar.id
+    end
+
+    if @match_cal
+      @match_cal.dates.each do |date|
+        if date == @calendar.dates[0]
+          @chow.date = date
+        end
+      end
+    end
   end
 end

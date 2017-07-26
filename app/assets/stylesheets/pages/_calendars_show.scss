@@ -8,5 +8,9 @@
   }
   p {
     color: gray;
+
+  }
+  a p {
+    color: $brand-color;
   }
 }
