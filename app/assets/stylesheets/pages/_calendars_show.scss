@@ -1,0 +1,22 @@
+.wrapper-calendar {
+  background-color: white;
+  height: 100vh;
+  padding-top: 20px;
+  margin-top: -10px;
+  h3 {
+    color: $brand-color;
+  }
+  p {
+    color: gray;
+    margin: 0 23px;
+  }
+  a p {
+    color: $brand-color;
+    margin-right: 24px;
+    margin-top: 10px;
+    &:hover {
+      text-decoration: underline;
+      color: $brand-color;
+    }
+  }
+}

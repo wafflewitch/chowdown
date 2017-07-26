@@ -1,0 +1,9 @@
+<div class="container-recipe text-center">
+  <% @recipes.each do | recipe |%>
+    <div class="card-recipe " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=recipe.photo %>');">
+      <div class="recipe-title">
+        <h2> <%= recipe.title %></h2>
+      </div>
+    </div>
+  <% end %>
+</div>

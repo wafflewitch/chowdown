@@ -1,25 +1,76 @@
-<div class="container text-center">
-  <%= simple_form_for [@user, @chow, @calendar] do |f| %>
-    <%= f.text_field :dates, as: :array, class: "pickthreedates" %>
-    <%= f.submit "Confirm Dates", class: "btn btn-primary" %>
-  <% end %>
+<div class="wrapper-calendar">
+  <div class="container text-center">
+    <div class="row">
+      <a type="text" value="" class="date-button tomorrow1 btn" ></a>
+      <a type="text" value="" class="date-button tomorrow2 btn" ></a>
+    </div>
+    <div class="row">
+      <a type="text" value="" class="date-button tomorrow3 btn" ></a>
+       <a type="text" value="" class="date-button tomorrow4 btn" ></a>
+    </div>
+    <div class="row">
+      <a type="text" value="" class="date-button tomorrow5 btn" ></a>
+      <a type="text" value="" class="date-button tomorrow6 btn" ></a>
+    </div>
+    <a href='#'><p class="text-right">Next week</p></a>
+    <br>
+    <p>Pick up to 3 dates your match will choose one to chowdown with you</p>
+  </div>
 </div>
 
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(function(){
-      $(".pickthreedates").flatpickr({
-        mode: "multiple",
-        parseDate: true,
+  <script>
+      $(document).ready( function() {
+        var monthNames = ["January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
+
+        var today = new Date();
+        today.setDate(today.getDate()+1);
+        tomorrow1 = today.getDate() + " " + (monthNames[today.getMonth()]) + ', ' + today.getFullYear() + "  ";
+        today.setDate(today.getDate()+1);
+        tomorrow2 = today.getDate() + " " + (monthNames[today.getMonth()]) + ', ' + today.getFullYear() + "  ";
+        today.setDate(today.getDate()+1);
+        tomorrow3 = today.getDate() + " " + (monthNames[today.getMonth()]) + ', ' + today.getFullYear() + "  ";
+        today.setDate(today.getDate()+1);
+        tomorrow4 = today.getDate() + " " + (monthNames[today.getMonth()]) + ', ' + today.getFullYear() + "  ";
+        today.setDate(today.getDate()+1);
+        tomorrow5 = today.getDate() + " " + (monthNames[today.getMonth()]) + ', ' + today.getFullYear() + "  ";
+        today.setDate(today.getDate()+1);
+        tomorrow6 = today.getDate() + " " + (monthNames[today.getMonth()]) + ', ' + today.getFullYear() + "  ";
+
+        $(".tomorrow1").text(tomorrow1);
+        $(".tomorrow2").text(tomorrow2);
+        $(".tomorrow3").text(tomorrow3);
+        $(".tomorrow4").text(tomorrow4);
+        $(".tomorrow5").text(tomorrow5);
+        $(".tomorrow6").text(tomorrow6);
+
+        $('.date-button').on("click", function(e) {
+          $(this).addClass('selected').siblings().removeClass('selected');
+        });
+
+        $('#submit').on("click", function(e) {
+          var dateOne = $('.selected').text();
+          $.ajax({
+            method: "POST",
+            url: "/users/" + "<%= current_user.id %>/" + "chows/" + "<%= @chow.id %>/calendars",
+            data: {
+              date_one: dateOne
+            }
+          });
+        });
       });
-    });
-  <% end %>
+  </script>
 <% end %>
 
 <% content_for(:left_nav) do %>
   <h4><%= link_to "", user_chow_messages_path(@user.id), class: "fa fa-chevron-left" %></h4>
 <% end %>
 <% content_for(:center_nav) do %>
-  <h3>Pick 3 dates</h3>
+  <h3>Calendar</h3>
+<% end %>
+<% content_for(:right_nav) do %>
+  <%= link_to "Submit", user_chow_messages_path(current_user.id), id: "submit" %>
 <% end %>
