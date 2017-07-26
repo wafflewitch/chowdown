@@ -184,7 +184,25 @@
 .edit-icon-size {
   width: 35px;
 }
-
+.date-button {
+  border: 1px rgb(210,210,210) solid;
+  width: 140px;
+  height: 59px;
+  padding-top: 18px;
+  color: black;
+  border-radius: 5px;
+  background-color: rgb(240,240,240);
+  margin: 10px;
+  &.selected {
+    border: 2px $green solid;
+    color: $green;
+    background-color: white;
+    margin-top: 10px;
+    p {
+      margin: 0;
+    }
+  }
+}
 
 .edit-icon-size1 {
   width: 32px;
