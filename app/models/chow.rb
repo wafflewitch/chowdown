@@ -5,6 +5,9 @@ class Chow < ApplicationRecord
   has_one :calendar2, :class_name => "Calendar", :foreign_key =>"calendar_2_id"
   has_many :messages
 
+  after_create :mail_chowdown_active
+
+  # i'm not sure why we need this??
   def get_user(id)
     if self.user_1_id == id
       return self.user2
@@ -12,24 +15,12 @@ class Chow < ApplicationRecord
       return self.user1
     end
   end
-  # after_create :send_request_email
-  # after_update :send_status_accepted
-  # after_update :send_status_rejected
 
+  private
 
-  # def send_request_email
-  #   ChowMailer.chowdown_request(self).deliver_now
-  #   self.status = "pending"
-  #   self.save!
-  # end
-
-  # def send_status_accepted
-  #   ChowMailer.chowdown_accepted(self).deliver_now
-  # end
-
-  # def send_status_rejected
-  #   ChowMailer.chowdown_rejected(self).deliver_now
-  # end
-
+  def mail_chowdown_active
+    ChowMailer.chowdown_active_user1(self).deliver_now
+    ChowMailer.chowdown_active_user2(self).deliver_now
+  end
 
 end

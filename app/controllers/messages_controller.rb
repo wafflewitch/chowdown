@@ -17,7 +17,6 @@ class MessagesController < ApplicationController
       recipient_id = @chow.user_1_id
       @recipient = User.find(recipient_id)
     end
-
     @message = current_user.messages.build
   end
 

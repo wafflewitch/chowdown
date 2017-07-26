@@ -17,8 +17,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  # after_create :send_welcome_email
-  # after_create :set_up_profile
+  after_create :send_welcome_email
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -69,7 +68,8 @@ class User < ApplicationRecord
 
   private
 
-  # def send_welcome_email
-  #     UserMailer.welcome(self).deliver_now
-  # end
+  def send_welcome_email
+      UserMailer.welcome(self).deliver_now
+  end
+
 end
