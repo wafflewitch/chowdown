@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
     if @query
       response = open("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=4&offset=0&query=" + @query,
       {
-        "X-Mashape-Key" => "8Z0O0faAp3msh7K6Hsl5WJqvEqsDp1TJkl7jsnU769KldDYpjS",
+        "X-Mashape-Key" => ENV["MASHAPE_API_KEY"],
         "Accept" => "application/json"
       })
       result_json = JSON.parse(response.read)
