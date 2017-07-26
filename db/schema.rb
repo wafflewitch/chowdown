@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725211601) do
+ActiveRecord::Schema.define(version: 20170726155652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20170725211601) do
     t.index ["chow_id"], name: "index_messages_on_chow_id", using: :btree
   end
 
+  create_table "recipes", force: :cascade do |t|
+    t.string   "title"
+    t.string   "photo"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
     t.string   "encrypted_password",     default: "",   null: false
@@ -92,16 +101,15 @@ ActiveRecord::Schema.define(version: 20170725211601) do
     t.text     "bio"
     t.string   "job"
     t.string   "gender"
-    t.integer  "age_range"
     t.string   "tag1"
     t.string   "tag2"
     t.string   "tag3"
     t.string   "tag4"
     t.string   "tag5"
     t.text     "address"
+    t.integer  "max_distance"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "max_distance"
     t.integer  "min_age"
     t.integer  "max_age"
     t.boolean  "dating"
@@ -118,4 +126,5 @@ ActiveRecord::Schema.define(version: 20170725211601) do
   add_foreign_key "decisions", "users", column: "user_1_id"
   add_foreign_key "decisions", "users", column: "user_2_id"
   add_foreign_key "messages", "chows"
+  add_foreign_key "recipes", "users"
 end
