@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   def index
     @user1_recipes = Recipe.where(user_id: @chow.user_1_id)
     @user2_recipes = Recipe.where(user_id: @chow.user_2_id)
-    @recipes = user1_recipes + user2_recipes
+    @recipes = @user1_recipes + @user2_recipes
   end
 
 private
@@ -25,7 +25,7 @@ private
   end
 
   def set_chow
-    @chow = Chow.find(params[:id])
+    @chow = Chow.find(params[:chow_id])
   end
 
 
