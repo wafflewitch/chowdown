@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/chows/:id/messages/refresh_messages', to: 'messages#refresh_messages'
   get 'chows/show'
+  get 'recipes/search', to: "recipes#search"
   # post 'users/:user_id/chows/:id', to: 'chows#status_accepted', as: "status_accepted"
   # post 'users/:user_id/chows/:id', to: 'chows#status_rejected', as: "status_rejected"
 
