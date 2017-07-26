@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(version: 20170725211601) do
     t.text     "bio"
     t.string   "job"
     t.string   "gender"
-    t.integer  "age_range"
     t.string   "tag1"
     t.string   "tag2"
     t.string   "tag3"
