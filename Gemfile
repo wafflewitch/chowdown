@@ -23,6 +23,7 @@ gem 'flatpickr_rails'
 gem 'simple_form_autocomplete'
 gem 'wicked'
 gem 'postmark-rails'
+gem 'unirest'
 
 gem 'letter_opener', group: :development
 
