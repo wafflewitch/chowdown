@@ -1,11 +1,11 @@
 <br>
-<div class="text-center">
+<div class="container form-style-5">
 <%= simple_form_for @user, method: :put do |f| %>
-  <%= f.label "Set your age" %><br>
+  <%= f.label "Age" %><br>
   <%= f.text_field :age, required: true %><br><br>
-  <%= f.label "Set your address" %><br>
+  <%= f.label "Address" %><br>
   <%= f.text_field :address, required: true %><br><br>
-  <%= f.input :gender, collection: User::GENDER, required: true %><br>
+  <%= f.input :gender, collection: User::GENDER, required: true %>
   <%= f.input :pref_meat, label: "Do you eat meat?", required: true %>
   <%= f.input :pref_fish, label: "Do you eat fish?", required: true %>
   <%= f.input :pref_wheat, label: "Do you eat gluten?", required: true %><br>
@@ -14,10 +14,10 @@
   <%= f.text_field :tag2, class: "tag_autocomplete" %><br>
   <%= f.text_field :tag3, class: "tag_autocomplete" %><br>
   <%= f.text_field :tag4, class: "tag_autocomplete" %><br>
-  <%= f.text_field :tag5, class: "tag_autocomplete" %><br>
-  <%= f.label "Tell us a little about yourself!" %><br>
-  <%= f.text_field :bio %>
-  <%= f.submit "Save", class: "btn btn-primary" %>
+  <%= f.text_field :tag5, class: "tag_autocomplete" %><br><br>
+  <%= f.label "Your Tagline" %><br>
+  <%= f.text_field :bio %><br><hr>
+  <p class="text-center"><%= f.submit "Save", class: "btn btn-save date-button text-center" %></p>
 <% end %>
 </div>
 
@@ -47,7 +47,7 @@
 <% end %>
 
 <% content_for(:left_nav) do %>
-  <p>Welcome, <%= @user.first_name%>!</p>
+  <p>Hi, <%= @user.first_name%>!</p>
   <p>Customize your page</p>
 
 <% end %>
