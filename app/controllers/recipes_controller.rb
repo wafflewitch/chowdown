@@ -21,17 +21,17 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @query = params[:query]
+    @image_url = "https://spoonacular.com/recipeImages/"
+    @query = params[:query] unless params[:query].nil?
+
     if @query
       response = open("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=4&offset=0&query=" + @query,
       {
         "X-Mashape-Key" => ENV["MASHAPE_API_KEY"],
         "Accept" => "application/json"
       })
-      result_json = JSON.parse(response.read)
-      image_url = "https://spoonacular.com/recipeImages/"
-      @title = result_json["results"][0]["title"]
-      @photo = image_url + result_json["results"][0]["image"]
+
+      @result_json = JSON.parse(response.read)
     end
   end
 

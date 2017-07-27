@@ -1,6 +1,17 @@
+<div class="text-center">
 <%= form_tag(recipes_search_path, method: :get) do %>
   <%= text_field_tag :query, params[:query], :placeholder => "hummus" %>
-  <%= submit_tag 'Search Recipes', name: nil, class: "btn btn-primary" %>
+  <%= submit_tag 'Search Recipes', name: nil, class: "btn btn-chow" %>
 <% end %>
-<p><%= @title %></p><br>
-<p><%= image_tag @photo %></p>
+</div>
+<br>
+<form action="<%= link_to  %>"
+<div class="container-recipe">
+  <% @result_json["results"].first(4).each do |recipe| %>
+    <div class="card-recipe-search">
+            <div class="card-recipe" style="background-image: url('<%= "#{@image_url}#{recipe["image"]}" %>');">            </div>
+            <p><%= recipe["title"] %></p>
+    </div>
+  <% end %>
+</div>
+<div class=""></div>
