@@ -1,8 +1,35 @@
-<div class="text-center">
-  <%= link_to "Search Users", users_path, class: "btn btn-primary" %><br><br>
-  <%= link_to "My Chowdowns", user_chows_path(current_user), class: "btn btn-primary" %><br><br>
-  <%= link_to "My Profile", user_path(current_user), class: "btn btn-primary" %><br><br>
-  <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+
+<div class="banner">
+  <div class="banner-content">
+  <div class="container landing-container">
+    <div class="row text-center landing-logo">
+      <h3>Welcome to</h3>
+      <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500691063/logo_symbol1.png" alt="icon of kitchen utensils" class="landing-logo">
+      <img src="https://res.cloudinary.com/wafflewitch/image/upload/v1501166408/chowdown_word.svg" class="landing-logo">
+    </div>
+
+    <div class="row container text-center" id="landing-icons">
+      <div class="col-xs-12">
+      <img class="banner-icon" src="https://res.cloudinary.com/wafflewitch/image/upload/v1501166246/person_green.svg" alt="icon of person">
+      <p>Match with people nearby</p></div>
+
+      <div class="col-xs-12">
+      <img class="banner-icon" src="https://res.cloudinary.com/wafflewitch/image/upload/v1501166246/calendar_green.svg" alt="icon of calendar">
+      <p>Pick a date to cook </p></div>
+
+      <div class="col-xs-12">
+      <img class="banner-icon" src="https://res.cloudinary.com/wafflewitch/image/upload/v1501166246/pot_green.svg" alt="icon of pot">
+      <p>Make a meal together</p></div>
+    </div>
+
+    <div class="row text-center">
+      <%= link_to omniauth_authorize_path(:user, :facebook), class: "btn-margin-top" do %>
+        <button class="loginBtn loginBtn--facebook">Connect with Facebook</button>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
 
 

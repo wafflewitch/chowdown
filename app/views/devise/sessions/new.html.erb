@@ -1,43 +1,19 @@
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '453241278379674',
-      xfbml      : true,
-      version    : 'v2.9'
-    });
-    FB.AppEvents.logPageView();
-  };
+<h2 class="devise-title valign">Log in to Mission Carrefour</h2>
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
+<div class="devise-form z-depth-1 valign">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email, required: false, wrapper_html: { class: 's12' } %>
+      <%= f.input :password, required: false, wrapper_html: { class: 's12' } %>
+    </div>
 
-<div class="container landing-container">
-  <div class="row text-center landing-logo">
-    <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500691063/logo_symbol1_pink.png" alt="icon of kitchen utensils" class="landing-logo">
-    <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500690276/logo_title1.png" alt="chowdown title" class="landing-logo">
-  </div>
+    <div class="form-actions devise-submit">
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <%= f.button :submit, "Log in" %>
+    </div>
+  <% end %>
 
-  <div class="row container text-center" id="landing-icons">
-    <div class="col-lg-3 col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_person.svg" alt="icon of person">
-    <p>make new friends</p></div>
-
-    <div class="col-lg-3 col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_rocket.svg" alt="icon of rocket">
-    <p>try new flavors</p></div>
-
-    <div class="col-lg-3 col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_money.svg" alt="icon of money">
-    <p>save money</p></div>
-
-    <div class="col-lg-3 col-xs-6"><img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500606430/icon_star.svg" alt="icon of star">
-    <p>level up</p></div>
-  </div>
-
-  <div class="row text-center facebook-btn">
-      <%= render "devise/shared/links" %>
+  <div class="devise-links">
+    <%= render "devise/shared/links" %>
   </div>
 </div>

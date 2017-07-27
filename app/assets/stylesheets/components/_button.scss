@@ -4,7 +4,7 @@
 .loginBtn {
   box-sizing: border-box;
   position: relative;
-  /* width: 13em;  - apply for fixed size */
+  /*width: 13em;  - apply for fixed size */
   margin: 0.2em;
   padding: 0 15px 0 46px;
   border: none;
@@ -14,7 +14,6 @@
   border-radius: 0.2em;
   font-size: 16px;
   color: white;
-  margin-top: 40px;
 }
 .loginBtn:before {
   content: "";
