@@ -1,6 +1,7 @@
+
 <%= link_to "logout", destroy_user_session_path, method: :delete %>
 
-<div class="profile-page">
+<div class="profile-page" id="#cards-wrapper">
 
     <div class="card">
         <div class="card-details">
@@ -38,11 +39,11 @@
 
 
 
-        <%= link_to edit_user_registration_path(current_user), {class:"btn button-edit-profile"} do %>
+        <%= link_to edit_user_path(current_user.id), {class:"btn button-edit-profile"} do %>
           <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/edit_icon.png" alt="" class="edit-icon-size">
         <% end %>
 
-        <%= link_to edit_user_registration_path(current_user), {class:"btn button-match-settings"} do %>
+        <%= link_to edit_user_path(current_user.id),   {class:"btn button-match-settings"} do %>
           <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/gear_icon.png" alt="" class="edit-icon-size1">
         <% end %>
       </div>

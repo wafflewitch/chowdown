@@ -1,11 +1,12 @@
 
-<div class="container">
-  <div class="flex-list">
-    <% if @user %>
-      <%= render "user_card", user: @user %>
-      <% else  %>
-      <%= render "no_user", user: @user %>
-    <% end %>
+<div class="container filters">
+  <%= render 'users/match_settings' %>
+</div>
+<div class="container" id="cards-wrapper">
+  <div class="flex-list" id="user_cards">
+
+  <%= render "user_cards", users: @users %>
+
   </div>
 </div>
 
@@ -15,8 +16,12 @@
 <% content_for(:center_nav) do %>
   <%= image_tag "http://res.cloudinary.com/wafflewitch/image/upload/v1500686632/logo_navbar1.png", alt: "title logo", class: "navbar-logo"%>
 <% end %>
+<%# content_for(:right_nav) do %>
+  <%#= link_to "", user_chows_path(current_user.id), class: "fa fa-users" %>
+<%# end %>
 <% content_for(:right_nav) do %>
-  <%= link_to "", user_chows_path(current_user.id), class: "fa fa-users" %>
+  <%#= image_tag "http://res.cloudinary.com/wafflewitch/image/upload/v1500931967/controls_icon.png", alt: "title logo", class: "navbar-logo" %>
+  <input type="image" src="http://res.cloudinary.com/wafflewitch/image/upload/v1500931967/controls_icon.png" name="saveForm" class="navbar-logo" id="match-logo" />
 <% end %>
 
 <% content_for(:after_js) do %>

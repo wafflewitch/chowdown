@@ -22,51 +22,39 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = get_unviewed(current_user)
-    @user = @users.shuffle.first
-    # @all_users_but_current = User.all.where.not("id != ?", current_user.id)
+
+    ids = Decision.where(user1: current_user.id).collect(&:user_2_id)
+
+    if params[:matchingPref] == 'true'
+      @users = User.near([current_user.latitude.to_f, current_user.longitude.to_f], params[:maxDistance], units: :km, :order => 'distance')
+                    .where(dating: params[:datingPref])
+                    .where("min_age >= ?", params[:ageMin].to_i)
+                    .where("max_age <= ?", params[:ageMax].to_i)
+                    .where.not(id: ids)
+      if params[:gender] == "women" || params[:gender] == "men"
+        @users.where(gender_pref: params[:gender])
+      end
+      respond_to do |format|
+        format.html {render users_path}
+        format.js
+      end
+    else
+      @users = User.where.not(id: ids).where.not("id = ?", current_user.id)
+    end
   end
 
   def edit
+    @user = current_user
   end
 
   def update
-    if params["max_distance"]
-      min_age = params["age_range"].split(',')[0].to_i
-      max_age = params["age_range"].split(',')[1].to_i
-      gender_pref = params["gender_pref"]
-      max_distance = params["max_distance"].to_i
-      if params["dating_pref"] == "false"
-        dating = false
-      else
-        dating = true
-      end
-      @user.update(min_age: min_age, max_age: max_age, dating: dating,
-        gender_pref: gender_pref, max_distance: max_distance )
-    else
-      @user.update(user_params)
-      redirect_to user_path(@user)
-    end
+    redirect_to user_path(@user)
   end
 
   def destroy
     @user.destroy
     redirect_to root
   end
-
-  def get_unviewed(user)
-    decided_ids = []
-    decided_ids << user.id
-
-    user.decisions.each do |decision|
-      decided_ids << decision.user1.id unless decision.user1 == user
-      decided_ids << decision.user2.id unless decision.user2 == user
-    end
-
-    users = User.all.reject { |u| decided_ids.include?(u.id)}
-    return users
-  end
-
 
   private
 
