@@ -40,8 +40,11 @@
     <div class="flex-wrapper">
        <input id="distance1" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="15" data-slider-selection="before" data-slider-tooltip="hide">
     </div>
+      <button class="text-center" id="btn-done"> <strong>Done</strong></button>
   </div>
+
 </div>
+
 
 <%= form_tag("/users", method: "get", id: "form-match", remote: true) do %>
   <%= hidden_field_tag(:maxDistance, '15') %>
@@ -100,28 +103,18 @@
 <% end %>
 
 
-<% content_for(:right_nav) do %>
-<button id="btn-done"> Done</button>
-<% end %>
-
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
      $(document).ready(function() {
 
-     //$('#match-form').hide();
-     //$('#btn-done').hide();
+     $('#match-form').hide();
+     $('#btn-done').hide();
 
       $('#match-logo').click(function() {
-       $('.card').addClass('open');
        $('#match-form').toggle();
        $('#btn-done').toggle();
-       $('.card').animate({
-        marginTop: "+373px",
-        });
        });
      });
-
-
 
 
   <% end %>

@@ -53,17 +53,17 @@
 
 .button-chowdowns {
   position: absolute;
-  bottom: 45px;
+  bottom: 0px;
   left: 0px;
   background-color: #51B796;
   color: white;
   font-size: 29px;
   padding-left: 72px;
   padding-right: 73px;
-  height: 52px;
+  height: 72px;
   font-weight: 700;
   color: #F7F7F7;
-  padding-top: 4px;
+  padding-top: 13px;
   opacity: 0.8;
 }
 
@@ -79,6 +79,7 @@
   height: 43px;
   font-weight: 700;
   padding: 5px 70px 0px 70px;
+  margin-right: 17px;
   h6 {
     margin: 0px;
     color: #F7F7F7;
@@ -122,14 +123,10 @@
 
 .chowdown-buttons {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 66%;
-  left: 0px;
-  right: 0px;
-  bottom: 20px;
-  position: absolute;
-  margin-left: 60px;
+  justify-content: center
+}
+
+.chowdown-buttons > a{
 }
 
 // Chat button
@@ -141,23 +138,22 @@
     }
   }
 
-.like-button {
-  background-color: #90f49d;
-  // padding: 10px 59px 10px 62px;
-  border-radius: 50%;
-  padding: 15px;
-  color: white;
-  // border-radius: 0px 0px 4px 0px;
+.action-btn{
+      border-radius: 50%;
+    padding: 25px;
+    position: absolute;
+    bottom: 15px;
+
+}
+.dislike-btn-bg {
+    background-color: #ed7171;
+   left: 50px;
 }
 
-.dislike-button {
-  background-color: #ed7171;
-  // padding: 10px 59px 10px 61px;
-  // border-radius: 0px 0px 0px 4px;
-  border-radius: 50%;
-  padding: 15px;
+.like-btn-bg {
+    background-color: #90f49d;
+   right: 50px;
 }
-
 .glyphicon-remove {
   font-size: 54px;
   color: #F7F7F7;
@@ -181,7 +177,7 @@
 }
 
 .edit-icon-size {
-  width: 35px;
+  width: 22px;
 }
 .date-button {
   border: 1px rgb(210,210,210) solid;
@@ -205,5 +201,21 @@
 
 .edit-icon-size1 {
   width: 32px;
+}
+
+#btn-done {
+  background-color: gray;
+  border-color: none;
+  border: none;
+  padding-right: 154px;
+  padding-left: 154px;
+  bottom: 0px;
+  /* position: absolute; */
+  margin-top: 15px;
+  border-radius: 0 0 4px 4px;
+  height: 42px;
+  background-color: #b94380;
+  color: white;
+  font-size: 21px;
 }
 

@@ -1,0 +1,8 @@
+<div class="chowdown-buttons">
+  <%= link_to  decisions_path(decision: false), method: :post, class: 'action-btn dislike-btn-bg' do %>
+    <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500925213/chow_cutlery.png" alt="" class="foodpref-icons">
+  <% end %>
+  <%= link_to decisions_path(decision: true), method: :post, class: 'action-btn like-btn-bg' do %>
+    <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500925213/chow_cutlery.png" alt="" class="foodpref-icons">
+  <% end %>
+</div>
