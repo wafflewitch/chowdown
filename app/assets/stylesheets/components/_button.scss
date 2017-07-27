@@ -55,7 +55,7 @@
   position: absolute;
   bottom: 0px;
   left: 0px;
-  background-color: #51B796;
+  background-color: $green;
   color: white;
   font-size: 29px;
   padding-left: 72px;
@@ -64,7 +64,7 @@
   font-weight: 700;
   color: #F7F7F7;
   padding-top: 13px;
-  opacity: 0.8;
+  width: 100%;
 }
 
 .button-match-settings {
