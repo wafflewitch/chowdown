@@ -1,27 +1,31 @@
 <div class="buttons">
  <%= link_to "Upcoming", user_chows_path(@user, :query => "active") , {class: "btn-chowi #{('active' if @btn == 'finalized')}" } %>
  <%= link_to "History", user_chows_path(@user, :query => "finished") , {class: "btn-chowi #{('active' if @btn == 'finished')}"} %>
+
 </div>
+
 
 <% if @active == true %>
   <div class="container">
     <div class="flex-list">
       <% @finalized_chows.each do |chow| %>
           <div class="card card-chowi card-finalized">
-            <% @partner = User.find(chow.user_2_id) %>
+            <% if @user == User.find(chow.user_1_id) %>
+              <% @partner = User.find(chow.user_2_id) %>
+            <% else %>
+              <% @partner = User.find(chow.user_1_id) %>
+            <% end %>
             <ul class="list-inline">
               <li><%= image_tag @partner.facebook_picture_url, class: "avatar-large avatar-chowi" %></li>
               <li><h3><%= @partner.first_name %></h3><li>
               <li><div class="card-links">
-                <%= link_to new_user_chow_calendar_path(chow.user1, chow) do %>
+                <%= link_to new_user_chow_calendar_path(@user, chow) do %>
                   <i class="fa fa-calendar-o" aria-hidden="true"></i>
                 <% end %>&nbsp;
-                <%= link_to user_chow_messages_path(chow.user1, chow) do %>
+                <%= link_to user_chow_messages_path(@user, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
-                <% end %>&nbsp;
-                 <%= link_to user_chow_path(chow.user1, chow), method: :delete do %>
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
                 <% end %>
+
               </div></li>
             </ul>
             <h4><%= chow.date %></h4>
@@ -30,19 +34,23 @@
 
         <% @active_chows.each do |chow| %>
           <div class="card card-chowi card-active">
-            <% @partner = User.find(chow.user_2_id) %>
+            <% if @user == User.find(chow.user_1_id) %>
+              <% @partner = User.find(chow.user_2_id) %>
+            <% else %>
+              <% @partner = User.find(chow.user_1_id) %>
+            <% end %>
             <ul class="list-inline">
               <li><%= image_tag @partner.facebook_picture_url, class: "avatar-large avatar-chowi" %></li>
               <li><h3><%= @partner.first_name %></h3></li>
               <li><div class="card-links">
-                <%= link_to new_user_chow_calendar_path(chow.user1, chow) do %>
+                <%= link_to new_user_chow_calendar_path(@user, chow) do %>
                   <i class="fa fa-calendar-" aria-hidden="true"></i>
                 <% end %>&nbsp;
-                <%= link_to user_chow_messages_path(chow.user1, chow) do %>
+                <%= link_to user_chow_messages_path(@user, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
                 <% end %>&nbsp;
-                <%= link_to user_chow_path(chow.user1, chow), method: :delete do %>
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                <%= link_to user_chow_recipes_path(@user, chow) do %>
+                  <i class="fa fa-cutlery" aria-hidden="true"></i>
                 <% end %>
               </div></li>
             </ul>
@@ -59,17 +67,19 @@
     <div class="flex-list">
       <% @finished_chows.each do |chow| %>
         <div class="card card-chowi card-finished">
-          <% @partner = User.find(chow.user_2_id) %>
+            <% if @user == User.find(chow.user_1_id) %>
+              <% @partner = User.find(chow.user_2_id) %>
+            <% else %>
+              <% @partner = User.find(chow.user_1_id) %>
+            <% end %>
           <ul class="list-inline">
             <li><%= image_tag @partner.facebook_picture_url, class: "avatar-large avatar-chowi" %></li>
             <li><h3><%= @partner.first_name %></h3></li>
             <li><div class="card-links">
-              <%= link_to user_chow_messages_path(chow.user1, chow) do %>
+              <%= link_to user_chow_messages_path(@user, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
-              <% end %>&nbsp;
-              <%= link_to user_chow_path(chow.user1, chow), method: :delete do %>
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-              <% end %>&nbsp;
+          <% end %>
+
             </div></li>
           </ul>
         </div>

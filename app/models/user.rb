@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :decisions, :class_name => "Decision", :foreign_key => "user_1_id"
   has_many :secondary_decisions, :class_name => "Decision", :foreign_key => "user_2_id"
   has_many :matches, :class_name => "User", through: :decisions
+  has_many :recipes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :validatable,
   devise :database_authenticatable, :registerable,
@@ -16,8 +17,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  # after_create :send_welcome_email
-  # after_create :set_up_profile
+  after_create :send_welcome_email
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -68,7 +68,8 @@ class User < ApplicationRecord
 
   private
 
-  # def send_welcome_email
-  #     UserMailer.welcome(self).deliver_now
-  # end
+  def send_welcome_email
+      UserMailer.welcome(self).deliver_now
+  end
+
 end
