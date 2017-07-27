@@ -114,8 +114,6 @@ ActiveRecord::Schema.define(version: 20170726155652) do
     t.integer  "max_age"
     t.boolean  "dating"
     t.string   "gender_pref"
-    t.float    "latitude"
-    t.float    "longitude"
     t.boolean  "pref_meat",              default: true
     t.boolean  "pref_fish",              default: true
     t.boolean  "pref_wheat",             default: true

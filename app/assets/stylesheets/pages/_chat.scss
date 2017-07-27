@@ -11,13 +11,14 @@
   min-width: 5px;
   max-width: 150px;
   display: inline-block;
+  color: black;
   &.sent {
     float: right;
-    background-color: $blue;
+    background-color: #F3DFE9;
     margin-bottom: 15px;
   }
   &.received {
-    background-color: gray;
+    background-color: #B8F2E6;
   }
   p {
     margin: 0;
@@ -56,7 +57,10 @@
   height: 50px;
   bottom: 0;
   width: 100%;
-  background-color: gray;
+  background: $navbar-purple;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, $brand-color, $navbar-purple);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, $brand-color, $navbar-purple); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transition: all 0.3s ease;
 }
 #chat-field {
   width: 275px;

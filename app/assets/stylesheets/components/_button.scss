@@ -55,7 +55,7 @@
   position: absolute;
   bottom: 0px;
   left: 0px;
-  background-color: #51B796;
+  background-color: $green;
   color: white;
   font-size: 29px;
   padding-left: 72px;
@@ -66,6 +66,7 @@
   padding-top: 13px;
   opacity: 0.8;
   border-radius: 0 0 4px 4px;
+  width: 100%;
 }
 
 .button-match-settings {
@@ -134,8 +135,9 @@
 .btn-chat {
     border-radius: 10px;
     margin-left: 8px;
+    background-color: #F3DFE9;
     &:hover {
-      background-color: rgb(230,230,230);
+      background-color: #F3DFE9;
     }
   }
 
@@ -230,3 +232,7 @@
   border-color: #adadad;
 }
 
+.btn-save {
+  padding-top: 6px;
+  font-size: 20px;
+}
