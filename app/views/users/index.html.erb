@@ -5,10 +5,19 @@
 <div class="container" id="cards-wrapper">
   <div class="flex-list" id="user_cards">
 
-  <%= render "user_cards", users: @users %>
+  <% if @users %>
+  <% @users.each do |user| %>
 
-  </div>
-</div>
+    <div class="card">
+      <div class="card-details">
+        <%= render "user_card", user: user %>
+        <%= render 'shared/action_buttons' %>
+      </div>
+    </div>
+  <% end  %>
+  <% else  %>
+    <%= render "no_user", user: @user %>
+  <% end %>
 
 <% content_for(:left_nav) do %>
   <%= link_to "", user_path(current_user.id), class: "fa fa-user" %>

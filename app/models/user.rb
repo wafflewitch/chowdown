@@ -45,6 +45,31 @@ class User < ApplicationRecord
     "moroccan", "russian", "spanish", "thai", "turkish",
     "venezuelan", "vietnamese"]
 
+
+  def pref_meat_icon
+    if pref_meat
+      img = "https://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_yes.png"
+    else
+      img = "https://res.cloudinary.com/wafflewitch/image/upload/v1500649828/meat_no.png"
+    end
+  end
+
+  def pref_fish_icon
+    if pref_fish
+      img = "https://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_yes.png"
+    else
+      img = "https://res.cloudinary.com/wafflewitch/image/upload/v1500649828/fish_no.png"
+    end
+  end
+
+  def pref_wheat_icon
+    if pref_wheat
+      img = "https://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_yes.png"
+    else
+      img = "https://res.cloudinary.com/wafflewitch/image/upload/v1500649828/wheat_no.png"
+    end
+  end
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name, :birthday, :location)
@@ -62,6 +87,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
     end
+
 
     return user
   end
