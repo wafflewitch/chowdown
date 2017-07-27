@@ -1,5 +1,5 @@
 
-<div class="profile-page" id="#cards-wrapper">
+<div class="profile-page" id="cards-wrapper">
 
   <div class="card">
     <div class="card-details" style="">
@@ -12,10 +12,10 @@
 
 </div>
 
-<% content_for(:left_nav) do %>
+<% content_for(:right_nav) do %>
   <%= link_to image_tag("http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png", alt: "symbol logo", class: "navbar-logo-icon"), users_path %>
 <% end %>
-<% content_for(:right_nav) do %>
+<% content_for(:left_nav) do %>
   <%= link_to edit_user_path(current_user.id) do %>
   <img src="https://res.cloudinary.com/wafflewitch/image/upload/v1501169765/edit_pencil.png" alt="" class="edit-icon-size">
 <% end %>
