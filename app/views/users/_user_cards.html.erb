@@ -1,0 +1,7 @@
+<% if @users %>
+  <% @users.each do |user| %>
+  <%= render "user_card", user: user %>
+  <% end  %>
+  <% else  %>
+  <%= render "no_user", user: @user %>
+<% end %>
