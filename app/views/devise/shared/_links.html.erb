@@ -1,14 +1,19 @@
-<% if devise_mapping.omniauthable? %>
-  <% resource_class.omniauth_providers.each do |provider| %>
-    <% if OmniAuth::Utils.camelize(provider) == "Facebook" %>
-      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn-margin-top" do %>
-        <button class="btn btn-primary"> <i class="fa fa-facebook"></i>&nbsp; Connect with Facebook</button>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Log in", new_session_path(resource_name) %><br />
+<% end -%>
 
-<% content_for(:center_nav) do %>
-  <%= image_tag "http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png", alt: "symbol logo", class: "navbar-logo" %>
-  <%= image_tag "http://res.cloudinary.com/wafflewitch/image/upload/v1500686632/logo_navbar1.png", alt: "title logo", class: "navbar-logo"%>
-<% end %>
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+<% end -%>

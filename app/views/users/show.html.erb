@@ -1,53 +1,10 @@
 
-<%= link_to "logout", destroy_user_session_path, method: :delete %>
-
 <div class="profile-page" id="#cards-wrapper">
 
-    <div class="card">
-        <div class="card-details">
-            <div class="card-profile-pic">
-                <% image_url = @user.facebook_picture_url || 'http://placehold.it/200x200' %>
-                <%= link_to image_tag(image_url), user_path(@user), class: "avatar-large" %>
-            </div>
-            <div class="food-pref">
-              <div class="food-pref-icon">
-                <%= image_tag pref_meat_icon, class: "foodpref-icons"%>
-              </div>
-              <br>
-                <%= image_tag pref_fish_icon, class: "foodpref-icons"%>
-              <br>
-                <%= image_tag pref_wheat_icon, class: "foodpref-icons"%>
-            </div>
-
-            <h2><%= @user.first_name %>, <%= @user.age %></h2>
-
-
-            <div class="bio">
-            <h5>Bio</h5>
-            <p><%= @user.bio %></p>
-          </div>
-
-          <div class="pref-cook-pref">
-            <h5>I want to cook</h5>
-            <%= render 'shared/food_tags_profile' %>
-          </div>
-
-
-      <div class="prof-page-buttons">
-        <%= link_to "My chowdowns", user_chows_path(@user, :query => "pending"), {class:"btn button-chowdowns"} %>
-
-
-
-
-        <%= link_to edit_user_path(current_user.id), {class:"btn button-edit-profile"} do %>
-          <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/edit_icon.png" alt="" class="edit-icon-size">
-        <% end %>
-
-        <%= link_to edit_user_path(current_user.id),   {class:"btn button-match-settings"} do %>
-          <img src="http://res.cloudinary.com/wafflewitch/image/upload/v1500936537/gear_icon.png" alt="" class="edit-icon-size1">
-        <% end %>
-      </div>
-
+  <div class="card">
+    <div class="card-details" style="">
+      <%= render "user_card", user: current_user %>
+      <%= render 'shared/profile_buttons' %>
     </div>
   </div>
 </div>
@@ -55,9 +12,11 @@
 
 </div>
 
-<% content_for(:center_nav) do %>
-  <%= link_to "", user_path(current_user.id), class: "fa fa-user" %>
+<% content_for(:left_nav) do %>
+  <%= link_to image_tag("http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png", alt: "symbol logo", class: "navbar-logo-icon"), users_path %>
 <% end %>
 <% content_for(:right_nav) do %>
-  <%= link_to image_tag("http://res.cloudinary.com/wafflewitch/image/upload/v1500688079/logo_symbol1.png", alt: "symbol logo", class: "navbar-logo-icon"), users_path %>
+  <%= link_to edit_user_path(current_user.id) do %>
+  <img src="https://res.cloudinary.com/wafflewitch/image/upload/v1501169765/edit_pencil.png" alt="" class="edit-icon-size">
+<% end %>
 <% end %>
