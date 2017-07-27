@@ -11,7 +11,7 @@
   </div>
 
   <div class="match-preference-box2">
-    <h4>Open to dating <input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" class="button-toggle"></h4>
+    <h4>Open to dating <input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" class="button-toggle" class="button-toggle-color"></h4>
   </div>
 
   <div class="match-preference-box3">
@@ -116,6 +116,10 @@
        });
      });
 
+    $('#btn-done').click(function() {
+      $('#match-form').hide();
+      $('#btn-done').hide();
+    });
 
   <% end %>
 <% end %>

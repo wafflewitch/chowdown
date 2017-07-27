@@ -4,26 +4,14 @@
 </div>
 <div class="container" id="cards-wrapper">
   <div class="flex-list" id="user_cards">
-
-  <% if @users %>
-  <% @users.each do |user| %>
-
-    <div class="card">
-      <div class="card-details">
-        <%= render "user_card", user: user %>
-        <%= render 'shared/action_buttons' %>
-      </div>
-    </div>
-  <% end  %>
-  <% else  %>
-    <%= render "no_user", user: @user %>
-  <% end %>
-
+    <%= render "user_cards", users: @users %>
+  </div>
+</div>
 <% content_for(:left_nav) do %>
   <%= link_to "", user_path(current_user.id), class: "fa fa-user" %>
 <% end %>
 <% content_for(:center_nav) do %>
-  <%= image_tag "http://res.cloudinary.com/wafflewitch/image/upload/v1500686632/logo_navbar1.png", alt: "title logo", class: "navbar-logo"%>
+  <%= image_tag "title.svg", alt: "title logo", class: "navbar-logo"%>
 <% end %>
 <%# content_for(:right_nav) do %>
   <%#= link_to "", user_chows_path(current_user.id), class: "fa fa-users" %>
@@ -34,5 +22,12 @@
 <% end %>
 
 <% content_for(:after_js) do %>
+   <script>
+        var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween: 30,
+    });
+    </script>
 <% end %>
 <!--  swiping logic here -->

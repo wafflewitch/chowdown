@@ -24,8 +24,10 @@ gem 'simple_form_autocomplete'
 gem 'wicked'
 gem 'postmark-rails'
 gem 'unirest'
+gem 'swiper-rails'
 
 gem 'letter_opener', group: :development
+
 
 group :development, :test do
   gem 'better_errors'
