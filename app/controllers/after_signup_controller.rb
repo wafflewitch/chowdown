@@ -11,6 +11,7 @@ class AfterSignupController < ApplicationController
     else
       @current_step = @total_steps
     end
+
     render_wizard
   end
 
