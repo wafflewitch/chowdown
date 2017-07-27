@@ -168,7 +168,7 @@
     margin: 0;
   }
   &.selected {
-    border: 2px #83C8E2 solid;
+    border: 2px #b94380 solid;
     margin: 0;
     p {
       margin: 0;
@@ -204,18 +204,26 @@
 }
 
 #btn-done {
-  background-color: gray;
-  border-color: none;
-  border: none;
-  padding-right: 154px;
-  padding-left: 154px;
-  bottom: 0px;
-  /* position: absolute; */
-  margin-top: 15px;
-  border-radius: 0 0 4px 4px;
-  height: 42px;
-  background-color: #b94380;
-  color: white;
-  font-size: 21px;
+      background-color: gray;
+    border-color: none;
+    border: none;
+    padding-right: 154px;
+    padding-left: 154px;
+    bottom: 0px;
+    /* position: absolute; */
+    margin-top: 15px;
+    /* border-radius: 0 0 4px 4px; */
+    height: 42px;
+    background-color: #b94380;
+    color: white;
+    font-size: 21px;
+    left: 0;
+    right: 0;
+    width: 100%
+}
+
+.btn-default {
+  background-color: #e6e6e6;
+  border-color: #adadad;
 }
 

@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def index
-
     ids = Decision.where(user1: current_user.id).collect(&:user_2_id)
 
     if params[:matchingPref] == 'true'

@@ -1,0 +1,19 @@
+ <% if users != [] %>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <% users.each do |user| %>
+            <div class="swiper-slide">
+              <div class="card">
+                <div class="card-details">
+                  <%= render "user_card", user: user %>
+                  <%= render 'shared/action_buttons', user: user  %>
+                </div>
+              </div>
+            </div>
+          <% end  %>
+       </div>
+  </div>
+ <% else  %>
+    <%= render "no_user", user: @user %>
+<% end %>
+

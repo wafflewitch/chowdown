@@ -1,22 +1,19 @@
 .match-preference-box1 {
   position: absolute;
-  top: 69px;
-  left: 23px;
-  width: 95%;
+  left: 0;
+    right: 0;
   height: 389px;
   background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-  margin-top: -2px;
-  margin-left: -13px;
+
   z-index: 10000000;
+  width: 100%;
   h4 {
-    margin-left: 10px;
+    //margin-left: 10px;
     font-weight: 700;
     color: #950952;
+    padding-left: 17px;
   }
 }
-
 
 .flex-wrapper {
   flex-wrap: nowrap;
@@ -32,39 +29,40 @@
 
 .nkm {
   position: absolute;
-  margin: 11px 0px 11px;
+  //margin: 11px 0px 11px;
   right: 45px;
 }
 
 .km {
   position: absolute;
-  margin: 11px 0px 11px;
-  right: 10px;
+  //margin: 11px 0px 11px;
+  right: 19px;
+
 }
 
 .age_position {
   position: absolute;
-  margin: 11px 0px 11px;
+  //margin: 11px 0px 11px;
   right: 10px;
+  right: 15px;
+  padding-top: 10px;
 }
 
 
 .match-preference-box2 {
   position: absolute;
   top: 169px;
-  left: 23px;
-  width: 95%;
+      left: 0;
+    right: 0;
   height: 60px;
   background-color: white;
-  margin-top: -2px;
-  margin-left: -13px;
-  border-top-color: gray;
-  border-bottom-color: gray;
+      width: 100%;
   z-index: 10000000;
   h4{
-    margin-left: 10px;
+    //margin-left: 10px;
     font-weight: 700;
     color: #950952;
+    padding-left: 17px;
   }
 }
 
@@ -78,18 +76,16 @@
 
 .match-preference-box3 {
   position: absolute;
-  top: 237px;
-  left: 23px;
-  width: 95%;
+  top: 237px;    left: 0;
   height: 90px;
   background-color: white;
-  margin-top: -2px;
-  margin-left: -13px;
+      width: 100%;
   z-index: 10000000;
   h4{
-    margin-left: 10px;
+    //margin-left: 10px;
     font-weight: 700;
     color: #950952;
+    padding-left: 17px;
   }
 }
 .slider.slider-horizontal {
@@ -108,6 +104,20 @@
   background-color: #B94380;
 }
 
+.toggle-on.btn {
+  border-radius: 4px;
+}
+
+.toggle-handle {
+  border-radius: 4px;
+}
+
+
+
+#button-toggle-color {
+  background-color: black;
+}
+
 .btn-primary:active:hover {
   background: #7C2D56;
   border-color: white;
@@ -121,17 +131,24 @@
 .match-preference-box4 {
   position: absolute;
   top: 337px;
-  left: 23px;
-  width: 95%;
+    left: 0;
+    right: 0;
   height: 90px;
   background-color: white;
-  margin-top: -2px;
-  margin-left: -13px;
+      width: 100%;
   z-index: 10000000;
   h4{
-    margin-left: 10px;
+    //margin-left: 10px;
     font-weight: 700;
     color: #950952;
+    padding-left: 17px;
+  }
+}
+
+#match-logo {
+  margin-top: 7px;
+  &:focus {
+    outline: none;
   }
 }
 
