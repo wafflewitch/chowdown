@@ -1,28 +1,53 @@
 
-.pref-cook-pref h5 {
-    color: gray;
-    margin-bottom: 2px;
+.food-pref-icon {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 55px;
+}
+.foodpref-icons {
+    width: 53px;
+    height: 53px;
 }
 
-
-
-.tag-design {
-  h5 {
-  background-color: #E5BAD0;
-  border-color: white;
-  padding: 10px;
-  display: inline-block;
-  margin: 3px;
-  margin-right: 0px;
-  margin-left: 0px;
-  border-radius: 13px;
-  color: white;
-  border-top-color: black;
-  font-size: 15px;
-  padding: 10px;
+.pref-cook-pref {
+    margin-top: 10px;
+     padding-left: 10px;
 }
-}
+
 
 .tag-food-type {
       margin-top: 8px;
+}
+
+.tag-design {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.tag-design h5 {
+    background-color: #E5BAD0;
+    border-color: white;
+    padding: 10px;
+    margin: 3px;
+    margin-right: 0px;
+    margin-left: 0px;
+    border-radius: 4px;
+    color: white;
+    border-top-color: black;
+    flex: 1 0 25%;
+    margin: 3px 7px;
+}
+
+.tag-food-type {
+}
+
+.foodpref-icons {
+    width: 53px;
+}
+
+.pref-cook-pref {
+    margin-top: 10px;
+     padding-left: 10px;
 }

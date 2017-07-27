@@ -1,88 +1,124 @@
 
-  <div class="container">
-    <div class="simple-form">
-      <div class="match-preference-box1">
-        <h4>I want to cook with</h4>
-        <div class="flex-wrapper gender-buttons">
-          <button class="gender-button gender-button-noborder"><p>Men</p></button>
-          <button class="gender-button gender-button-noborder"><p>Women</p></button>
-          <button class="gender-button gender-button-noborder"><p>All</p></button>
-        </div>
-      </div>
 
-      <div class="match-preference-box2">
-        <h4>Open to dating <input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" class="button-toggle"></h4>
-      </div>
+<div class="simple-form" id="match-form">
+  <div class="match-preference-box1">
+    <h4>I want to cook with</h4>
+    <div class="flex-wrapper gender-buttons">
+      <button class="gender-button gender-button-noborder" id="men"><p>Men</p></button>
+      <button class="gender-button gender-button-noborder" id="women"><p>Women</p></button>
+      <button class="gender-button gender-button-noborder selected" id="all"><p>All</p></button>
+    </div>
+  </div>
 
-      <div class="match-preference-box3">
-        <div class="flex-wrapper-between">
-          <h4>Age range</h4>
-          <p id="age1Val">18, 55</p>
-        </div>
-        <div class="age-selection">
-        </div>
-        <div class="flex-wrapper">
-          <div class="slider-age">
-              <input id="age1" data-slider-min="18" data-slider-max="55" data-slider-step="1" data-slider-value="[18, 55]" data-slider-selection="after" data-slider-tooltip="hide">
-          </div>
-        </div>
-      </div>
+  <div class="match-preference-box2">
+    <h4>Open to dating <input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" class="button-toggle"></h4>
+  </div>
 
-      <div class="match-preference-box4">
-        <div class="flex-wrapper-between">
-          <h4>Maximum distance</h4>
-          <p id="distance1Val" class="nkm">15</p><p class="km">km</p>
-        </div>
-        <div class="flex-wrapper">
-           <input id="distance1" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="15" data-slider-selection="before" data-slider-tooltip="hide">
-        </div>
+  <div class="match-preference-box3">
+    <div class="flex-wrapper-between">
+      <h4>Age range</h4>
+      <p class="age_position">
+        <span id="age1Val">18</span>
+        <span> - </span>
+        <span id="age2Val">55</span>
+      </p>
+    </div>
+    <div class="age-selection">
+    </div>
+    <div class="flex-wrapper">
+      <div class="slider-age">
+          <input id="age1" data-slider-min="18" data-slider-max="55" data-slider-step="1" data-slider-value="[18, 55]" data-slider-selection="after" data-slider-tooltip="hide">
       </div>
     </div>
+  </div>
+
+  <div class="match-preference-box4">
+    <div class="flex-wrapper-between">
+      <h4>Maximum distance</h4>
+      <p id="distance1Val" class="nkm">15</p><p class="km">km</p>
+    </div>
+    <div class="flex-wrapper">
+       <input id="distance1" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="15" data-slider-selection="before" data-slider-tooltip="hide">
+    </div>
+      <button class="text-center" id="btn-done"> <strong>Done</strong></button>
+  </div>
 
 </div>
+
+
+<%= form_tag("/users", method: "get", id: "form-match", remote: true) do %>
+  <%= hidden_field_tag(:maxDistance, '15') %>
+  <%= hidden_field_tag(:ageMin, '18') %>
+  <%= hidden_field_tag(:ageMax, '55') %>
+  <%= hidden_field_tag(:gender) %>
+   <%= hidden_field_tag(:datingPref) %>
+   <%= hidden_field_tag(:matchingPref, 'true') %>
+<% end %>
 
 <% content_for(:after_js) do %>
   <script>
     $(document).ready( function() {
+      $('#datingPref').val($('.button-toggle').is(':checked'));
+      $('#gender').val('all')
 
-      $('#done').on("click", function(e) {
-        var ageRange = $('#age1Val').text();
-        var genderPref = $('.selected').text();
-        var maxDistance = $('#distance1Val').text();
-        var datingPref = $('.button-toggle').is(':checked');
-        $.ajax({
-          method: "PUT",
-          url: "/users/" + "<%= current_user.id %>",
-          data: {
-            age_range: ageRange,
-            gender_pref: genderPref,
-            max_distance: maxDistance,
-            dating_pref: datingPref
-          }
-        });
-      });
 
       $('#age1').slider();
       $("#age1").on("slide", function(slideEvt) {
-        $("#age1Val").text(slideEvt.value);
+        $("#ageMin").val(slideEvt.value[0]);
+        $("#ageMax").val(slideEvt.value[1]);
+        $("#age1Val").text(slideEvt.value[0]);
+        $("#age2Val").text(slideEvt.value[1]);
       });
 
       $('#distance1').slider();
       $("#distance1").on("slide", function(slideEvt) {
+        $('#maxDistance').val(slideEvt.value);
         $("#distance1Val").text(slideEvt.value);
       });
 
-      $('.gender-button').on("click", function(e) {
+      $('#men').on("click", function(e) {
         $(this).addClass('selected').siblings().removeClass('selected');
+        $('#gender').val('men')
       });
+
+      $('#women').on("click", function(e) {
+        $(this).addClass('selected').siblings().removeClass('selected');
+        $('#gender').val('women')
+      });
+
+      $('#all').on("click", function(e) {
+        $(this).addClass('selected').siblings().removeClass('selected');
+        $('#gender').val('all')
+      });
+       $('.button-toggle').change(function() {
+        $('#datingPref').val($('.button-toggle').is(':checked'));
+      });
+
+    });
+
+    $("#btn-done").click( function() {
+      $('#form-match').submit();
     });
   </script>
 <% end %>
 
 
-<% content_for(:center_nav) do %>
-  <h3>Chowdown settings</h3>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+     $(document).ready(function() {
+
+     $('#match-form').hide();
+     $('#btn-done').hide();
+
+      $('#match-logo').click(function() {
+       $('#match-form').toggle();
+       $('#btn-done').toggle();
+       });
+     });
+
+
+  <% end %>
 <% end %>
-<% content_for(:right_nav) do %>
-  <%= link_to "Done", user_path(@user), id: "done" %>
-<% end %>
+
+
+

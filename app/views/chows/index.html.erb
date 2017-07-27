@@ -78,7 +78,10 @@
             <li><div class="card-links">
               <%= link_to user_chow_messages_path(@user, chow) do %>
                   <i class="fa fa-comment-o" aria-hidden="true"></i>
-          <% end %>
+              <% end %>
+              <%= link_to user_chow_badges_path(@partner, chow) do %>
+                <i class="fa fa-trophy" aria-hidden="true"></i>
+              <% end %>
 
             </div></li>
           </ul>
