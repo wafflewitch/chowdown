@@ -59,12 +59,13 @@
   color: white;
   font-size: 29px;
   padding-left: 72px;
-  padding-right: 73px;
+  padding-right: 69px;
   height: 72px;
   font-weight: 700;
   color: #F7F7F7;
   padding-top: 13px;
   opacity: 0.8;
+  border-radius: 0 0 4px 4px;
 }
 
 .button-match-settings {
@@ -139,20 +140,22 @@
   }
 
 .action-btn{
-      border-radius: 50%;
-    padding: 25px;
+    border-radius: 50%;
+    padding: 19px;
     position: absolute;
     bottom: 15px;
 
 }
 .dislike-btn-bg {
     background-color: #ed7171;
-   left: 50px;
+   left: 69px;
+   box-shadow: 2px 3px 8px 1px rgba(0, 0, 0, 0.26);
 }
 
 .like-btn-bg {
     background-color: #90f49d;
-   right: 50px;
+   right: 69px;
+   box-shadow: 2px 3px 8px 1px rgba(0, 0, 0, 0.26);
 }
 .glyphicon-remove {
   font-size: 54px;
@@ -211,7 +214,7 @@
     padding-left: 154px;
     bottom: 0px;
     /* position: absolute; */
-    margin-top: 15px;
+    margin-top: 32px;
     /* border-radius: 0 0 4px 4px; */
     height: 42px;
     background-color: #b94380;

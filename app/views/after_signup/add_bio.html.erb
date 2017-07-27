@@ -1,8 +1,13 @@
-<div class="text-center">
+<div class="text-center form-signup">
 <%= "Step #{@current_step} of #{@total_steps}" %>
 <%= simple_form_for @user, url: wizard_path do |f| %>
-<%= f.label "Last step! Tell us a little about yourself." %><br>
-<%= f.text_field :bio %>
+<%= f.label "Last step! Tell us a little about yourself." %><br><br>
+<%= f.text_field :bio, input_html: {maxlength: 100}, class: "form-control"  %><br>
 <%= f.submit "Finish!", class: "btn btn-primary" %>
 <% end %>
 </div>
+
+
+<% content_for(:center_nav) do %>
+  <%= image_tag "title.svg", alt: "title logo", class: "navbar-logo"%>
+<% end %>

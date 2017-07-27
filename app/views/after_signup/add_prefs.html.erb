@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text-center form-signup">
 <%= "Step #{@current_step} of #{@total_steps}" %>
 <%= simple_form_for @user, url: wizard_path do |f| %>
 <%= f.input :pref_meat, label: "Do you eat meat?", required: true %>
@@ -7,3 +7,8 @@
 <%= f.submit "Continue", class: "btn btn-primary" %>
 <% end %>
 </div>
+
+
+<% content_for(:center_nav) do %>
+  <%= image_tag "title.svg", alt: "title logo", class: "navbar-logo"%>
+<% end %>
