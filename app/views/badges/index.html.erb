@@ -1,0 +1,24 @@
+<h1>How was your Chowdown</h1>
+<% @chow = Chow.find(params[:chow_id])  %>
+<% if @user == User.find(@chow.user_1_id) %>
+  <% @partner = User.find(@chow.user_2_id) %>
+<% else %>
+  <% @partner = User.find(@chow.user_1_id) %>
+<% end %>
+<div class="container">
+    <% @partner.badges.each do |badge| %>
+      <%= link_to user_chow_badge_path(@partner, @chow, badge, :badge => {:name => badge.name, :category => badge.category}), method: :patch do %>
+        <div class="card-badges">
+          <%= image_tag badge.category, class: "avatar-large" %>
+          <%= badge.name  %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+
+<%= link_to "History", user_chows_path(@user, :query => "finished") , {class: "btn-chowi #{('active' if @btn == 'finished')}"} %>
+
+
+
+
+

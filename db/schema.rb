@@ -107,13 +107,15 @@ ActiveRecord::Schema.define(version: 20170726155652) do
     t.string   "tag4"
     t.string   "tag5"
     t.text     "address"
+    t.integer  "max_distance"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "max_distance"
     t.integer  "min_age"
     t.integer  "max_age"
     t.boolean  "dating"
     t.string   "gender_pref"
+    t.float    "latitude"
+    t.float    "longitude"
     t.boolean  "pref_meat",              default: true
     t.boolean  "pref_fish",              default: true
     t.boolean  "pref_wheat",             default: true

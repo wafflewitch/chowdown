@@ -9,13 +9,15 @@
   position: relative
 }
 .card-details{
-
+  h5 {
+    color: rgb(100, 100, 100);
+  }
 }
 .card-profile-pic {
     background-size: cover !important;
     background-position: center;
     color: white;
-    height: 230px;
+    height: 250px;
     background-position: top;
     border-radius: 4px 4px 0 0;
 }
@@ -30,9 +32,11 @@
 }
 
 .bio h5 {
-    font-style: italic;
-    text-align: center;
+  margin-left: 18px;
+  font-weight: 400;
+  margin-top: 20px;
 }
+
 
 
 
@@ -43,3 +47,4 @@
     .swiper-slide {
 
     }
+
