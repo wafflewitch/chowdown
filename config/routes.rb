@@ -10,8 +10,9 @@ Rails.application.routes.draw do
       resources :recipes, only: [:index]
       resources :messages, only: [ :index, :new, :create ]
       resources :calendars, only: [ :new, :create, :show, :edit, :update ]
+      resources :badges, only: [ :index, :update ]
     end
-    resources :badges, only: [ :new, :create, :index ]
+    resources :badges, only: [ :new, :create ]
   end
 
   resources :decisions

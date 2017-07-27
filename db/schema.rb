@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 20170726155652) do
     t.string   "tag5"
     t.text     "address"
     t.integer  "max_distance"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "min_age"
     t.integer  "max_age"
     t.boolean  "dating"

@@ -1,14 +1,14 @@
 class User < ApplicationRecord
-  has_many :chows, :class_name => "Chow", :foreign_key => "user_1_id"
-  has_many :secondary_chows, :class_name => "Chow", :foreign_key => "user_2_id"
-  has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
-  has_many :secondary_messages, :class_name => "Message", :foreign_key => "recipient_id"
-  has_many :badges
-  has_many :calendars
-  has_many :decisions, :class_name => "Decision", :foreign_key => "user_1_id"
-  has_many :secondary_decisions, :class_name => "Decision", :foreign_key => "user_2_id"
+  has_many :chows, :class_name => "Chow", :foreign_key => "user_1_id", dependent: :destroy
+  has_many :secondary_chows, :class_name => "Chow", :foreign_key => "user_2_id", dependent: :destroy
+  has_many :messages, :class_name => "Message", :foreign_key => "sender_id", dependent: :destroy
+  has_many :secondary_messages, :class_name => "Message", :foreign_key => "recipient_id", dependent: :destroy
+  has_many :badges, :class_name => "Badge", :foreign_key => "user_id", dependent: :destroy
+  has_many :calendars, dependent: :destroy
+  has_many :decisions, :class_name => "Decision", :foreign_key => "user_1_id", dependent: :destroy
+  has_many :secondary_decisions, :class_name => "Decision", :foreign_key => "user_2_id", dependent: :destroy
   has_many :matches, :class_name => "User", through: :decisions
-  has_many :recipes
+  has_many :recipes, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :validatable,
   devise :database_authenticatable, :registerable,
@@ -18,6 +18,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   after_create :send_welcome_email
+  after_create :create_badges
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -96,6 +97,13 @@ class User < ApplicationRecord
 
   def send_welcome_email
       UserMailer.welcome(self).deliver_now
+  end
+
+  def create_badges
+    chef_badge = Badge.create(name: "good food", count: 0, category: "http://res.cloudinary.com/wafflewitch/image/upload/v1501161576/badge_chef_pink.svg", user_id: self.id)
+    music_badge = Badge.create(name: "good music", count: 0, category: "http://res.cloudinary.com/wafflewitch/image/upload/v1501161576/badge_music_pink.svg", user_id: self.id )
+    house_badge = Badge.create(name: "nice place", count: 0, category: "http://res.cloudinary.com/wafflewitch/image/upload/v1501161576/badge_house_pink.svg", user_id: self.id)
+    smiley_badge = Badge.create(name: "lots of fun", count: 0, category: "http://res.cloudinary.com/wafflewitch/image/upload/v1501161576/badge_smiley_pink.svg", user_id: self.id)
   end
 
 end
