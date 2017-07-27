@@ -1,7 +1,7 @@
 <div class="text-center form-signup">
 <%= "Step #{@current_step} of #{@total_steps}" %><br><br>
 <%= simple_form_for @user, url: wizard_path do |f| %>
-  <%= f.input :gender, collection: User::GENDER, required: true, class: "form-control"  %><br>
+  <%= f.input :gender, collection: User::GENDER2, required: true, class: "form-control"  %><br>
   <%= f.submit "Continue", class: "btn btn-primary" %>
 <% end %>
 </div>

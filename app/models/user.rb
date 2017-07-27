@@ -40,7 +40,7 @@ class User < ApplicationRecord
     "Transmasculine",
     "Two-Spirit"]
 
-  GENDER = ["Male", "Female", "Other"]
+  GENDER2 = ["Male", "Female", "Other"]
 
   TAGS = ["american", "british", "cajun", "caribbean", "chinese",
     "filipino", "french", "german", "greek", "indian", "italian",
