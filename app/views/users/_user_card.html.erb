@@ -16,7 +16,7 @@
     <div class="tags">
       <div class="tag-food-type">
         <div class="tag-design text-center">
-          <% if user.tag1 %>
+          <% unless user.tag1.nil? %>
             <h5><%= user.tag1 %></h5>
           <% end %>
           <% unless user.tag2.nil? %>
@@ -28,7 +28,7 @@
           <% unless user.tag4.nil? %>
             <h5><%= user.tag5 %></h5>
           <% end %>
-          <% if user.tag5 %>
+          <% unless user.tag5.nil? %>
             <h5><%= user.tag5 %></h5>
           <% end %>
         </div>

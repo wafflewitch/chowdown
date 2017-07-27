@@ -1,7 +1,11 @@
-<div class="text-center">
-<%= "Step #{@current_step} of #{@total_steps}" %>
+<div class="text-center form-signup">
+<%= "Step #{@current_step} of #{@total_steps}" %><br><br>
 <%= simple_form_for @user, url: wizard_path do |f| %>
-<%= f.input :gender, collection: User::GENDER, required: true %>
-<%= f.submit "Continue", class: "btn btn-primary" %>
+  <%= f.input :gender, collection: User::GENDER, required: true, class: "form-control"  %><br>
+  <%= f.submit "Continue", class: "btn btn-primary" %>
 <% end %>
 </div>
+
+<% content_for(:center_nav) do %>
+  <%= image_tag "title.svg", alt: "title logo", class: "navbar-logo"%>
+<% end %>
