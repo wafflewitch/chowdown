@@ -16,7 +16,10 @@
     <% end %>
 </div>
 
-<%= link_to "History", user_chows_path(@user, :query => "finished") , {class: "btn-chowi #{('active' if @btn == 'finished')}"} %>
+
+<% content_for(:left_nav) do %>
+  <h4><%= link_to "", :back, class: "fa fa-chevron-left" %></h4>
+<% end %>
 
 
 

@@ -7,8 +7,8 @@
 }
 .badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: 23px;
+  right: 23px;
   font-size: 10px;
   color: white;
   display: flex;
@@ -39,14 +39,12 @@
 
 .badges-profile{
   width: 25px;
-}
-
-.badges-container {
-
+  position: absolute;
+  top: -9px;
+  right: -4px;
 }
 
 .medal {
-  height: 50px;
+  position: absolute;
+  height: 65px;
 }
-
-
