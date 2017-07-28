@@ -22,13 +22,17 @@
   }
   p {
     margin: 0;
+    font-size: 17px;
   }
 }
+
 #messages-list {
   position: sticky;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
+
 .message-row {
   padding: .4em 0;
   &:last-child {
@@ -67,6 +71,7 @@
   height: 35px;
   border-radius: 10px;
   border: none;
+  font-size: 17px;
   &:focus {
     outline: none;
   }
