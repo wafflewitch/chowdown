@@ -4,7 +4,20 @@
   text-align: center;
   padding: 7px 0;
   li h3 {
-    margin-right: 73px;
+    margin-right: 114px;
+    font-size: 26px;
+    color: rgb(100,100,100);
+  }
+  li p {
+    display: flex;
+    position: absolute;
+    top: 4px;
+    left: 119px;
+    color: rgb(100,100,100);
+    .fa-calendar {
+      font-size: 15px;
+      padding-right: 3px;
+    }
   }
 }
 
@@ -62,12 +75,35 @@ i{
 
 .fa-comment-o {
   font-size: 46px;
+  opacity: 0.8;
+  display: flex;
+  position: absolute;
+  right: -3px;
+  top: 1px;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
 }
 
 .fa-cutlery {
   font-size: 36px;
+  opacity: 0.8;
+  display: flex;
+  position: absolute;
+  right: 60px;
+  top: 11px;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
 }
 
 .fa-star-o {
   font-size: 40px;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
 }
