@@ -12,9 +12,8 @@ class Decision < ApplicationRecord
   end
 
   def check_match
-    decision = Decision.where(user1: self.user2, user2: self.user1)
-    unless decision.empty?
-      Chow.create(user_1_id: decision.user2.id, user_2_id: decision.user1.id, status: "active")
+    if self.like == true && self.reply == true
+      Chow.create(user_1_id: self.user2.id, user_2_id: self.user1.id, status: "active")
     end
   end
 end

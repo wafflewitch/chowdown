@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   #before_action :check_age
-  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_user, only: [ :show, :edit, :update ]
   helper_method :pref_meat_icon, :pref_fish_icon, :pref_wheat_icon
 
   def new
@@ -50,10 +50,6 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def destroy
-    @user.destroy
-    redirect_to root
-  end
 
   private
 
