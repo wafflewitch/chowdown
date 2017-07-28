@@ -25,6 +25,7 @@ gem 'wicked'
 gem 'postmark-rails'
 gem 'unirest'
 gem 'swiper-rails'
+gem 'faker'
 
 gem 'letter_opener', group: :development
 

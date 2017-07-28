@@ -5,125 +5,104 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'date'
+require 'faker'
+USER_IMG_URL = "https://res.cloudinary.com/wafflewitch/image/upload/v150003873"
+RECIPE_1_IMG = "https://res.cloudinary.com/wafflewitch/image/upload/v1501250492/recipe1.jpg"
+RECIPE_2_IMG = "https://res.cloudinary.com/wafflewitch/image/upload/v1501250492/recipe2.jpg"
+RECIPE_3_IMG = "https://res.cloudinary.com/wafflewitch/image/upload/v1501250492/recipe3.jpg"
+MEN_PICS = ["5/user0.jpg", "5/user1.jpg", "5/user2.jpg", "5/user3.jpg", "5/user4.jpg", "5/user5.jpg", "5/user6.jpg", "5/user7.jpg"]
+WOMEN_PICS = ["5/user8.jpg", "5/user9.jpg", "5/user10.jpg", "5/user11.jpg", "6/user12.jpg", "6/user13.jpg", "6/user14.jpg",
+  "6/user15.jpg", "6/user16.jpg", "7/user17.jpg"]
+AGES = [18, 20, 22, 25, 26, 27, 28, 29, 30, 31, 33, 34, 36, 40, 42, 47, 50, 55]
+BIO_1 = ["I love", "My passions are", "I live for", "Let's chat about", "My favorite things are", "Life is meaningless without"]
+BIO_2 = ["cooking", "sports", "music", "cleaning", "running", "gaming", "Paris", "coding"]
+BIO_3 = ["dogs", "muffins", "nachos", "the 90's", "hiphop", "movies", "anime", "Trump", "being lazy"]
+FOOD_TAGS = ["african", "cajun", "caribbean", "chinese", "ethiopian",
+    "filipino", "french", "german", "greek", "indian",
+    "italian", "japanese", "jewish", "korean", "mediterranean",
+    "mexican", "moroccan", "russian", "spanish", "thai",
+    "turkish", "vietnamese", "southern", "pakistani"]
+DEV_EMAILS = ["louis.salle.phelippes@duke.edu", "mesophie@gmx.ch", "joeyvk@sbcglobal.net"]
+CHOW_STATUS = ["active", "finalized", "finished"]
+men_count = 0
+women_count = 8
+
+8.times do
+  user = User.create!(first_name: Faker::Name.first_name,
+                  last_name: Faker::LordOfTheRings.character,
+                  facebook_picture_url: "#{USER_IMG_URL}#{MEN_PICS[men_count]}",
+                  email: Faker::Internet.email,
+                  password: "coolcat",
+                  age: AGES.sample,
+                  gender: "Male",
+                  address: "5333 Casgrain Ave, Montreal, Quebec",
+                  bio: "#{BIO_1.sample} #{BIO_2.sample} and #{BIO_3.sample}",
+                  pref_meat: [true, false].sample,
+                  pref_fish: [true, false].sample,
+                  pref_wheat: [true, false].sample,
+                  tag1: FOOD_TAGS[0..4].sample,
+                  tag2: FOOD_TAGS[5..9].sample,
+                  tag3: FOOD_TAGS[10..14].sample,
+                  tag4: FOOD_TAGS[15..19].sample,
+                  gender_pref: "All",
+                  max_distance: 30,
+                  min_age: 18,
+                  max_age: 55,
+                  dating: [true, false].sample
+                  )
+      men_count += 1
+      user_2 = User.find(1)
+      chow = Chow.new(user_1_id: user.id, user_2_id: user_2.id, status: CHOW_STATUS.sample)
+      if chow.status == "finalized" || chow.status == "finished"
+        chow.date = Date.new(2017,7,[1, 2, 3, 4, 5, 10, 11, 12, 23, 24, 25, 29, 30, 31].sample)
+      end
+      if chow.save
+        recipe1 = Recipe.new(user_id: user.id, title: "Pizza Margherita", photo: RECIPE_1_IMG)
+        recipe2 = Recipe.new(user_id: user.id, title: "Vegetarian Khow Suey", photo: RECIPE_2_IMG)
+        recipe3 = Recipe.new(user_id: user.id, title: "Beef and Broccoli", photo: RECIPE_3_IMG)
+      end
+end
 
 
 
-user_1 = User.create!(first_name: "Norman",
-                      last_name: "Chomsky",
- facebook_picture_url:"http://www.normanfaitdesvideos.com/wp-content/themes/norman/img/norman1.png",
-                      email: "norman@bg.fr",
-                      password: "password",
-                      age: 25,
-                      gender: "Female",
-                      address: "5333 Casgrain Avenue, Montreal, Quebec",
-                      bio: "I love food more than you.",
-                      pref_meat: true,
-                      pref_fish: true,
-                      pref_wheat: true,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
 
-user_2 = User.create!(first_name: "Flavio",
-                      last_name: "Fabio",
- facebook_picture_url:"https://pbs.twimg.com/profile_images/621025700909350912/TIUKxxW3.jpg",
-                      email: "squeezie@bg.fr",
-                      password: "password",
-                      age: 27,
-                      gender: "Male",
-                      address: "5333 Casgrain Avenue, Montreal, Quebec",
-                      bio: "Hey y'all, let's cook and chill",
-                      pref_meat: false,
-                      pref_fish: false,
-                      pref_wheat: true,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
 
-user_3 = User.create!(first_name: "Steven",
-                      last_name: "Smith",
- facebook_picture_url:"http://www.radiovl.fr/wp-content/uploads/2016/04/Cyprien.jpg",
-                      email: "cyprien@bg.fr",
-                      password: "password",
-                      age: 28,
-                      gender: "Male",
-                      address: "5333 Casgrain Avenue, Montreal, Quebec",
-                      bio: "I want to cook all the things.",
-                      pref_meat: true,
-                      pref_fish: false,
-                      pref_wheat: false,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
+8.times do
+  user = User.create!(first_name: Faker::Name.first_name,
+                  last_name: Faker::LordOfTheRings.character,
+                  facebook_picture_url: "#{USER_IMG_URL}#{WOMEN_PICS[women_count]}",
+                  email: Faker::Internet.email,
+                  password: "coolcat",
+                  age: AGES.sample,
+                  gender: "Female",
+                  address: "5333 Casgrain Ave, Montreal, Quebec",
+                  bio: "#{BIO_1.sample} #{BIO_2.sample} and #{BIO_3.sample}",
+                  pref_meat: [true, false].sample,
+                  pref_fish: [true, false].sample,
+                  pref_wheat: [true, false].sample,
+                  tag1: FOOD_TAGS[0..4].sample,
+                  tag2: FOOD_TAGS[5..9].sample,
+                  tag3: FOOD_TAGS[10..14].sample,
+                  tag4: FOOD_TAGS[15..19].sample,
+                  gender_pref: "All",
+                  max_distance: 30,
+                  min_age: 18,
+                  max_age: 55,
+                  dating: [true, false].sample
+                  )
+      women_count += 1
+      user_2 = User.find(1)
+      chow = Chow.new(user_1_id: user.id, user_2_id: user_2.id, status: CHOW_STATUS.sample)
+      if chow.status == "finalized" || chow.status == "finished"
+        chow.date = Date.new(2017,7,[1, 2, 3, 4, 5, 10, 11, 12, 23, 24, 25, 29, 30, 31].sample)
+      end
+      if chow.save
+        recipe1 = Recipe.new(user_id: user.id, title: "Pizza Margherita", photo: RECIPE_1_IMG)
+        recipe2 = Recipe.new(user_id: user.id, title: "Vegetarian Khow Suey", photo: RECIPE_2_IMG)
+        recipe3 = Recipe.new(user_id: user.id, title: "Beef and Broccoli", photo: RECIPE_3_IMG)
+      end
+end
 
-user_4 = User.create!(first_name: "Alex",
-                      last_name: "McAdams",
- facebook_picture_url:"https://yt3.ggpht.com/-H-K3tE6RIRg/AAAAAAAAAAI/AAAAAAAAAAA/WOlo1lJj6CU/s100-c-k-no-mo-rj-c0xffffff/photo.jpg",
-                      email: "enjoy@bg.fr",
-                      password: "password",
-                      age: 30,
-                      gender: "Other",
-                      address: "5333 Casgrain Avenue, Montreal, Quebec",
-                      bio: "Cooking is my passion.",
-                      pref_meat: false,
-                      pref_fish: true,
-                      pref_wheat: true,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
 
-user_5 = User.create!(first_name: "Seven",
-                      last_name: "Thirty",
- facebook_picture_url:"https://yt3.ggpht.com/-pgP7Zk6FWYw/AAAAAAAAAAI/AAAAAAAAAAA/5vykqiLT1Uw/s100-c-k-no-rj-c0xffffff/photo.jpg",
-                      email: "doc@bg.fr",
-                      password: "password",
-                      age: 31,
-                      gender: "Other",
-                      address: "5333 Casgrain Avenue, Montreal, Quebec",
-                      bio: "I love cooking with new people!",
-                      pref_meat: true,
-                      pref_fish: true,
-                      pref_wheat: false,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
 
-user_6 = User.create!(first_name: "Jamie",
-                      last_name: "Jameson",
- facebook_picture_url:"http://www.normanfaitdesvideos.com/wp-content/themes/norman/img/norman1.png",
-                      email: "jean@bg.fr",
-                      password: "password",
-                      age: 25,
-                      gender: "Other",
-                      address: "5333 Casgrain Avenue, Montreal, Quebec",
-                      bio: "Let's get cooking!",
-                      pref_meat: true,
-                      pref_fish: true,
-                      pref_wheat: true,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
