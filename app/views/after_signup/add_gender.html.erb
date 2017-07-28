@@ -1,10 +1,8 @@
 <div class="text-center form-signup">
-<%= "Step #{@current_step} of #{@total_steps}" %>
-<%= simple_form_for @user, url: wizard_path do |f| %>
-  <%= f.label "Set your gender" %><br>
-  <%= f.input :gender, collection: User::GENDER2, required: true, label: false, class: "form-control"  %>
-  <%= f.submit "Continue", class: "btn btn-primary" %>
-<% end %>
+  <%= simple_form_for @user, url: wizard_path do |f| %>
+    <h4><%= f.input :gender, collection: User::GENDER2, required: true, class: "form-control text-signup"  %></h4><br>
+    <%= f.submit "Continue", class: "btn button-chowdowns button-onboarding" %>
+  <% end %>
 </div>
 
 <% content_for(:center_nav) do %>

@@ -8,7 +8,7 @@ abbr {
 }
 
 .form-control {
-  width: 290px;
+  width: 300px;
   display: inline-block;
   text-align: center;
   border-radius: 6px;
@@ -17,5 +17,9 @@ abbr {
 
 
 .form-signup {
-  padding-top: 150px;
+  padding: 108px 34px;
+  .text-signup {
+    font-weight: 400;
+    padding-bottom: 10px;
+  }
 }

@@ -1,10 +1,10 @@
 <div class="text-center form-signup">
-<%= "Step #{@current_step} of #{@total_steps}" %>
+<h4 class="text-signup">What are your dietary preferences?</h4>
 <%= simple_form_for @user, url: wizard_path do |f| %>
-<%= f.input :pref_meat, label: "Do you eat meat?", required: true %>
-<%= f.input :pref_fish, label: "Do you eat fish?", required: true %>
-<%= f.input :pref_wheat, label: "Do you eat gluten?", required: true %>
-<%= f.submit "Continue", class: "btn btn-primary" %>
+<%= f.input :pref_meat, label: "Meat", required: true %>
+<%= f.input :pref_fish, label: "Fish", required: true %>
+<%= f.input :pref_wheat, label: "Gluten", required: true %>
+<%= f.submit "Continue", class: "btn button-chowdowns button-onboarding" %>
 <% end %>
 </div>
 
