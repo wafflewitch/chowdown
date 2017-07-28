@@ -12,7 +12,7 @@ class DecisionsController < ApplicationController
       @decision = Decision.new()
       @decision.user2 = User.find(params[:user_2_id])
       @decision.user1 = current_user
-       @decision.like = params[:decision]
+      @decision.like = params[:decision]
     else
       @decision.reply = params[:decision]
     end
