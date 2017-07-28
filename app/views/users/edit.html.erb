@@ -10,11 +10,11 @@
   <%= f.input :pref_fish, label: "Do you eat fish?", required: true %>
   <%= f.input :pref_wheat, label: "Do you eat gluten?", required: true %><br>
   <%= f.label "What kind of food are you interested in cooking?" %><br>
-  <%= f.text_field :tag1, class: "tag_autocomplete" %><br>
-  <%= f.text_field :tag2, class: "tag_autocomplete" %><br>
-  <%= f.text_field :tag3, class: "tag_autocomplete" %><br>
-  <%= f.text_field :tag4, class: "tag_autocomplete" %><br>
-  <%= f.text_field :tag5, class: "tag_autocomplete" %><br><br>
+  <%= f.text_field :tag1, class: "tag_autocomplete", placeholder: "mediterranean" %><br>
+  <%= f.text_field :tag2, class: "tag_autocomplete", placeholder: "mexican" %><br>
+  <%= f.text_field :tag3, class: "tag_autocomplete", placeholder: "french" %><br>
+  <%= f.text_field :tag4, class: "tag_autocomplete", placeholder: "japanese" %><br>
+  <%= f.text_field :tag5, class: "tag_autocomplete", placeholder: "american" %><br><br>
   <%= f.label "Your Tagline" %><br>
   <%= f.text_field :bio %><br><hr>
   <p class="text-center"><%= f.submit "Save", class: "btn btn-save date-button text-center" %></p>
