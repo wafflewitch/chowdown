@@ -2,7 +2,7 @@
 <%= "Step #{@current_step} of #{@total_steps}" %>
 <%= simple_form_for @user, url: wizard_path do |f| %>
 <%= f.label "Set your address" %><br>
-<%= f.text_field :address, required: true, class: "form-control"  %><br><br>
+<%= f.text_field :address, required: true, input_html: { rows: 2 }, class: "form-control"  %><br><br>
 <%= f.submit "Continue", class: "btn btn-primary" %>
 <% end %>
 </div>
