@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  #before_action :check_age
   before_action :set_user, only: [ :show, :edit, :update ]
-  helper_method :pref_meat_icon, :pref_fish_icon, :pref_wheat_icon
+  # helper_method :pref_meat_icon, :pref_fish_icon, :pref_wheat_icon
 
   def new
   end
@@ -17,7 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @badges = Badge.where(user_id: params[:id])
+    @user = User.find(params[:id])
+    @badges = Badge.where(user_id: params[:id])
+    @best_badge = @badges.order(count: :desc).first
 
   end
 
@@ -63,6 +64,8 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+
 
   #def check_age
   #  redirect_to after_signup_path(:add_age) if current_user[:age].nil?
