@@ -101,8 +101,12 @@ i{
 }
 
 .fa-star-o {
-  font-size: 40px;
+  font-size: 46px;
   opacity: 0.8;
+  display: flex;
+  position: absolute;
+  right: 60px;
+  top:5px;
   &:hover {
     opacity: 1;
     text-decoration: none;
