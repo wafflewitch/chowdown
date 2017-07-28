@@ -60,10 +60,10 @@
   font-size: 29px;
   padding-left: 72px;
   padding-right: 69px;
-  height: 72px;
+  height: 64px;
   font-weight: 700;
   color: #F7F7F7;
-  padding-top: 13px;
+  padding-top: 11px;
   opacity: 0.8;
   border-radius: 0 0 4px 4px;
   width: 100%;
@@ -142,22 +142,22 @@
   }
 
 .action-btn{
-    border-radius: 50%;
-    padding: 19px;
-    position: absolute;
-    bottom: 15px;
+  border-radius: 50%;
+  padding: 19px;
+  position: absolute;
+  bottom: 15px;
 
 }
 .dislike-btn-bg {
-    background-color: #ed7171;
-   left: 69px;
-   box-shadow: 2px 3px 8px 1px rgba(0, 0, 0, 0.26);
+  background-color: #ed7171;
+  left: 69px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.26);;
 }
 
 .like-btn-bg {
-    background-color: #90f49d;
-   right: 69px;
-   box-shadow: 2px 3px 8px 1px rgba(0, 0, 0, 0.26);
+  background-color: $green;
+  right: 69px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.26);;
 }
 .glyphicon-remove {
   font-size: 54px;

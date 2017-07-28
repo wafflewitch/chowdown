@@ -9,9 +9,9 @@
 
 
 <% content_for(:center_nav) do %>
-  <%= image_tag "title.svg", alt: "title logo", class: "navbar-logo"%>
+  <%= image_tag "chowdown.png", alt: "title logo", class: "navbar-logo"%>
 <% end %>
 
 <% content_for(:after_js) do %>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=#{ENV['GOOGLE_API_SERVER_KEY']}"></script>
 <% end %>
