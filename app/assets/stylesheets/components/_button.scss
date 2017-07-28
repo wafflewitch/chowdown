@@ -64,6 +64,7 @@
   padding-top: 11px;
   border-radius: 0 0 4px 4px;
   width: 100%;
+  overflow: hidden;
   &:hover {
     color: #F7F7F7;
   }
@@ -235,4 +236,10 @@
 .btn-save {
   padding-top: 6px;
   font-size: 20px;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: none;
+    border-color: none;
 }
