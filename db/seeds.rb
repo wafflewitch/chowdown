@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'date'
+require 'faker'
 
 URL = "https://res.cloudinary.com/wafflewitch/image/upload/v1500038735/user"
 
@@ -25,6 +27,9 @@ TAGS = ["african", "cajun", "caribbean", "chinese", "ethiopian",
     "mexican", "moroccan", "russian", "spanish", "thai",
     "turkish", "vietnamese", "southern", "pakistani"]
 
+DEV_EMAILS = ["jdpruitt@bama.ua.edu", "louis.salle.phelippes@duke.edu", "mesophie@gmx.ch", "joeyvk@sbcglobal.net"]
+
+CHOW_STATUS = ["active", "finalized", "finished"]
 
 men_count = 0
 women_count = 8
@@ -49,6 +54,11 @@ MEN_PICS.count.times do
                       tag5: TAGS[20..23].sample,
                       gender_pref: "All",
                       )
-  men_count += 1
+    if user.save
+      men_count += 1
+      user_2 = User.where(email: DEV_EMAILS.sample)
+      chow = Chow.new(user_1_id: user.id, user_2_id: user_2.id, status: CHOW_STATUS.sample)
+      if chow.status == "finalized" || chow.status == "finished"
+        chow.date = Date.new(2017,7,((1..31).sample))
 end
 
