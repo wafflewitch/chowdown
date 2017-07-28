@@ -6,124 +6,49 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+URL = "https://res.cloudinary.com/wafflewitch/image/upload/v1500038735/user"
+
+MEN_PICS = ["0.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg"]
+
+WOMEN_PICS = ["8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg",
+  "15.jpg", "16.jpg", "17.jpg"]
+
+BIO_1 = ["I love", "My passions are", "I live for", "Let's chat about"]
+
+BIO_2 = ["cooking", "sports", "music", "cleaning", "running", "gaming", "Paris", "coding"]
+
+BIO_3 = ["dogs", "muffins", "nachos", "the 90's", "hiphop", "movies", "anime", "Trump", "being lazy"]
+
+TAGS = ["african", "cajun", "caribbean", "chinese", "ethiopian",
+    "filipino", "french", "german", "greek", "indian",
+    "italian", "japanese", "jewish", "korean", "mediterranean",
+    "mexican", "moroccan", "russian", "spanish", "thai",
+    "turkish", "vietnamese", "southern", "pakistani"]
 
 
-user_1 = User.create!(first_name: "Norman",
-                      last_name: "Chomsky",
- facebook_picture_url:"http://www.normanfaitdesvideos.com/wp-content/themes/norman/img/norman1.png",
-                      email: "norman@bg.fr",
-                      password: "password",
-                      age: 25,
-                      gender: "Female",
-                      address: "5333 Cagrain Avenue, Montreal, Quebec",
-                      bio: "I love food more than you.",
-                      pref_meat: true,
-                      pref_fish: true,
-                      pref_wheat: true,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
+men_count = 0
+women_count = 8
 
-user_2 = User.create!(first_name: "Flavio",
-                      last_name: "Fabio",
- facebook_picture_url:"https://pbs.twimg.com/profile_images/621025700909350912/TIUKxxW3.jpg",
-                      email: "squeezie@bg.fr",
-                      password: "password",
-                      age: 27,
+MEN_PICS.count.times do
+  user = User.create!(first_name: Faker::Name.first_name,
+                      last_name: Faker::Name.last_name,
+                      facebook_picture_url: "#{URL}#{MEN_PICS[men_count]}",
+                      email: Faker::Internet.email,
+                      password: "coolcat",
+                      age: (18..55).sample,
                       gender: "Male",
-                      address: "5333 Cagrain Avenue, Montreal, Quebec",
-                      bio: "Hey y'all, let's cook and chill",
-                      pref_meat: false,
-                      pref_fish: false,
-                      pref_wheat: true,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
+                      address: "5333 Casgrain Avenue, Montreal, Quebec",
+                      bio: "#{BIO_1.sample} #{BIO_2.sample} and #{BIO_3.sample}",
+                      pref_meat: [true, false].sample,
+                      pref_fish: [true, false].sample,
+                      pref_wheat: [true, false].sample,
+                      tag1: TAGS[0..4].sample,
+                      tag2: TAGS[5..9].sample,
+                      tag3: TAGS[10..14].sample,
+                      tag4: TAGS[15..19].sample,
+                      tag5: TAGS[20..23].sample,
+                      gender_pref: "All",
                       )
+  men_count += 1
+end
 
-user_3 = User.create!(first_name: "Steven",
-                      last_name: "Smith",
- facebook_picture_url:"http://www.radiovl.fr/wp-content/uploads/2016/04/Cyprien.jpg",
-                      email: "cyprien@bg.fr",
-                      password: "password",
-                      age: 28,
-                      gender: "Male",
-                      address: "5333 Cagrain Avenue, Montreal, Quebec",
-                      bio: "I want to cook all the things.",
-                      pref_meat: true,
-                      pref_fish: false,
-                      pref_wheat: false,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
-
-user_4 = User.create!(first_name: "Alex",
-                      last_name: "McAdams",
- facebook_picture_url:"https://yt3.ggpht.com/-H-K3tE6RIRg/AAAAAAAAAAI/AAAAAAAAAAA/WOlo1lJj6CU/s100-c-k-no-mo-rj-c0xffffff/photo.jpg",
-                      email: "enjoy@bg.fr",
-                      password: "password",
-                      age: 30,
-                      gender: "Other",
-                      address: "5333 Cagrain Avenue, Montreal, Quebec",
-                      bio: "Cooking is my passion.",
-                      pref_meat: false,
-                      pref_fish: true,
-                      pref_wheat: true,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
-
-user_5 = User.create!(first_name: "Seven",
-                      last_name: "Thirty",
- facebook_picture_url:"https://yt3.ggpht.com/-pgP7Zk6FWYw/AAAAAAAAAAI/AAAAAAAAAAA/5vykqiLT1Uw/s100-c-k-no-rj-c0xffffff/photo.jpg",
-                      email: "doc@bg.fr",
-                      password: "password",
-                      age: 31,
-                      gender: "Other",
-                      address: "5333 Cagrain Avenue, Montreal, Quebec",
-                      bio: "I love cooking with new people!",
-                      pref_meat: true,
-                      pref_fish: true,
-                      pref_wheat: false,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
-
-user_6 = User.create!(first_name: "Jamie",
-                      last_name: "Jameson",
- facebook_picture_url:"http://www.normanfaitdesvideos.com/wp-content/themes/norman/img/norman1.png",
-                      email: "jean@bg.fr",
-                      password: "password",
-                      age: 25,
-                      gender: "Other",
-                      address: "5333 Cagrain Avenue, Montreal, Quebec",
-                      bio: "Let's get cooking!",
-                      pref_meat: true,
-                      pref_fish: true,
-                      pref_wheat: true,
-                      tag1: "indian",
-                      tag2: "japanese",
-                      tag3: "greek",
-                      tag4: "cajun",
-                      tag5: "french",
-                      gender_pref: "all"
-                      )
