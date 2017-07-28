@@ -70,6 +70,7 @@
   font-weight: 700;
   font-size: 27px;
   border: #258C72 1px solid;
+  overflow: hidden;
   &:hover {
     color: #F7F7F7;
   }
@@ -241,4 +242,10 @@
 .btn-save {
   padding-top: 6px;
   font-size: 20px;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: none;
+    border-color: none;
 }
