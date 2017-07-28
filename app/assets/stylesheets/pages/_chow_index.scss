@@ -2,14 +2,30 @@
   position: relative;
   height: auto;
   text-align: center;
-  padding: 7px 0;
+  padding: 7px 0px;
   li h3 {
-    margin-right: 73px;
+    margin-right: 105px;
+    margin-left: 30px;
+    font-size: 26px;
+    color: rgb(100,100,100);
+  }
+  li p {
+    display: flex;
+    position: absolute;
+    top: 1px;
+    left: 119px;
+    color: rgb(100,100,100);
+    .fa.fa-calendar {
+      font-size: 15px;
+      padding-right: 3px;
+      margin: 3px;
+    }
   }
 }
 
 .card-finalized {
   background-color: #F3DFE9;
+  padding: 10px 0px 10px 25px;
 }
 
 .card-links {
@@ -62,12 +78,39 @@ i{
 
 .fa-comment-o {
   font-size: 46px;
+  opacity: 0.8;
+  display: flex;
+  position: absolute;
+  right: -3px;
+  top: 1px;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
 }
 
 .fa-cutlery {
   font-size: 36px;
+  opacity: 0.8;
+  display: flex;
+  position: absolute;
+  right: 60px;
+  top: 11px;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
 }
 
 .fa-star-o {
-  font-size: 40px;
+  font-size: 46px;
+  opacity: 0.8;
+  display: flex;
+  position: absolute;
+  right: 60px;
+  top:5px;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
 }

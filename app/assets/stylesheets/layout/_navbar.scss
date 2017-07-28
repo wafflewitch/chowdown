@@ -56,9 +56,15 @@
 .navbar-logo {
   height: 27px;
   width: auto;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .navbar-logo-icon {
   height: 30px;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .glyphicon {
   width: auto;
@@ -66,6 +72,9 @@
 
 .glyphicon-arrow-left {
   margin-left: 0px;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .glyphicon-log-out {
@@ -73,17 +82,16 @@
 }
 .fa-user {
   font-size: 30px;
-}
-.fa-users {
-  font-size: 25px;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .fa-calendar {
   font-size: 30px;
-  color: #FCCA46;
+  &:hover {
+    opacity: 0.7;
+  }
   &.orange {
     color: #FCCA46;
-  }
-  &.green {
-    color: $green;
   }
 }

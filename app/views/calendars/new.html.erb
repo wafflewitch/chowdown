@@ -12,7 +12,6 @@
       <a type="text" value="" class="date-button tomorrow5 btn" ></a>
       <a type="text" value="" class="date-button tomorrow6 btn" ></a>
     </div>
-    <a href='#'><p class="text-right">Next week</p></a>
     <br>
     <p>Pick up to 3 dates. Your match will choose one to chowdown with you</p>
   </div>
@@ -66,7 +65,7 @@
 <% end %>
 
 <% content_for(:left_nav) do %>
-  <h4><%= link_to "", user_chow_messages_path(@user.id), class: "fa fa-chevron-left" %></h4>
+  <h4><%= link_to "", :back, class: "fa fa-chevron-left" %></h4>
 <% end %>
 <% content_for(:center_nav) do %>
   <h3>Calendar</h3>

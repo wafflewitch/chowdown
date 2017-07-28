@@ -1,5 +1,11 @@
 <div class="card-profile-pic" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('<%= user.facebook_picture_url %>');"></div>
-
+<% unless @best_badge.nil? %>
+  <% if @best_badge[:level] && @best_badge[:level] >= 1 %>
+    <div class="badge">
+      <%= render 'shared/profile_badges' %>
+    </div>
+  <% end %>
+<% end %>
 <h2><%= user.first_name %>, <%= user.age %></h2>
 <div class="bio">
   <h5><%= user.bio %></h5>
@@ -14,24 +20,25 @@
   <!-- <h5>I want to cook...</h5> -->
   <div class="tag-food-type">
     <div class="tag-design text-center">
-      <% unless user.tag1 == '' %>
+      <% unless user.tag1.blank? %>
         <h5><%= user.tag1 %></h5>
       <% end %>
-      <% unless user.tag2 == '' %>
+      <% unless user.tag2.blank? %>
         <h5><%= user.tag2 %></h5>
       <% end %>
-      <% unless user.tag3 == '' %>
+      <% unless user.tag3.blank? %>
         <h5><%= user.tag3 %></h5>
       <% end %>
-      <% unless user.tag4 == '' %>
+      <% unless user.tag4.blank? %>
         <h5><%= user.tag4 %></h5>
       <% end %>
-      <% unless user.tag5 == '' %>
+      <% unless user.tag5.blank? %>
         <h5><%= user.tag5 %></h5>
       <% end %>
     </div>
   </div>
 </div>
+
 
 
 

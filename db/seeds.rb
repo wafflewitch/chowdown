@@ -72,4 +72,3 @@ MEN_PICS.count.times do
         recipe2 = Recipe.new(user_id: user.id, title: "Vegetarian Khow Suey", photo: RECIPE_2_IMG)
         recipe3 = Recipe.new(user_id: user.id, title: "Beef and Broccoli", photo: RECIPE_3_IMG)
 end
-

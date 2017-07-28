@@ -1,38 +1,28 @@
 <div class="wrapper-calendar">
   <div class="container text-center">
+
   <%= image_tag @user.facebook_picture_url, class: "avatar-large" %>
-  <h3><%= @user.first_name %>'s availability</h3>
-  <hr>
-  <p>Pick a date and confirm your Chowdown</p>
-  <br>
-    <div class="row">
-      <div class="xs-col-12">
-        <a type="text" value="" class="date-button tomorrow1 btn" ><%= @calendar.dates[0].to_time.strftime('%e %B, %Y') %></a>
-      </div>
-      <div class="xs-col-12">
-        <a type="text" value="" class="date-button tomorrow2 btn" ><%= @calendar.dates[1].to_time.strftime('%e %B, %Y') %></a>
-      </div>
-      <div class="xs-col-12">
-        <a type="text" value="" class="date-button tomorrow3 btn" ><%= @calendar.dates[2].to_time.strftime('%e %B, %Y') %></a>
-      </div>
-    </div>
-    <br>
+  <div id="calendar">
+     <%= render 'calendar', calendar: @calendar, user: @user, completed: @completed %>
   </div>
+
 </div>
 
 <% content_for(:after_js) do %>
   <script>
     $(document).ready( function() {
-
       $('.date-button').on("click", function(e) {
         $(this).addClass('selected').siblings().removeClass('selected');
       });
 
-      $('#submit').on("click", function(e) {
-        var dateOne = $('.selected').text();
+      $('#submit-calendar1').on("click", function(e) {
+        var dateOne = "";
+        $('.selected').each(function(){
+          dateOne += $(this).text() + ';';
+        })
         $.ajax({
-          method: "POST",
-          url: "/users/" + "<%= current_user.id %>/" + "chows/" + "<%= @chow.id %>/calendars",
+          type: "POST",
+          url: "/users/" + <%= current_user.id %> + "/chows/" + <%= @chow.id %> + "/calendars",
           data: {
             date_one: dateOne
           }
@@ -45,6 +35,4 @@
 <% content_for(:left_nav) do %>
   <h4><%= link_to "", user_chow_messages_path(@user.id), class: "fa fa-chevron-left" %></h4>
 <% end %>
-<% content_for(:right_nav) do %>
-  <%= link_to "Confirm", user_chow_messages_path(current_user.id), id: "submit" %>
-<% end %>
+
