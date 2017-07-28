@@ -16,12 +16,7 @@ function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
 
-  $('#user_address').trigger('blur').val(components.address);
-  $('#flat_zip_code').val(components.zip_code);
-  $('#flat_city').val(components.city);
-  if (components.country_code) {
-    $('#flat_country').val(components.country_code);
-  }
+  $('#user_address').trigger('blur').val(components.address + ", " + components.zip_code + ", " + components.city);
 }
 
 function getAddressComponents(place) {

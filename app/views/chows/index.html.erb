@@ -17,10 +17,10 @@
             <% end %>
             <ul class="list-inline">
               <li><%= image_tag @partner.facebook_picture_url, class: "avatar-large avatar-chowi" %></li>&nbsp;
-              <li><h3><%= @partner.first_name %></h3><li>
-              <li><p><i class="fa fa-calendar"></i><%= chow.date.to_time.strftime('%B %e, %Y') %></p></li>
+              <li><h3 class="finalized-h3"><%= @partner.first_name %></h3><li>
+              <li><p><i class="fa fa-calendar"></i><%= chow.date.to_time.strftime('%B %e, %Y') unless chow.date.nil? %></p></li>
               <li><div class="card-links">
-                <%= link_to new_user_chow_calendar_path(@user, chow) do %>
+                <%= link_to user_chow_recipes_path(@user, chow) do %>
                   <i class="fa fa-cutlery" aria-hidden="true"></i>
                 <% end %>&nbsp;
                 <%= link_to user_chow_messages_path(@user, chow) do %>
@@ -73,12 +73,11 @@
             <li><h3><%= @partner.first_name %></h3></li>
             <li><div class="card-links">
               <%= link_to user_chow_messages_path(@user, chow) do %>
-                  <i class="fa fa-comment-o" aria-hidden="true"></i>
+                <i class="fa fa-comment-o" aria-hidden="true"></i>
               <% end %>&nbsp;
               <%= link_to user_chow_badges_path(@partner, chow) do %>
                 <i class="fa fa-star-o" aria-hidden="true"></i>
               <% end %>
-
             </div></li>
           </ul>
         </div>
