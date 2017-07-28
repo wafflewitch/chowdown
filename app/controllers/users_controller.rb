@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @badges = Badge.where(user_id: params[:id])
-    @best_badge = @badges.order(count: :desc).first
+    @best_badge = @badges.order(level: :desc).first
 
   end
 

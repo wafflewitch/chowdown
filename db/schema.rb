@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727234328) do
+ActiveRecord::Schema.define(version: 20170728165358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "badges", force: :cascade do |t|
     t.string   "name"
-    t.integer  "count"
     t.string   "category"
     t.integer  "level"
     t.integer  "user_id"
@@ -108,9 +107,9 @@ ActiveRecord::Schema.define(version: 20170727234328) do
     t.string   "tag4"
     t.string   "tag5"
     t.text     "address"
+    t.integer  "max_distance"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "max_distance"
     t.integer  "min_age"
     t.integer  "max_age"
     t.boolean  "dating"

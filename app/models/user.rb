@@ -102,10 +102,19 @@ class User < ApplicationRecord
   # end
 
   def create_badges
-    chef_badge = Badge.create(name: "good food", count: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_chef_pink2.png", user_id: self.id)
-    music_badge = Badge.create(name: "good music", count: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_music_pink2.png", user_id: self.id )
-    house_badge = Badge.create(name: "nice place", count: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_house_pink2.png", user_id: self.id)
-    smiley_badge = Badge.create(name: "lots of fun", count: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_smiley_pink2.png", user_id: self.id)
+
+    chef_badge = Badge.create(name: "good food", level: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_chef_pink2.png", user_id: self.id)
+    chef_badge[:level] = 0
+    chef_badge.save
+    music_badge = Badge.create(name: "good music", level: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_music_pink2.png", user_id: self.id )
+    music_badge[:level] = 0
+    music_badge.save
+    house_badge = Badge.create(name: "nice place", level: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_house_pink2.png", user_id: self.id)
+    house_badge[:level] = 0
+    house_badge.save
+    smiley_badge = Badge.create(name: "lots of fun", level: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_smiley_pink2.png", user_id: self.id)
+    smiley_badge[:level] = 0
+    smiley_badge.save
   end
 
 end
