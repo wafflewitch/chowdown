@@ -28,59 +28,60 @@ CHOW_STATUS = ["active", "finalized", "finished"]
 men_count = 0
 women_count = 8
 
-
-8.times do
-  user = User.create!(first_name: Faker::Name.first_name,
-                  last_name: Faker::LordOfTheRings.character,
-                  facebook_picture_url: "#{USER_IMG_URL}#{MEN_PICS[men_count]}",
-                  email: Faker::Internet.email,
-                  password: "coolcat",
-                  age: AGES.sample,
-                  gender: "Male",
-                  address: "5333 Casgrain Ave, Montreal, Quebec",
-                  bio: "#{BIO_1.sample} #{BIO_2.sample} and #{BIO_3.sample}",
-                  pref_meat: [true, false].sample,
-                  pref_fish: [true, false].sample,
-                  pref_wheat: [true, false].sample,
-                  tag1: FOOD_TAGS[0..4].sample,
-                  tag2: FOOD_TAGS[5..9].sample,
-                  tag3: FOOD_TAGS[10..14].sample,
-                  tag4: FOOD_TAGS[15..19].sample,
-                  gender_pref: "All",
-                  max_distance: 30,
-                  min_age: 18,
-                  max_age: 55,
-                  dating: [true, false].sample
-                  )
-      men_count += 1
-end
-
+# 8.times do
+#   user = User.create!(first_name: Faker::Name.first_name,
+#                   last_name: Faker::LordOfTheRings.character,
+#                   facebook_picture_url: "#{USER_IMG_URL}#{MEN_PICS[men_count]}",
+#                   email: Faker::Internet.email,
+#                   password: "coolcat",
+#                   age: AGES.sample,
+#                   gender: "Male",
+#                   address: "5333 Casgrain Ave, Montreal, Quebec",
+#                   bio: "#{BIO_1.sample} #{BIO_2.sample} and #{BIO_3.sample}",
+#                   pref_meat: [true, false].sample,
+#                   pref_fish: [true, false].sample,
+#                   pref_wheat: [true, false].sample,
+#                   tag1: FOOD_TAGS[0..4].sample,
+#                   tag2: FOOD_TAGS[5..9].sample,
+#                   tag3: FOOD_TAGS[10..14].sample,
+#                   tag4: FOOD_TAGS[15..19].sample,
+#                   gender_pref: "All",
+#                   max_distance: 30,
+#                   min_age: 18,
+#                   max_age: 55,
+#                   dating: [true, false].sample
+#                   )
+#       men_count += 1
+# end
 
 
 
 
-8.times do
-  user = User.create!(first_name: Faker::Name.first_name,
-                  last_name: Faker::LordOfTheRings.character,
-                  facebook_picture_url: "#{USER_IMG_URL}#{WOMEN_PICS[women_count]}",
-                  email: Faker::Internet.email,
-                  password: "coolcat",
-                  age: AGES.sample,
-                  gender: "Female",
-                  address: "5333 Casgrain Ave, Montreal, Quebec",
-                  bio: "#{BIO_1.sample} #{BIO_2.sample} and #{BIO_3.sample}",
-                  pref_meat: [true, false].sample,
-                  pref_fish: [true, false].sample,
-                  pref_wheat: [true, false].sample,
-                  tag1: FOOD_TAGS[0..4].sample,
-                  tag2: FOOD_TAGS[5..9].sample,
-                  tag3: FOOD_TAGS[10..14].sample,
-                  tag4: FOOD_TAGS[15..19].sample,
-                  gender_pref: "All",
-                  max_distance: 30,
-                  min_age: 18,
-                  max_age: 55,
-                  dating: [true, false].sample
-                  )
-      women_count += 1
-end
+
+# 8.times do
+#   user = User.create!(first_name: Faker::Name.first_name,
+#                   last_name: Faker::LordOfTheRings.character,
+#                   facebook_picture_url: "#{USER_IMG_URL}#{WOMEN_PICS[women_count]}",
+#                   email: Faker::Internet.email,
+#                   password: "coolcat",
+#                   age: AGES.sample,
+#                   gender: "Female",
+#                   address: "5333 Casgrain Ave, Montreal, Quebec",
+#                   bio: "#{BIO_1.sample} #{BIO_2.sample} and #{BIO_3.sample}",
+#                   pref_meat: [true, false].sample,
+#                   pref_fish: [true, false].sample,
+#                   pref_wheat: [true, false].sample,
+#                   tag1: FOOD_TAGS[0..4].sample,
+#                   tag2: FOOD_TAGS[5..9].sample,
+#                   tag3: FOOD_TAGS[10..14].sample,
+#                   tag4: FOOD_TAGS[15..19].sample,
+#                   gender_pref: "All",
+#                   max_distance: 30,
+#                   min_age: 18,
+#                   max_age: 55,
+#                   dating: [true, false].sample
+#                   )
+#       women_count += 1
+# end
+
+recipe1 = Recipe.create!(user_id: 28, name: "Pizza Margherita", category: RECIPE_1_IMG)
