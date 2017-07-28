@@ -26,7 +26,7 @@ class BadgesController < ApplicationController
   def update
     @badge[:count] += 1
     @badge.save!
-    redirect_to user_path(@user)
+    redirect_to user_chows_path(@user, :query => "finished")
   end
 
   def destroy

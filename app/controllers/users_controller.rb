@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @badges = Badge.where(user_id: params[:id])
+    @user = User.find(params[:id])
+    @badges = Badge.where(user_id: params[:id])
+    @best_badge = @badges.order(count: :desc).first
 
   end
 
@@ -63,6 +65,8 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+
 
   #def check_age
   #  redirect_to after_signup_path(:add_age) if current_user[:age].nil?
