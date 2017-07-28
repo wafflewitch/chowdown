@@ -1,29 +1,28 @@
-<div class="align-text:center">
-   <h1>How was your Chowdown</h1>
-</div>
-<% @chow = Chow.find(params[:chow_id])  %>
-<% if @user == User.find(@chow.user_1_id) %>
-  <% @partner = User.find(@chow.user_2_id) %>
-<% else %
-  <% @partner = User.find(@chow.user_1_id) %>
-<% end %>
-<div class="container">
-    <% @partner.badges.each do |badge| %>
-      <%= link_to user_chow_badge_path(@partner, @chow, badge, :badge => {:name => badge.name, :category => badge.category}), method: :patch do %>
-        <div class="card-badges">
-          <%= image_tag badge.category, class: "avatar-large" %>
-          <%= badge.name  %>
-        </div>
-      <% end %>
-    <% end %>
-</div>
 
+<br>
+<div class="title text-center">
+    <h3>What was best about your chowdown?</h3></div>
+<br>
+
+<div class="container" id="container-badges">
+
+    <% @chow = Chow.find(params[:chow_id])  %>
+    <% if @user == User.find(@chow.user_1_id) %>
+      <% @partner = User.find(@chow.user_2_id) %>
+    <% else %
+      <% @partner = User.find(@chow.user_1_id) %>
+    <% end %>
+        <% @partner.badges.each do |badge| %>
+        <div class="card card-chowi card-badge">
+          <div class="badge-img">
+            <%= link_to user_chow_badge_path(@partner, @chow, badge, :badge => {:name => badge.name, :category => badge.category}), method: :patch do %>
+                <%= image_tag badge.category, class: "badge-icon" %></div>
+                <div class="badge-name"><h3><%= badge.name %></h3></div>
+            <% end %>
+        </div>
+        <% end %>
+</div>
 
 <% content_for(:left_nav) do %>
   <h4><%= link_to "", :back, class: "fa fa-chevron-left" %></h4>
 <% end %>
-
-
-
-
-
