@@ -1,6 +1,8 @@
 <div class="card-profile-pic" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('<%= user.facebook_picture_url %>');"></div>
 
 <h2><%= user.first_name %>, <%= user.age %></h2>
+<%= render 'shared/profile_badges' %>
+<%= image_tag "https://res.cloudinary.com/wafflewitch/image/upload/v1501204813/medal_icon.png", class: "medal" %>
 <div class="bio">
   <h5><%= user.bio %></h5>
 </div>

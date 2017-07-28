@@ -1,0 +1,13 @@
+<div class="badges-container">
+  <ul class="list-inline">
+
+
+      <% if @best_badge[:count] >= 1 %>
+        <%= image_tag @best_badge.category, class: "badges-profile" %>
+        <%= @best_badge[:count] %>
+      <% end %>
+
+  </ul>
+</div>
+
+
