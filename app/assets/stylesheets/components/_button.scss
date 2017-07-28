@@ -50,27 +50,27 @@
 
 
 .button-chowdowns {
-  position: absolute;
-  bottom: 50px;
-  left: 18px;
-  background-color: #32B796;
-  color: #32B796;
-  font-size: 29px;
-  /* padding-left: 72px; */
-  /* padding-right: 69px; */
-  height: 64px;
-  font-weight: 700;
-  color: #F7F7F7;
-  padding-top: 11px;
-  border-radius: 4px;
-  margin: 0 auto;
-  width: 310px;
-  -webkit-box-shadow: gray;
-  box-shadow: gray;
-  font-weight: 700;
-  font-size: 27px;
-  border: #258C72 1px solid;
-  overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    /* left: 18px; */
+    background-color: #32B796;
+    color: #32B796;
+    font-size: 29px;
+    /* padding-left: 72px; */
+    /* padding-right: 69px; */
+    height: 68px;
+    font-weight: 700;
+    color: #F7F7F7;
+    padding-top: 11px;
+    border-radius: 0 0 4px 4px;
+    margin: 0 auto;
+    width: 100%;
+    -webkit-box-shadow: gray;
+    box-shadow: gray;
+    font-weight: 700;
+    font-size: 27px;
+    /* border: #258C72 1px solid; */
+    overflow: hidden;
   &:hover {
     color: #F7F7F7;
   }
@@ -189,11 +189,14 @@
 }
 
 .edit-icon-size {
-  width: 22px;
-  &:hover {
-    opacity: 0.7;
-  }
+    width: 22px;
+    width: 19px;
+    top: 56px;
+    position: absolute;
+    z-index: 1000;
+    left: 130px;
 }
+  
 .date-button {
   border: 1px rgb(210,210,210) solid;
   width: 140px;
@@ -252,3 +255,9 @@
     background-color: none;
     border-color: none;
 }
+
+
+
+
+
+

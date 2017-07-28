@@ -34,7 +34,7 @@ class UsersController < ApplicationController
                     .where("min_age >= ?", params[:ageMin].to_i)
                     .where("max_age <= ?", params[:ageMax].to_i)
                     .where.not(id: ids)
-      if params[:gender] == "women" || params[:gender] == "men"
+      if params[:gender] == "Female" || params[:gender] == "Male"
         @users.where(gender_pref: params[:gender])
       end
       respond_to do |format|
