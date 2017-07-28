@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  #before_action :check_age
   before_action :set_user, only: [ :show, :edit, :update ]
-  helper_method :pref_meat_icon, :pref_fish_icon, :pref_wheat_icon
+  # helper_method :pref_meat_icon, :pref_fish_icon, :pref_wheat_icon
 
   def new
   end
