@@ -59,16 +59,13 @@ class CalendarsController < ApplicationController
     if @chow.calendar_1_id
       @chow.calendar_2_id = @calendar.id
       @match_cal = Calendar.find(@chow.calendar_1_id)
-    else
-      @chow.calendar_1_id = @calendar.id
-    end
-
-    if @match_cal
       @match_cal.dates.each do |date|
         if date == @calendar.dates[0]
           @chow.date = date
         end
       end
+    else
+      @chow.calendar_1_id = @calendar.id
     end
   end
 end
