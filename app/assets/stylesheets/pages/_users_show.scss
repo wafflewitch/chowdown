@@ -47,3 +47,20 @@
 #cards-wrapper {
   margin-left: 16px;
 }
+.btn-sign-out {
+  // border-radius: 10px;
+  // background-color: rgb(250,250,250);
+  // border: rgb(240,240,240) 1px solid;
+  width: 100px;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 121px;
+  font-weight: 300;
+  font-size: 16px;
+  p {
+    margin: 0 auto;
+  }
+}
