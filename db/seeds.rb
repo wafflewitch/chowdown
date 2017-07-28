@@ -8,27 +8,26 @@
 require 'date'
 require 'faker'
 
-USER_IMG_1 = "https://res.cloudinary.com/wafflewitch/image/upload/v1500038735/user" # 0~
-
-
-USER_IMG_ = "https://res.cloudinary.com/wafflewitch/image/upload/v1500038737/user"
+USER_IMG_URL = "https://res.cloudinary.com/wafflewitch/image/upload/v150003873"
 
 RECIPE_1_IMG = "https://res.cloudinary.com/wafflewitch/image/upload/v1501250492/recipe1.jpg"
 RECIPE_2_IMG = "https://res.cloudinary.com/wafflewitch/image/upload/v1501250492/recipe2.jpg"
 RECIPE_3_IMG = "https://res.cloudinary.com/wafflewitch/image/upload/v1501250492/recipe3.jpg"
 
-MEN_PICS = ["0.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg"]
+MEN_PICS = ["5/user0.jpg", "5/user1.jpg", "5/user2.jpg", "5/user3.jpg", "5/user4.jpg", "5/user5.jpg", "5/user6.jpg", "5/user7.jpg"]
 
-WOMEN_PICS = ["8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg",
-  "15.jpg", "16.jpg", "17.jpg"]
+WOMEN_PICS = ["5/user8.jpg", "5/user9.jpg", "5/user10.jpg", "5/user11.jpg", "6/user12.jpg", "6/user13.jpg", "6/user14.jpg",
+  "6/user15.jpg", "6/user16.jpg", "7/user17.jpg"]
 
-BIO_1 = ["I love", "My passions are", "I live for", "Let's chat about"]
+AGES = [18, 20, 22, 25, 26, 27, 28, 29, 30, 31, 33, 34, 36, 40, 42, 47, 50, 55]
+
+BIO_1 = ["I love", "My passions are", "I live for", "Let's chat about", "My favorite things are", "Life is meaningless without"]
 
 BIO_2 = ["cooking", "sports", "music", "cleaning", "running", "gaming", "Paris", "coding"]
 
 BIO_3 = ["dogs", "muffins", "nachos", "the 90's", "hiphop", "movies", "anime", "Trump", "being lazy"]
 
-TAGS = ["african", "cajun", "caribbean", "chinese", "ethiopian",
+FOOD_TAGS = ["african", "cajun", "caribbean", "chinese", "ethiopian",
     "filipino", "french", "german", "greek", "indian",
     "italian", "japanese", "jewish", "korean", "mediterranean",
     "mexican", "moroccan", "russian", "spanish", "thai",
@@ -44,21 +43,21 @@ women_count = 8
 MEN_PICS.count.times do
   user = User.new(first_name: Faker::Name.first_name,
                   last_name: Faker::Name.last_name,
-                  facebook_picture_url: "#{URL}#{MEN_PICS[men_count]}",
+                  facebook_picture_url: "#{USER_IMG_URL}#{MEN_PICS[men_count]}",
                   email: Faker::Internet.email,
                   password: "coolcat",
-                  age: (18..55).sample, # FIX THIS
+                  age: AGES.sample,
                   gender: "Male",
                   address: "5333 Casgrain Ave, Montreal, Quebec",
                   bio: "#{BIO_1.sample} #{BIO_2.sample} and #{BIO_3.sample}",
                   pref_meat: [true, false].sample,
                   pref_fish: [true, false].sample,
                   pref_wheat: [true, false].sample,
-                  tag1: TAGS[0..4].sample,
-                  tag2: TAGS[5..9].sample,
-                  tag3: TAGS[10..14].sample,
-                  tag4: TAGS[15..19].sample,
-                  tag5: TAGS[20..23].sample,
+                  tag1: FOOD_TAGS[0..4].sample,
+                  tag2: FOOD_TAGS[5..9].sample,
+                  tag3: FOOD_TAGS[10..14].sample,
+                  tag4: FOOD_TAGS[15..19].sample,
+                  tag5: FOOD_TAGS[20..23].sample,
                   gender_pref: "All",
                   )
     if user.save
@@ -69,6 +68,8 @@ MEN_PICS.count.times do
         chow.date = Date.new(2017,7,[1, 2, 3, 4, 5, 10, 11, 12, 23, 24, 25, 29, 30, 31].sample)
       end
       if chow.save
-        recipe = Recipe.new(user_id: user.id, title: "", photo: "")
+        recipe1 = Recipe.new(user_id: user.id, title: "Pizza Margherita", photo: RECIPE_1_IMG)
+        recipe2 = Recipe.new(user_id: user.id, title: "Vegetarian Khow Suey", photo: RECIPE_2_IMG)
+        recipe3 = Recipe.new(user_id: user.id, title: "Beef and Broccoli", photo: RECIPE_3_IMG)
 end
 
