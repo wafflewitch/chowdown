@@ -17,7 +17,6 @@ class CalendarsController < ApplicationController
     @calendar.save!
     set_match_cal
     @chow.save!
-    binding.pry
   end
 
   def edit
