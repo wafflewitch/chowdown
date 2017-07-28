@@ -9,6 +9,7 @@ class BadgesController < ApplicationController
 
   def create
     @badge = Badge.new(badge_params)
+    @badge[:level] = params[:badge][:level]
     @badge.user = @user
     @badge.save!
   end
@@ -24,9 +25,9 @@ class BadgesController < ApplicationController
   end
 
   def update
-    @badge[:count] += 1
+    @badge[:level] += 1
     @badge.save!
-    redirect_to user_path(@user)
+    redirect_to user_chows_path(@user, :query => "finished")
   end
 
   def destroy
@@ -55,6 +56,6 @@ class BadgesController < ApplicationController
   end
 
   def badge_params
-    params.require(:badge).permit(:user_id, :name, :category, :count)
+    params.require(:badge).permit(:user_id, :name, :category)
   end
 end
