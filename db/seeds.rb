@@ -84,4 +84,13 @@ women_count = 8
 #       women_count += 1
 # end
 
-recipe1 = Recipe.create!(user_id: 28, name: "Pizza Margherita", category: RECIPE_1_IMG)
+users = User.all
+
+users.each do |user|
+  badges = user.badges
+  badges.each do |badge|
+    badge[:level] = (1..4)
+    badge.save
+  end
+  user.save
+end
