@@ -183,6 +183,9 @@
 
 .edit-icon-size {
   width: 22px;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .date-button {
   border: 1px rgb(210,210,210) solid;
