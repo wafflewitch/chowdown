@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
   after_create :create_badges
 
   geocoded_by :address
@@ -97,9 +97,9 @@ class User < ApplicationRecord
 
   private
 
-  def send_welcome_email
-      UserMailer.welcome(self).deliver_now
-  end
+  # def send_welcome_email
+  #     UserMailer.welcome(self).deliver_now
+  # end
 
   def create_badges
     chef_badge = Badge.create(name: "good food", count: 0, category: "https://res.cloudinary.com/wafflewitch/image/upload/v1501251493/badge_chef_pink2.png", user_id: self.id)
