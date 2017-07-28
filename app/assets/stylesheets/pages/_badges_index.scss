@@ -1,18 +1,38 @@
+#container-badges {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+}
 
-.container {
+h1 {
   text-align: center;
 }
 
-.card-badges {
-  position: relative;
-  height: auto;
-  text-align: center;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+.card-badge {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
 }
 
-img.icon {
- width: 10px;
- height: 10px;
+.badge-name a {
+  color: $brand-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.badge-name {
+  color: $brand-color;
+}
+
+.badge-icon {
+  width: 50px;
 }

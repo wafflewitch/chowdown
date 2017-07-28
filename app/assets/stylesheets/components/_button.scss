@@ -50,27 +50,37 @@
 
 
 .button-chowdowns {
-    position: absolute;
-    bottom: 0px;
-    /* left: 18px; */
-    background-color: #32B796;
-    color: #32B796;
-    font-size: 29px;
-    /* padding-left: 72px; */
-    /* padding-right: 69px; */
-    height: 68px;
-    font-weight: 700;
-    color: #F7F7F7;
-    padding-top: 11px;
-    border-radius: 0 0 4px 4px;
-    margin: 0 auto;
-    width: 100%;
-    -webkit-box-shadow: gray;
-    box-shadow: gray;
-    font-weight: 700;
-    font-size: 27px;
-    /* border: #258C72 1px solid; */
-    overflow: hidden;
+  position: absolute;
+  bottom: 50px;
+  left: 18px;
+  background-color: #32B796;
+  color: #32B796;
+  font-size: 29px;
+  /* padding-left: 72px; */
+  /* padding-right: 69px; */
+  height: 64px;
+  font-weight: 700;
+  color: #F7F7F7;
+  padding-top: 11px;
+  border-radius: 4px;
+  margin: 0 auto;
+  width: 310px;
+  -webkit-box-shadow: gray;
+  box-shadow: gray;
+  font-weight: 700;
+  font-size: 27px;
+  // border: #258C72 1px solid;
+  overflow: hidden;
+  &.button-onboarding {
+    position: fixed;
+    margin: 85px 21px;
+    padding-bottom: 15px;
+    width: 299px;
+    font-size: 19px;
+    height: 50px;
+    display: inline-block;
+    border: #258C72 1px solid;
+  }
   &:hover {
     color: #F7F7F7;
   }
@@ -196,16 +206,22 @@
     z-index: 1000;
     left: 130px;
 }
-  
+
 .date-button {
   border: 1px rgb(210,210,210) solid;
   width: 140px;
   height: 59px;
   padding-top: 18px;
-  color: black;
+  color: rgb(75,75,75);
   border-radius: 5px;
   background-color: rgb(240,240,240);
   margin: 10px;
+  &.tag-button {
+    margin: 1 auto;
+    height: 36px;
+    padding-top: 4px;
+    background-color: #f0f0f0;
+  }
   &.selected {
     border: 2px $green solid;
     color: $green;
@@ -256,8 +272,7 @@
     border-color: none;
 }
 
-
-
-
-
+#submit-calendar1 {
+  cursor:pointer;
+}
 
