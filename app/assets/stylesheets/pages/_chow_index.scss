@@ -11,12 +11,13 @@
   li p {
     display: flex;
     position: absolute;
-    top: 4px;
+    top: 1px;
     left: 119px;
     color: rgb(100,100,100);
-    .fa-calendar {
+    .fa.fa-calendar {
       font-size: 15px;
       padding-right: 3px;
+      margin: 3px;
     }
   }
 }
