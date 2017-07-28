@@ -2,9 +2,10 @@
   position: relative;
   height: auto;
   text-align: center;
-  padding: 7px 0;
+  padding: 7px 0px;
   li h3 {
     margin-right: 105px;
+    margin-left: 30px;
     font-size: 26px;
     color: rgb(100,100,100);
   }
@@ -24,6 +25,7 @@
 
 .card-finalized {
   background-color: #F3DFE9;
+  padding: 10px 0px 10px 25px;
 }
 
 .card-links {
