@@ -1,7 +1,6 @@
 <div class="text-center form-signup">
-<%= "Step #{@current_step} of #{@total_steps}" %>
+<h4 class="text-signup">What's your address?</h4>
 <%= simple_form_for @user, url: wizard_path do |f| %>
-<%= f.label "Set your address" %><br>
 <%= f.text_field :address, required: true, class: "form-control"  %><br>
 <%= f.submit "Continue", class: "btn button-chowdowns button-onboarding" %>
 <% end %>
