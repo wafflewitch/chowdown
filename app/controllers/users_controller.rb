@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     Decision.where(user2: current_user.id).collect(&:user_1_id).each do |id|
       ids << id
     end
-
+    ids << current_user.id
     if params[:matchingPref] == 'true'
       @users = User.near([current_user.latitude.to_f, current_user.longitude.to_f], params[:maxDistance], units: :km, :order => 'distance')
                     .where(dating: params[:datingPref])
