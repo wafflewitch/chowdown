@@ -24,9 +24,9 @@ class UsersController < ApplicationController
 
   def index
     ids = Decision.where(user1: current_user.id).collect(&:user_2_id)
-    Decision.where(user2: current_user.id).collect(&:user_1_id).each do |id|
-      ids << id
-    end
+    # Decision.where(user2: current_user.id).collect(&:user_1_id).each do |id|
+    #   ids << id
+    # end
 
     if params[:matchingPref] == 'true'
       @users = User.near([current_user.latitude.to_f, current_user.longitude.to_f], params[:maxDistance], units: :km, :order => 'distance')

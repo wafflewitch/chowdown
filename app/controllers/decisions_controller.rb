@@ -21,8 +21,6 @@ class DecisionsController < ApplicationController
         format.html { redirect_to users_path }
         format.js
       end
-    else
-      #redirect_to users_path
     end
   end
 
@@ -44,7 +42,6 @@ class DecisionsController < ApplicationController
     @all_users_but_current = User.where
                                   .not("id = ?", current_user.id)
                                   .reject{ |u| u.id == current_user.id }
-    # @all_users_but_current = get_unviewed(current_user)
     @all_users_but_current = @all_users_but_current.shuffle.first
   end
 
