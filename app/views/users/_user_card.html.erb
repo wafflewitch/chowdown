@@ -12,27 +12,23 @@
 </div>
 <div class="pref-cook-pref">
   <!-- <h5>I want to cook...</h5> -->
-  <div class="tags">
-    <div class="tags">
-      <div class="tag-food-type">
-        <div class="tag-design text-center">
-          <% unless user.tag1.nil? %>
-            <h5><%= user.tag1 %></h5>
-          <% end %>
-          <% unless user.tag2.nil? %>
-            <h5><%= user.tag2 %></h5>
-          <% end %>
-          <% unless user.tag3.nil? %>
-            <h5><%= user.tag3 %></h5>
-          <% end %>
-          <% unless user.tag4.nil? %>
-            <h5><%= user.tag5 %></h5>
-          <% end %>
-          <% unless user.tag5.nil? %>
-            <h5><%= user.tag5 %></h5>
-          <% end %>
-        </div>
-      </div>
+  <div class="tag-food-type">
+    <div class="tag-design text-center">
+      <% unless user.tag1 == '' %>
+        <h5><%= user.tag1 %></h5>
+      <% end %>
+      <% unless user.tag2 == '' %>
+        <h5><%= user.tag2 %></h5>
+      <% end %>
+      <% unless user.tag3 == '' %>
+        <h5><%= user.tag3 %></h5>
+      <% end %>
+      <% unless user.tag4 == '' %>
+        <h5><%= user.tag4 %></h5>
+      <% end %>
+      <% unless user.tag5 == '' %>
+        <h5><%= user.tag5 %></h5>
+      <% end %>
     </div>
   </div>
 </div>

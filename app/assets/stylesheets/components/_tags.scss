@@ -33,19 +33,19 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
-.tag-design h5 {
-    background-color: #E5BAD0;
-    border-color: white;
-    padding: 10px;
-    margin: 3px;
-    margin-right: 0px;
-    margin-left: 0px;
-    border-radius: 4px;
-    color: white;
-    border-top-color: black;
-    flex: 1 0 25%;
-    margin: 3px 7px;
+    h5 {
+      background-color: #E5BAD0;
+      border-color: white;
+      padding: 10px;
+      margin: 3px;
+      margin-right: 0px;
+      margin-left: 0px;
+      border-radius: 4px;
+      color: white;
+      border-top-color: black;
+      flex: 1 0 25%;
+      margin: 3px 7px;
+    }
     // margin-left: -9px;
 }
 
