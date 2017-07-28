@@ -31,11 +31,11 @@ class ChowsController < ApplicationController
     user1_chows = Chow.where(user_1_id: @user.id)
     user2_chows = Chow.where(user_2_id: @user.id)
 
-    # if @user == User.find(@chow.user_1_id)
+    #if @user == User.find(@chow.user_1_id)
     #   @partner = User.find(@chow.user_2_id)
     # else
     #   @partner = User.find(@chow.user_1_id)
-    # end
+    #end
 
     if params[:query] == "active" || params[:query] == "finalized"
       @active = true

@@ -7,8 +7,8 @@
 }
 .badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: 23px;
+  right: 23px;
   font-size: 10px;
   color: white;
   display: flex;
@@ -35,4 +35,16 @@
 .badge-bordered {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+
+.badges-profile{
+  width: 25px;
+  position: absolute;
+  top: -9px;
+  right: -4px;
+}
+
+.medal {
+  position: absolute;
+  height: 65px;
 }

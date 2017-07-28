@@ -33,18 +33,7 @@
 <% end %>
 
 <% content_for(:after_js) do %>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=#{ENV['GOOGLE_API_SERVER_KEY']}"></script>
-<!--   <%= javascript_tag do %>
-    $(function(){
-      $('.tag_autocomplete').autocomplete({
-  source: ["american", "british", "cajun", "caribbean", "chinese",
-    "filipino", "french", "german", "greek", "indian", "italian",
-    "japanese", "jewish", "korean", "mediterranean", "mexican",
-    "moroccan", "russian", "spanish", "thai", "turkish",
-    "venezuelan", "vietnamese"]
-    });
-  });
-  <% end %> -->
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=#{ENV['GOOGLE_API_BROWSER_KEY']}"></script>
 <% end %>
 
 <% content_for(:left_nav) do %>

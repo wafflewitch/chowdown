@@ -37,7 +37,7 @@
 <% end %>
 <% content_for(:right_nav) do %>
   <% if @chow.date %>
-    <i class="fa fa-calendar green" %></i>
+    <p><%= @chow.date.to_time.strftime('%B %e, %Y') %></p>
   <% elsif @chow.calendar_1_id %>
     <%= link_to "", user_chow_calendar_path(@recipient.id, @chow.id, @chow.calendar_1_id), class: "fa fa-calendar orange" %>
   <% else %>
