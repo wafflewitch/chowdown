@@ -27,6 +27,8 @@ DEV_EMAILS = ["louis.salle.phelippes@duke.edu", "mesophie@gmx.ch", "joeyvk@sbcgl
 CHOW_STATUS = ["active", "finalized", "finished"]
 men_count = 0
 women_count = 8
+
+
 8.times do
   user = User.create!(first_name: Faker::Name.first_name,
                   last_name: Faker::LordOfTheRings.character,
@@ -51,17 +53,11 @@ women_count = 8
                   dating: [true, false].sample
                   )
       men_count += 1
-      user_2 = User.find(1)
-      chow = Chow.new(user_1_id: user.id, user_2_id: user_2.id, status: CHOW_STATUS.sample)
-      if chow.status == "finalized" || chow.status == "finished"
-        chow.date = Date.new(2017,7,[1, 2, 3, 4, 5, 10, 11, 12, 23, 24, 25, 29, 30, 31].sample)
-      end
-      if chow.save
-        recipe1 = Recipe.new(user_id: user.id, title: "Pizza Margherita", photo: RECIPE_1_IMG)
-        recipe2 = Recipe.new(user_id: user.id, title: "Vegetarian Khow Suey", photo: RECIPE_2_IMG)
-        recipe3 = Recipe.new(user_id: user.id, title: "Beef and Broccoli", photo: RECIPE_3_IMG)
-      end
 end
+
+
+
+
 
 8.times do
   user = User.create!(first_name: Faker::Name.first_name,
@@ -87,14 +83,4 @@ end
                   dating: [true, false].sample
                   )
       women_count += 1
-      user_2 = User.find(DEV_EMAILS.sample)
-      chow = Chow.new(user_1_id: user.id, user_2_id: user_2.id, status: CHOW_STATUS.sample)
-      if chow.status == "finalized" || chow.status == "finished"
-        chow.date = Date.new(2017,7,[1, 2, 3, 4, 5, 10, 11, 12, 23, 24, 25, 29, 30, 31].sample)
-      end
-      if chow.save
-        recipe1 = Recipe.new(user_id: user.id, title: "Pizza Margherita", photo: RECIPE_1_IMG)
-        recipe2 = Recipe.new(user_id: user.id, title: "Vegetarian Khow Suey", photo: RECIPE_2_IMG)
-        recipe3 = Recipe.new(user_id: user.id, title: "Beef and Broccoli", photo: RECIPE_3_IMG)
-      end
 end
