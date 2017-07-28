@@ -1,8 +1,10 @@
-<h1>How was your Chowdown</h1>
+<div class="align-text:center">
+   <h1>How was your Chowdown</h1>
+</div>
 <% @chow = Chow.find(params[:chow_id])  %>
 <% if @user == User.find(@chow.user_1_id) %>
   <% @partner = User.find(@chow.user_2_id) %>
-<% else %>
+<% else %
   <% @partner = User.find(@chow.user_1_id) %>
 <% end %>
 <div class="container">
