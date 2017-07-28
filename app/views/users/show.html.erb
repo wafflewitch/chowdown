@@ -5,6 +5,11 @@
     <div class="card-details" style="">
       <%= render "user_card", user: current_user %>
       <%= render 'shared/profile_buttons' %>
+      <% if current_user %>
+        <%= link_to destroy_user_session_path, class: "btn btn-sign-out", method: :delete do %>
+          <p>Sign Out</p>
+        <% end  %>
+      <% end %>
     </div>
   </div>
 
