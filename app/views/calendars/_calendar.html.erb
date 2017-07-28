@@ -1,0 +1,28 @@
+<h1> completed? <%= completed %></h1>
+<h1> calendar? <%= calendar %></h1>
+<h1> user? <%= user %></h1>
+<% if completed == 'completed' %>
+  <h3><%= user.first_name %>'s dates</h3>
+  <% calendar.dates.each do |date| %>
+      <div class="xs-col-12">
+        <div class="date-button tomorrow1" ><%= date.to_time.strftime('%B %e, %Y') %></div>
+      </div>
+    <% end %>
+  <% else %>
+    <h3><%= user.first_name %>'s availability</h3>
+    <hr>
+    <p>Pick a date and confirm your Chowdown</p>
+    <br>
+      <div class="row">
+      <% calendar.dates.each do |date| %>
+        <div class="xs-col-12">
+          <a type="text" value="" class="date-button tomorrow1 btn" ><%= date.to_time.strftime('%B %e, %Y') %></a>
+        </div>
+      <% end %>
+      </div>
+      <br>
+    </div>
+    <% content_for(:right_nav) do %>
+    <a href=""  id="submit-calendar1" >Submit</a>
+  <% end %>
+  <% end  %>

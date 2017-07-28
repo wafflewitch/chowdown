@@ -8,14 +8,16 @@ class CalendarsController < ApplicationController
   end
 
   def create
+    @completed = 'completed'
     @calendar = Calendar.new
     @calendar.user = @user
     @calendar.chow = @chow
-    dates = params["date_one"].split('  ')
+    dates = params["date_one"].split(';')
     @calendar.dates = dates
     @calendar.save!
     set_match_cal
     @chow.save!
+    binding.pry
   end
 
   def edit
