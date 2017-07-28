@@ -14,21 +14,22 @@
   }
 }
 .card-profile-pic {
-    background-size: cover !important;
-    background-position: center;
-    color: white;
-    height: 250px;
-    background-position: top;
-    border-radius: 4px 4px 0 0;
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  height: 250px;
+  background-position: top;
+  border-radius: 4px 4px 0 0;
 }
 
 .card-details h2 {
-    font-size: 25px;
-    top: 0;
-    position: absolute;
-    color: white;
-    padding: 15px;
-    margin: 0;
+  font-size: 25px;
+  top: 0;
+  position: absolute;
+  color: white;
+  padding: 15px;
+  margin: 0;
+  text-shadow: -1px 1.5px 1px #777777;
 }
 
 .bio h5 {
